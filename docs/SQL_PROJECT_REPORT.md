@@ -1,15 +1,15 @@
-# Instacart Shopping Behaviour Analysis with SQL Server
+# Instacart Shopping Behaviour Analysis with SQL Server and Power BI
 
 **Author:** Saurabh Zambare  
-**Project milestone:** SQL analysis and reporting preparation — scripts 01–19  
-**Last updated:** 27 October 2026  
-**Status:** In progress; Power BI dashboard not yet built
+**Project milestone:** SQL scripts 01–21 and three-page Power BI report  
+**Last updated:** 29 October 2026  
+**Status:** SQL reporting layer and local Power BI report completed; repository packaging in progress
 
 ## Project overview
 
-I used SQL Server to explore customer shopping patterns in the Instacart dataset. I imported five CSV files, validated data quality and table relationships, analysed product popularity and repeat purchasing, and created reusable reporting views for the next Power BI phase.
+I used SQL Server and Power BI to analyse historical shopping patterns in the Instacart dataset. I imported five CSV files, checked data quality and relationships, analysed product popularity and repeat purchasing, created three reporting views, and built a three-page interactive Power BI report.
 
-My goal is to demonstrate an end-to-end analytics workflow: understand the data, establish reliable metrics, answer business questions, and prepare a reporting model. This report documents the completed SQL milestone and the limitations of the findings.
+My goal is to demonstrate an end-to-end analytics workflow: understand the data, establish reliable metrics, answer business questions, and prepare a reporting model. This report documents the SQL analysis, Power BI model and measures, dashboard findings, validation, and interpretation limits.
 
 ## Results at a glance
 
@@ -90,22 +90,22 @@ I separated the workflow into import, validation, analysis and reporting prepara
 
 I counted orders directly from the order-level table for time analysis. Joining orders to product entries before counting would multiply each order by its basket size. I used decimal arithmetic for percentages, BIGINT-compatible counts and sums, and NULLIF to protect denominators.
 
-## SQL implementation: scripts 01–19
+## SQL implementation: scripts 01–21
 
-The first two headings describe the setup and department-import steps; their filenames should be matched to the repository. Scripts 03–19 use the project filenames below.
+The numbered sections map each script to its purpose, analysis question and recorded result. The additional `00_environment_check.sql` inspects the SQL Server instance and current database; it supports setup rather than a business finding.
 
 
-### 01 — Database and schema setup (database setup)
+### 01 — `01_create_database.sql`
 
 **Purpose:** Establish the project database and staging area before importing files.
 
 **Question:** Can the source data be organised consistently in SQL Server?
 
-**Approach:** Use the `InstacartAnalytics` database and `staging` schema. Subsequent scripts create and query tables in this structure.
+**Approach:** Create the database only when absent, switch to `InstacartAnalytics`, and create the `staging` and `analytics` schemas only when absent. Script 18 later creates `reporting`.
 
 **Result:** The database and staging schema support the subsequent import, validation and analysis workflow.
 
-### 02 — Department import (department import)
+### 02 — `02_import_departments.sql`
 
 **Purpose:** Load the department lookup.
 
@@ -135,7 +135,7 @@ The first two headings describe the setup and department-import steps; their fil
 
 **Purpose:** Load order-level customer activity and validate order metadata.
 
-**Results:** **3,421,083 rows**, the same number of unique order IDs, and **206,209 customers**. Missing order/customer IDs returned **0**. Dataset group totals are listed in section 2.
+**Results:** **3,421,083 rows**, the same number of unique order IDs, and **206,209 customers**. Missing order/customer IDs returned **0**. Dataset partition totals appear under Data and analysis scope.
 
 **Gap checks:** **206,209 NULL previous-order gaps** occur on first orders. First orders incorrectly containing a gap and later orders missing a gap both returned **0**.
 
@@ -165,7 +165,7 @@ The first two headings describe the setup and department-import steps; their fil
 
 **Approach:** Group entries by product ID, count rows, join product/department descriptions and return the highest counts. Product ID provides a stable grouping identifier.
 
-**Finding:** Banana ranks first; **9 of the top 10** belong to produce. Organic Whole Milk is the exception, in dairy eggs. Full results appear in section 5.
+**Finding:** Banana ranks first; **9 of the top 10** belong to produce. Organic Whole Milk is the exception, in dairy eggs. Full results appear under Detailed product results.
 
 **Business use:** A starting shortlist for availability monitoring and merchandising investigation; revenue and margin information are needed for commercial decisions.
 
@@ -263,7 +263,7 @@ The first two headings describe the setup and department-import steps; their fil
 
 **Results:** **113 distinct observed basket sizes**. The mode is **5**, versus the mean of **10.09**. Larger baskets raise the mean above the most common size. Some integer sizes within the 1–145 range are absent.
 
-**Remaining validation:** Reconcile the sum of all basket-size frequencies to the total prior-order count in the final reporting checks.
+**Evidence limit:** A separate output summing all frequency rows was not retained. Scripts 19 and 21 reconcile the underlying order count and basket-entry total. The Power BI distribution uses that order-level view.
 
 ### 17 — `17_department_analysis.sql`
 
@@ -271,7 +271,7 @@ The first two headings describe the setup and department-import steps; their fil
 
 **Approach:** Join entries to products and departments; group by department ID/name; calculate entry counts, reordered counts and rates.
 
-**Finding:** Produce leads volume (**9,479,291 entries**); dairy eggs has the highest reorder rate (**67.00%**). Full department results appear in section 6.
+**Finding:** Produce leads volume (**9,479,291 entries**); dairy eggs has the highest reorder rate (**67.00%**). Full results appear under Department findings.
 
 **Meaning:** Volume and repeat-purchase rate answer different questions. Department percentages must not be averaged unweighted to obtain the overall rate; combine numerators and denominators instead.
 
@@ -306,6 +306,35 @@ The first two headings describe the setup and department-import steps; their fil
 
 **Meaning:** The reporting view preserves all prior orders and reconciles to the product-entry total. Customer 1's preview contains 10 prior orders, with basket sizes 5, 6, 5, 5, 8, 4, 5, 6, 6 and 9. The view's basket aggregation is evaluated when queried; it is not a materialised summary table.
 
+### 20 — `20_create_order_product_reporting_view.sql`
+
+**Purpose:** Create `reporting.fact_order_products` for product-level analysis in Power BI.
+
+**Grain:** One product entry within one prior order, identified by `(order_id, product_id)` after the duplicate-pair check.
+
+**Contents:** order_id, product_id, add_to_cart_order, reordered.
+
+**Results:** **32,434,489 product entries**, **19,126,536 reordered entries**, and **58.97%** reorder rate. The order 2 preview agrees with the earlier nine-entry source check.
+
+**Meaning:** The purchase view preserves the detailed entries needed for product counts, repeat-purchase rates and distinct orders containing selected products.
+
+### 21 — `21_validate_reporting_views.sql`
+
+**Question:** Do the three reporting views work together without losing or multiplying entries?
+
+**Approach:** Use LEFT JOIN checks for missing references, INNER JOIN reconciliation for preserved purchase totals, and an independent order-level basket total.
+
+| Check | Verified result |
+|---|---:|
+| Entries without a matching product | 0 |
+| Entries without a matching prior order | 0 |
+| Joined product entries | 32,434,489 |
+| Joined reordered entries | 19,126,536 |
+| Prior orders | 3,214,874 |
+| Sum of order-level basket sizes | 32,434,489 |
+
+**Meaning:** The reporting joins preserve the checked entry and reorder totals, and the order-level basket total agrees with the purchase view. These results complete the SQL reporting-layer reconciliation used for Power BI.
+
 ## Detailed product results
 
 
@@ -324,7 +353,7 @@ The first two headings describe the setup and department-import steps; their fil
 
 Banana and Bag of Organic Bananas are separate product IDs and are analysed separately. Their percentages cannot simply be added to calculate the percentage of orders containing either, because an order may contain both.
 
-## 6. Department findings: script 17
+## Department findings: script 17
 
 | Department | Product entries | Reordered entries | Reorder rate |
 |---|---:|---:|---:|
@@ -357,16 +386,116 @@ The combination of high order frequency and high repeat-entry rates makes the le
 
 These findings do not establish that promotions, staffing changes or recommendations will improve results. I would need stock availability, prices, margins, fulfilment timing and experiment results to evaluate those decisions.
 
-## Reporting layer completed
+## Power BI implementation
 
-| View | Grain | Validated checks |
+I imported the three SQL reporting views into Power BI Desktop and named the queries **Products**, **Orders**, and **OrderProducts**. The model retains separate order and product-entry grains.
+
+| Power BI table | SQL view | Grain | Validated rows |
+|---|---|---|---:|
+| Products | reporting.dim_products | One product | 49,688 |
+| Orders | reporting.fact_orders | One prior order | 3,214,874 |
+| OrderProducts | reporting.fact_order_products | One product within a prior order | 32,434,489 |
+
+```mermaid
+erDiagram
+    ORDERS ||--o{ ORDER_PRODUCTS : order_id
+    PRODUCTS ||--o{ ORDER_PRODUCTS : product_id
+```
+
+Both relationships are active **one-to-many**, with **single-direction filtering from Orders or Products to OrderProducts**. This is an order header/detail model with a product dimension. Products does not filter Orders backwards through the detail table.
+
+I retained whole-number identifiers and flags, text product/category descriptions, and the decimal previous-order gap. First-order gaps remain NULL. An order ID is an identifier, so prior-only reporting can have gaps in its sequence; it does not need to start at 1.
+
+### DAX measures
+
+The seven measures used in the report are:
+
+```dax
+Total Orders =
+COUNTROWS(Orders)
+```
+
+```dax
+Product Entries =
+COUNTROWS(OrderProducts)
+```
+
+```dax
+Reordered Entries =
+SUM(OrderProducts[reordered])
+```
+
+```dax
+Reorder Rate =
+DIVIDE([Reordered Entries], [Product Entries])
+```
+
+```dax
+Average Basket Size =
+AVERAGE(Orders[distinct_products_in_order])
+```
+
+```dax
+Orders Containing Product =
+DISTINCTCOUNT(OrderProducts[order_id])
+```
+
+```dax
+Order Penetration =
+DIVIDE([Orders Containing Product], [Total Orders])
+```
+
+Reorder Rate and Order Penetration use percentage formatting with **two decimal places**. Average Basket Size uses **two decimal places**. The Overview displays large counts in millions; detailed product-order counts remain whole numbers.
+
+**Denominator behaviour:** Order Penetration means the share of prior orders in the current day/hour/order context containing the selected product or product set. A Department selection filters its numerator through OrderProducts, while the denominator remains all prior orders in the selected day context. It is not the share within department-only orders.
+
+**Total-row behaviour:** Product counts overlap. With no Day Code or Department filter, the top-ten table total is **1,502,423 distinct orders containing at least one of those products (46.73%)**. It is not the sum of the ten product order counts. Its **78.68%** reorder rate is calculated from the underlying entries for those products, rather than an unweighted average of their displayed rates.
+
+### Report pages and interactions
+
+| Report page | Content | Filters |
 |---|---|---|
-| reporting.dim_products | One row per product | 49,688 rows and unique product IDs |
-| reporting.fact_orders | One row per prior order | 3,214,874 rows and unique order IDs; 0 missing basket sizes; basket total 32,434,489 |
+| Overview | Four KPI cards, orders by hour, product entries by department | Day Code |
+| Products & Reordering | Top-ten product bar chart and a table of orders, reorder rate and penetration | Day Code and a page-specific Department dropdown |
+| Ordering & Baskets | Day/hour heatmap, orders by day code, basket-size distribution | Day Code |
 
-The product view includes product, aisle and department descriptions. The order view includes customer/order sequence, day code, hour, recorded gap and basket size. These regular views store query definitions, not independent physical result tables.
+Validation and Practice Charts remain working pages in the Desktop file; the three pages above form the portfolio report.
 
-The purchase reporting view is pending. Final Power BI relationships, filter behaviour and import strategy will be documented after implementation. In particular, order-level basket sizes must not be treated as additive after joining to product entries.
+The Day Code slicers use `Orders[order_dow]`, displayed as **Day Code**, and are synced across the three report pages in the **Day_Global** group. Sync filter changes is enabled. Department remains local to Products & Reordering. This keeps the global selection compatible with both order-level and entry-level analysis.
+
+The hourly axis runs **0–23 in ascending order**; day codes retain **0–6**. The basket chart uses ascending basket size to show the long tail. The day chart can filter the heatmap and basket chart on its own page. Chart clicks are page interactions; the synced Day Code slicer carries selections across pages.
+
+### Validation against SQL
+
+| Check | Observed Power BI result |
+|---|---|
+| Unfiltered Overview | 3.21M orders; 32.43M entries; 58.97% reorder rate; 10.09 products per order |
+| Banana, all days and departments | 472,565 orders; 84.35% reorder rate; 14.70% penetration |
+| All seven day groups | Match the SQL day totals |
+| Full day/hour heatmap | Matches the 168 SQL day/hour combinations |
+| Day Code 1, hour 10 | 52,999 orders |
+| Synced Day Code 2 | Same selection shown on all three report pages |
+| Day Code 2 Overview | 441.96K orders; 4.22M entries; 58.98% reorder rate; 9.54 average basket size |
+| Day Code 2, Banana | 59,881 orders; 13.55% penetration |
+| Day Code 2, hour 10 | 37,258 orders |
+| Department = dairy eggs | Product rankings and rates recalculate for the selected department |
+| Clear Day Code and set Department to All | The original overall figures return |
+
+These checks validate the reviewed totals and filter examples. They do not constitute a refresh benchmark or an exhaustive test of every filter combination.
+
+### Report screenshots
+
+#### Overview
+
+![Overview: KPI cards, Day Code slicer, hourly orders and department product entries](images/overview.png)
+
+#### Products & Reordering
+
+![Products and reordering: top-ten product chart, detailed metrics and slicers](images/products_reordering.png)
+
+#### Ordering & Baskets
+
+![Ordering and baskets: day/hour heatmap and day and basket-size distributions](images/ordering_baskets.png)
 
 ## Limitations and responsible interpretation
 
@@ -382,24 +511,42 @@ The purchase reporting view is pending. Final Power BI relationships, filter beh
 
 ## Skills demonstrated and learning value
 
-This milestone demonstrates bulk CSV ingestion, staging schemas, data profiling, referential checks, conditional aggregation, joins, CTEs, multi-stage grouping, numeric types, safe percentage calculations and SQL views. It also demonstrates an analytical habit: define the grain and denominator before interpreting a number.
+This project demonstrates bulk CSV ingestion, staging schemas, data profiling, referential checks, conditional aggregation, joins, CTEs, multi-stage grouping, numeric types, safe percentage calculations, SQL views, Power Query, Power BI relationships, DAX measures, filter context, synced slicers and visual validation. It also demonstrates an analytical habit: define the grain and denominator before interpreting a number.
 
 Students can practise the workflow by running the numbered scripts against their own SQL Server database, adapting CSV paths to their environment. Import scripts skip loading when a table already contains rows; this guards against accidental duplicate loading but does not prove an existing table is complete. Validation remains necessary. The files depend on earlier tables and should be run in numeric order. The purchase file contains over 32 million rows, so loading and grouping costs depend on local resources.
 
 Useful exercises include comparing order penetration with reorder rate, explaining why the modal basket size (5) differs from the average (10.09), and checking how a join changes the number of rows. These exercises build interpretation as well as SQL syntax skills.
 
-## Current status and next milestones
+## Reproduce the project
 
-**Completed:** Five-table ingestion; the documented data checks; product, reorder, ordering-time, basket and department analyses; product and order reporting views.
+1. Download the five CSV files from the [Instacart Market Basket Analysis source](https://www.kaggle.com/c/instacart-market-basket-analysis/data). Keep the source data outside Git.
+2. Open SSMS and run `sql/00_environment_check.sql` to inspect the SQL Server instance.
+3. Run `sql/01_create_database.sql` to create `InstacartAnalytics` and the initial schemas.
+4. Adapt CSV paths in import scripts 02–06. `BULK INSERT` reads files from a path accessible to the SQL Server service, which may differ from the SSMS computer's path.
+5. Run scripts 02–07 in numeric order and compare the returned validation results with this report. A skipped import only means the table already has rows; it does not prove the earlier import was complete.
+6. Run analysis scripts 08–17, then reporting scripts 18–21. Script 18 creates the reporting schema. Review the logical keys and totals before creating Power BI relationships.
+7. In Power BI Desktop, use **Get data → SQL Server**, enter the local instance and `InstacartAnalytics`, and select **Import**. Load only the three reporting views, then rename them as documented above.
+8. Create the two active single-direction relationships and the seven measures. Recreate the three pages, configure the slicers, and compare the baseline and filtered examples above.
+9. Save the Desktop report as `powerbi/Instacart_Analysis.pbix`. Screenshots and metric documentation allow review without connecting to the local database. Refreshing the report requires a suitable SQL Server instance and updated data-source settings.
 
-**Remaining:** Purchase reporting view; final reporting reconciliation; Power BI connection/model design; measures and dashboard development; validation against SQL totals; final documentation and portfolio presentation.
+The supplied package contains documentation, screenshots and a restored script 10. It does not contain the raw dataset or the Desktop binary. The `.pbix` is maintained locally; add it through an appropriate binary-file delivery route after checking its size. GitHub blocks normal Git files above 100 MiB; use Git LFS or a separate download route when needed. See [GitHub large-file guidance](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github) and [GitHub Desktop with Git LFS](https://docs.github.com/en/desktop/configuring-and-customizing-github-desktop/about-git-large-file-storage-and-github-desktop).
 
-I will update this report as those stages are completed. Dashboard screenshots, DAX measures and final model diagrams will be added only after implementation and validation.
+### Documentation references
+
+- [Microsoft: SQL Server connector](https://learn.microsoft.com/en-us/power-query/connectors/sql-server)
+- [Microsoft: slicers and cross-page sync](https://learn.microsoft.com/en-us/power-bi/visuals/power-bi-visualization-slicers?tabs=powerbi-desktop)
+
+## Completion and delivery status
+
+**Completed locally:** Five-table import and validation; the documented SQL analyses; all three reporting views and their cross-view reconciliation; Power BI Import model; seven measures; three report pages; Day Code sync and Department filtering; the reviewed SQL-to-Power BI checks.
+
+**Delivery:** The report screenshots and revised documentation are prepared for GitHub. The empty remote script 10 has a restored query in the handoff package; it should be run locally and included in the next commit. The `.pbix` must be supplied from the local project and its delivery route checked against file size. No Power BI Service publication or scheduled refresh is claimed.
 
 ## Repository navigation
 
-- `sql/`: numbered SQL scripts.
-- `docs/SQL_PROJECT_REPORT.md`: this public project report.
-- Dataset: download separately from the linked source and adapt the script paths.
-
-Only the SQL and documentation milestone is described here. The Power BI deliverables remain planned.
+- `README.md`: project summary, findings, screenshots and run order.
+- `sql/00_environment_check.sql`: environment inspection.
+- `sql/01_...` through `sql/21_...`: setup, imports, validation, analysis and reporting views.
+- `docs/SQL_PROJECT_REPORT.md`: this technical project report, including DAX and model details.
+- `docs/images/`: the three final report screenshots.
+- Local report path: `powerbi/Instacart_Analysis.pbix`.
