@@ -1,0 +1,64 @@
+{
+  "run_id": "c38059380fd64134ba2037ba8bb4c10b",
+  "started_at_utc": "2026-10-30T13:37:17.217007+00:00",
+  "groups": [
+    {
+      "name": "Row counts",
+      "module": "scripts.validate_row_counts",
+      "started_at_utc": "2026-10-30T13:37:17.217146+00:00",
+      "status": "PASS",
+      "exit_code": 0,
+      "stdout": "Checking reporting.dim_products...\nPASS | reporting.dim_products | Expected: 49,688 | Actual: 49,688\nChecking reporting.fact_orders...\nPASS | reporting.fact_orders | Expected: 3,214,874 | Actual: 3,214,874\nChecking reporting.fact_order_products...\nPASS | reporting.fact_order_products | Expected: 32,434,489 | Actual: 32,434,489\n\nAll 3 row-count checks passed.\n",
+      "stderr": "",
+      "ended_at_utc": "2026-10-30T13:37:18.693570+00:00",
+      "duration_seconds": 1.476
+    },
+    {
+      "name": "Required IDs",
+      "module": "scripts.validate_required_ids",
+      "started_at_utc": "2026-10-30T13:37:18.693992+00:00",
+      "status": "PASS",
+      "exit_code": 0,
+      "stdout": "Checking Products: required product ID...\nPASS | Products: required product ID | Rows with missing IDs: 0\nChecking Orders: required order and user IDs...\nPASS | Orders: required order and user IDs | Rows with missing IDs: 0\nChecking Order products: required order and product IDs...\nPASS | Order products: required order and product IDs | Rows with missing IDs: 0\n\nAll 3 required-ID checks passed.\n",
+      "stderr": "",
+      "ended_at_utc": "2026-10-30T13:37:20.273313+00:00",
+      "duration_seconds": 1.579
+    },
+    {
+      "name": "Unique keys",
+      "module": "scripts.validate_unique_keys",
+      "started_at_utc": "2026-10-30T13:37:20.273681+00:00",
+      "status": "PASS",
+      "exit_code": 0,
+      "stdout": "Checking Products: unique product ID...\nPASS | Products: unique product ID | Duplicate key groups: 0\nChecking Orders: unique order ID...\nPASS | Orders: unique order ID | Duplicate key groups: 0\nChecking Order products: unique order-product pair...\nPASS | Order products: unique order-product pair | Duplicate key groups: 0\n\nAll 3 uniqueness checks passed.\n",
+      "stderr": "",
+      "ended_at_utc": "2026-10-30T13:37:30.097127+00:00",
+      "duration_seconds": 9.822
+    },
+    {
+      "name": "Relationships",
+      "module": "scripts.validate_relationships",
+      "started_at_utc": "2026-10-30T13:37:30.097467+00:00",
+      "status": "PASS",
+      "exit_code": 0,
+      "stdout": "Checking Order products: matching product...\nPASS | Order products: matching product | Unmatched entries: 0\nChecking Order products: matching order...\nPASS | Order products: matching order | Unmatched entries: 0\n\nAll 2 relationship checks passed.\n",
+      "stderr": "",
+      "ended_at_utc": "2026-10-30T13:37:36.022173+00:00",
+      "duration_seconds": 5.924
+    },
+    {
+      "name": "Valid values",
+      "module": "scripts.validate_values",
+      "started_at_utc": "2026-10-30T13:37:36.022560+00:00",
+      "status": "PASS",
+      "exit_code": 0,
+      "stdout": "Checking Orders: hour between 0 and 23...\nPASS | Orders: hour between 0 and 23 | Invalid rows: 0\nChecking Orders: day code between 0 and 6...\nPASS | Orders: day code between 0 and 6 | Invalid rows: 0\nChecking Orders: positive order number...\nPASS | Orders: positive order number | Invalid rows: 0\nChecking Order products: reordered flag is 0 or 1...\nPASS | Order products: reordered flag is 0 or 1 | Invalid rows: 0\nChecking Order products: positive cart position...\nPASS | Order products: positive cart position | Invalid rows: 0\nChecking Orders: valid gap and first-order logic...\nPASS | Orders: valid gap and first-order logic | Invalid rows: 0\nChecking Orders: positive basket size...\nPASS | Orders: positive basket size | Invalid rows: 0\n\nAll 7 value checks passed.\n",
+      "stderr": "",
+      "ended_at_utc": "2026-10-30T13:37:43.899461+00:00",
+      "duration_seconds": 7.876
+    }
+  ],
+  "status": "PASS",
+  "ended_at_utc": "2026-10-30T13:37:43.899803+00:00",
+  "duration_seconds": 26.679
+}
