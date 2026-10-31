@@ -1,0 +1,10 @@
+{
+  "dataset_label": "instacart_prior_baseline_v1",
+  "files": [
+    {"name": "departments.csv", "columns": ["department_id", "department"]},
+    {"name": "aisles.csv", "columns": ["aisle_id", "aisle"]},
+    {"name": "products.csv", "columns": ["product_id", "product_name", "aisle_id", "department_id"]},
+    {"name": "orders.csv", "columns": ["order_id", "user_id", "eval_set", "order_number", "order_dow", "order_hour_of_day", "days_since_prior_order"]},
+    {"name": "order_products__prior.csv", "columns": ["order_id", "product_id", "add_to_cart_order", "reordered"]}
+  ]
+}

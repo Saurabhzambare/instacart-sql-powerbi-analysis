@@ -1,0 +1,81 @@
+{
+  "run_id": "f0354211c85942d586f599ef5f2da34a",
+  "dataset_label": "instacart_prior_baseline_v1",
+  "started_at_utc": "2026-10-31T04:05:28.842525+00:00",
+  "data_directory": "D:\\DataProjects\\data-download",
+  "baseline_checked": true,
+  "baseline_path": "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\config\\input_baseline.json",
+  "files": [
+    {
+      "file": "departments.csv",
+      "status": "PASS",
+      "size_bytes": 270,
+      "header": [
+        "department_id",
+        "department"
+      ],
+      "sha256": "e6829cea3da95ec22eeb4e0294094a68b929f3bcfda48fdd7d1e33403110fc43",
+      "expected_size_bytes": 270,
+      "expected_sha256": "e6829cea3da95ec22eeb4e0294094a68b929f3bcfda48fdd7d1e33403110fc43"
+    },
+    {
+      "file": "aisles.csv",
+      "status": "PASS",
+      "size_bytes": 2603,
+      "header": [
+        "aisle_id",
+        "aisle"
+      ],
+      "sha256": "2c5f4677761907d3a3ca01edd2d2abe67c147cc60e4905e68736d5f9f3046067",
+      "expected_size_bytes": 2603,
+      "expected_sha256": "2c5f4677761907d3a3ca01edd2d2abe67c147cc60e4905e68736d5f9f3046067"
+    },
+    {
+      "file": "products.csv",
+      "status": "PASS",
+      "size_bytes": 2166953,
+      "header": [
+        "product_id",
+        "product_name",
+        "aisle_id",
+        "department_id"
+      ],
+      "sha256": "abc61fdd748003d280ae49cc5d71b65380805ab1ca55dba96fd9a49295ea78b9",
+      "expected_size_bytes": 2166953,
+      "expected_sha256": "abc61fdd748003d280ae49cc5d71b65380805ab1ca55dba96fd9a49295ea78b9"
+    },
+    {
+      "file": "orders.csv",
+      "status": "PASS",
+      "size_bytes": 108968645,
+      "header": [
+        "order_id",
+        "user_id",
+        "eval_set",
+        "order_number",
+        "order_dow",
+        "order_hour_of_day",
+        "days_since_prior_order"
+      ],
+      "sha256": "92a60ced67ac33bd82271f66ff9675374f69482d17a0e1442ba42caa8b3bff89",
+      "expected_size_bytes": 108968645,
+      "expected_sha256": "92a60ced67ac33bd82271f66ff9675374f69482d17a0e1442ba42caa8b3bff89"
+    },
+    {
+      "file": "order_products__prior.csv",
+      "status": "PASS",
+      "size_bytes": 577550706,
+      "header": [
+        "order_id",
+        "product_id",
+        "add_to_cart_order",
+        "reordered"
+      ],
+      "sha256": "27b59dc9cf0d485f55e64e0bc9c5d6fb077ae167f8dfeab9246a03b5b0186359",
+      "expected_size_bytes": 577550706,
+      "expected_sha256": "27b59dc9cf0d485f55e64e0bc9c5d6fb077ae167f8dfeab9246a03b5b0186359"
+    }
+  ],
+  "status": "PASS",
+  "ended_at_utc": "2026-10-31T04:05:31.946434+00:00"
+}
