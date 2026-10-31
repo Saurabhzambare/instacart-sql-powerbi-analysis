@@ -1,0 +1,28 @@
+{
+  "dataset_label": "instacart_cloud_5000_users_v1",
+  "selection": {
+    "user_limit": 5000,
+    "order_by": "user_id_ascending",
+    "lookup_policy": "all_aisles_and_departments"
+  },
+  "expected_metrics": {
+    "selected_users": 5000,
+    "total_orders": 81832,
+    "prior_orders": 76832,
+    "train_orders": 3200,
+    "test_orders": 1800,
+    "prior_product_entries": 761750,
+    "distinct_products": 28854,
+    "reordered_entries": 448380,
+    "distinct_prior_orders": 76832,
+    "departments": 21,
+    "aisles": 134,
+    "invalid_orders": 0,
+    "invalid_entries": 0,
+    "invalid_product_names": 0,
+    "invalid_lookup_names": 0,
+    "missing_products": 0,
+    "missing_aisles": 0,
+    "missing_departments": 0
+  }
+}

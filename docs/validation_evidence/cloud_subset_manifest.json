@@ -1,0 +1,107 @@
+{
+  "dataset_label": "instacart_cloud_5000_users_v1",
+  "status": "PASS",
+  "run_id": "ea95847fec9d4b6b864f0903f7a30a63",
+  "created_at_utc": "2026-10-31T12:45:41.885359+00:00",
+  "selection": {
+    "user_limit": 5000,
+    "order_by": "user_id_ascending",
+    "lookup_policy": "all_aisles_and_departments"
+  },
+  "source": {
+    "schema": "pipeline_staging",
+    "database": "InstacartAnalytics",
+    "server": "Saurabh",
+    "capture": "Serializable reads materialized into checked session-local tables before export"
+  },
+  "metrics": {
+    "selected_users": 5000,
+    "total_orders": 81832,
+    "prior_orders": 76832,
+    "train_orders": 3200,
+    "test_orders": 1800,
+    "prior_product_entries": 761750,
+    "distinct_products": 28854,
+    "reordered_entries": 448380,
+    "distinct_prior_orders": 76832,
+    "departments": 21,
+    "aisles": 134,
+    "invalid_orders": 0,
+    "invalid_entries": 0,
+    "invalid_product_names": 0,
+    "invalid_lookup_names": 0,
+    "missing_products": 0,
+    "missing_aisles": 0,
+    "missing_departments": 0
+  },
+  "spec_sha256": "8bde5996c8bbc9108f961eeff382758023ed19703b2fd8e60585b386af9ee60d",
+  "script_sha256": "b7ac439e4fe35478dc8a2c7fe1693fddbf404de815b15be9385ab1e8805fc853",
+  "format": {
+    "encoding": "utf-8",
+    "delimiter": ",",
+    "header": true,
+    "line_ending": "LF",
+    "null_representation": "empty field"
+  },
+  "files": [
+    {
+      "file": "departments.csv",
+      "rows": 21,
+      "header": [
+        "department_id",
+        "department"
+      ],
+      "size_bytes": 270,
+      "sha256": "e6829cea3da95ec22eeb4e0294094a68b929f3bcfda48fdd7d1e33403110fc43"
+    },
+    {
+      "file": "aisles.csv",
+      "rows": 134,
+      "header": [
+        "aisle_id",
+        "aisle"
+      ],
+      "size_bytes": 2603,
+      "sha256": "2c5f4677761907d3a3ca01edd2d2abe67c147cc60e4905e68736d5f9f3046067"
+    },
+    {
+      "file": "products.csv",
+      "rows": 28854,
+      "header": [
+        "product_id",
+        "product_name",
+        "aisle_id",
+        "department_id"
+      ],
+      "size_bytes": 1244657,
+      "sha256": "0bd23ec3c7b255ed2c8e554318af9fc01dded7e8811cd350d56a844deecb1516"
+    },
+    {
+      "file": "orders.csv",
+      "rows": 81832,
+      "header": [
+        "order_id",
+        "user_id",
+        "eval_set",
+        "order_number",
+        "order_dow",
+        "order_hour_of_day",
+        "days_since_prior_order"
+      ],
+      "size_bytes": 2453906,
+      "sha256": "47dbc39c6344c4148c1ed30527376c03bd94c1f3c1b1f01f5126056bd6459403"
+    },
+    {
+      "file": "order_products__prior.csv",
+      "rows": 761750,
+      "header": [
+        "order_id",
+        "product_id",
+        "add_to_cart_order",
+        "reordered"
+      ],
+      "size_bytes": 13558981,
+      "sha256": "de316ecb72a2519fe7c4abb86ddb52beecf2940da2cae3f055214e3338cebeaa"
+    }
+  ]
+}

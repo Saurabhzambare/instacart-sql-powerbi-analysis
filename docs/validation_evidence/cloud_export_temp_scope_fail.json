@@ -1,0 +1,15 @@
+{
+  "run_id": "fa8d28eaaef94e56aaf3634de19bc322",
+  "started_at_utc": "2026-10-31T12:39:31.037525+00:00",
+  "output_directory": "D:\\DataProjects\\Instacart\\exports\\cloud_5000_users_v1",
+  "status": "ERROR",
+  "dataset_label": "instacart_cloud_5000_users_v1",
+  "spec_sha256": "8bde5996c8bbc9108f961eeff382758023ed19703b2fd8e60585b386af9ee60d",
+  "script_sha256": "51a1f0e3ad7c55a2ae759c5abbf579d4e33c9624861d334211722880894b8fc1",
+  "database": "InstacartAnalytics",
+  "server": "Saurabh",
+  "error": "('42S02', \"[42S02] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Invalid object name '#cloud_users'. (208) (SQLExecDirectW)\")",
+  "error_type": "ProgrammingError",
+  "ended_at_utc": "2026-10-31T12:39:31.415585+00:00",
+  "duration_seconds": 0.379
+}
