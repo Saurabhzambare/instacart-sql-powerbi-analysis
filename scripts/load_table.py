@@ -54,8 +54,7 @@ def setup_sql(table, specification):
 
 
 def bulk_sql(path):
-    # filename = str(path).replace("'", "''")
-    filename = str(path)
+    filename = str(path).replace("'", "''")
     return f"""
         BULK INSERT #pipeline_input FROM '{filename}'
         WITH (FORMAT = 'CSV', FIRSTROW = 2, FIELDTERMINATOR = ',',
