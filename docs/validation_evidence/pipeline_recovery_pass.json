@@ -1,0 +1,168 @@
+{
+  "run_id": "1ddfe614690a42f296597e0ce025d830",
+  "started_at_utc": "2026-10-31T05:59:20.061306+00:00",
+  "status": "PASS",
+  "stages": [
+    {
+      "name": "Input baseline",
+      "command": [
+        "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\.venv\\Scripts\\python.exe",
+        "-u",
+        "-m",
+        "scripts.check_inputs",
+        "--data-dir",
+        "D:\\DataProjects\\data-download",
+        "--baseline",
+        "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\config\\input_baseline.json"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "started_at_utc": "2026-10-31T05:59:20.063190+00:00",
+      "output": "Checking and fingerprinting departments.csv...\nPASS | departments.csv | 270 bytes; header matched; fingerprint matched baseline\nChecking and fingerprinting aisles.csv...\nPASS | aisles.csv | 2,603 bytes; header matched; fingerprint matched baseline\nChecking and fingerprinting products.csv...\nPASS | products.csv | 2,166,953 bytes; header matched; fingerprint matched baseline\nChecking and fingerprinting orders.csv...\nPASS | orders.csv | 108,968,645 bytes; header matched; fingerprint matched baseline\nChecking and fingerprinting order_products__prior.csv...\nPASS | order_products__prior.csv | 577,550,706 bytes; header matched; fingerprint matched baseline\n\nOverall input result: PASS\nReport saved: D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\logs\\inputs\\5147029bb7f746cca9d8884e8907dec4.json\n",
+      "child_report_paths": [
+        "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\logs\\inputs\\5147029bb7f746cca9d8884e8907dec4.json"
+      ],
+      "ended_at_utc": "2026-10-31T05:59:22.560934+00:00",
+      "duration_seconds": 2.498
+    },
+    {
+      "name": "Load departments",
+      "command": [
+        "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\.venv\\Scripts\\python.exe",
+        "-u",
+        "-m",
+        "scripts.load_departments",
+        "--data-dir",
+        "D:\\DataProjects\\data-download",
+        "--baseline",
+        "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\config\\input_baseline.json"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "started_at_utc": "2026-10-31T05:59:22.564001+00:00",
+      "output": "Input fingerprint matched. Starting departments load...\nResult: PASS\nAction: UNCHANGED\nTarget: pipeline_staging.departments\nRows in target: 21\nTransaction: COMMITTED\nReport saved: D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\logs\\loading\\a6a1788bd1b44748b89519f9140170dd.json\n",
+      "child_report_paths": [
+        "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\logs\\loading\\a6a1788bd1b44748b89519f9140170dd.json"
+      ],
+      "ended_at_utc": "2026-10-31T05:59:23.379285+00:00",
+      "duration_seconds": 0.815
+    },
+    {
+      "name": "Load aisles",
+      "command": [
+        "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\.venv\\Scripts\\python.exe",
+        "-u",
+        "-m",
+        "scripts.load_table",
+        "--table",
+        "aisles",
+        "--data-dir",
+        "D:\\DataProjects\\data-download",
+        "--baseline",
+        "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\config\\input_baseline.json"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "started_at_utc": "2026-10-31T05:59:23.382434+00:00",
+      "output": "Input fingerprint matched. Loading aisles...\nBulk loading aisles.csv into a temporary table...\nChecking loaded rows, keys, values and references...\nComparing input and automation target...\nResult: PASS\nAction: UNCHANGED\nRows in target: 134\nTarget: pipeline_staging.aisles\nTransaction: COMMITTED\nReport saved: D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\logs\\loading\\e2d49370567b40a4934a8e84931add1f.json\n",
+      "child_report_paths": [
+        "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\logs\\loading\\e2d49370567b40a4934a8e84931add1f.json"
+      ],
+      "ended_at_utc": "2026-10-31T05:59:23.804183+00:00",
+      "duration_seconds": 0.422
+    },
+    {
+      "name": "Load products",
+      "command": [
+        "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\.venv\\Scripts\\python.exe",
+        "-u",
+        "-m",
+        "scripts.load_table",
+        "--table",
+        "products",
+        "--data-dir",
+        "D:\\DataProjects\\data-download",
+        "--baseline",
+        "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\config\\input_baseline.json"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "started_at_utc": "2026-10-31T05:59:23.806514+00:00",
+      "output": "Input fingerprint matched. Loading products...\nBulk loading products.csv into a temporary table...\nChecking loaded rows, keys, values and references...\nComparing input and automation target...\nResult: PASS\nAction: UNCHANGED\nRows in target: 49,688\nTarget: pipeline_staging.products\nTransaction: COMMITTED\nReport saved: D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\logs\\loading\\f4d82c08681e47819afebc85be7a38d9.json\n",
+      "child_report_paths": [
+        "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\logs\\loading\\f4d82c08681e47819afebc85be7a38d9.json"
+      ],
+      "ended_at_utc": "2026-10-31T05:59:24.918780+00:00",
+      "duration_seconds": 1.112
+    },
+    {
+      "name": "Load orders",
+      "command": [
+        "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\.venv\\Scripts\\python.exe",
+        "-u",
+        "-m",
+        "scripts.load_table",
+        "--table",
+        "orders",
+        "--data-dir",
+        "D:\\DataProjects\\data-download",
+        "--baseline",
+        "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\config\\input_baseline.json"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "started_at_utc": "2026-10-31T05:59:24.921402+00:00",
+      "output": "Input fingerprint matched. Loading orders...\nBulk loading orders.csv into a temporary table...\nChecking loaded rows, keys, values and references...\nComparing input and automation target...\nResult: PASS\nAction: UNCHANGED\nRows in target: 3,421,083\nTarget: pipeline_staging.orders\nTransaction: COMMITTED\nReport saved: D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\logs\\loading\\9b4d88e1a8314907bdd87d8c680e9e9b.json\n",
+      "child_report_paths": [
+        "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\logs\\loading\\9b4d88e1a8314907bdd87d8c680e9e9b.json"
+      ],
+      "ended_at_utc": "2026-10-31T05:59:45.323817+00:00",
+      "duration_seconds": 20.402
+    },
+    {
+      "name": "Load order_products_prior",
+      "command": [
+        "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\.venv\\Scripts\\python.exe",
+        "-u",
+        "-m",
+        "scripts.load_table",
+        "--table",
+        "order_products_prior",
+        "--data-dir",
+        "D:\\DataProjects\\data-download",
+        "--baseline",
+        "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\config\\input_baseline.json"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "started_at_utc": "2026-10-31T05:59:45.326115+00:00",
+      "output": "Input fingerprint matched. Loading order_products_prior...\nBulk loading order_products__prior.csv into a temporary table...\nChecking loaded rows, keys, values and references...\nComparing input and automation target...\nResult: PASS\nAction: UNCHANGED\nRows in target: 32,434,489\nTarget: pipeline_staging.order_products_prior\nTransaction: COMMITTED\nReport saved: D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\logs\\loading\\f8e6086fa2db42468acf786ad8a175c5.json\n",
+      "child_report_paths": [
+        "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\logs\\loading\\f8e6086fa2db42468acf786ad8a175c5.json"
+      ],
+      "ended_at_utc": "2026-10-31T06:01:43.416694+00:00",
+      "duration_seconds": 118.091
+    },
+    {
+      "name": "Validate automation tables",
+      "command": [
+        "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\.venv\\Scripts\\python.exe",
+        "-u",
+        "-m",
+        "scripts.validate_pipeline"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "started_at_utc": "2026-10-31T06:01:43.420709+00:00",
+      "output": "Validating pipeline_staging.departments...\nPASS | pipeline_staging.departments\nValidating pipeline_staging.aisles...\nPASS | pipeline_staging.aisles\nValidating pipeline_staging.products...\nPASS | pipeline_staging.products\nValidating pipeline_staging.orders...\nPASS | pipeline_staging.orders\nValidating pipeline_staging.order_products_prior...\nPASS | pipeline_staging.order_products_prior\nOverall automation-table result: PASS\nReport saved: D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\logs\\pipeline_validation\\812f01c977ae47289ceab233bb8931b6.json\n",
+      "child_report_paths": [
+        "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\logs\\pipeline_validation\\812f01c977ae47289ceab233bb8931b6.json"
+      ],
+      "ended_at_utc": "2026-10-31T06:02:03.234368+00:00",
+      "duration_seconds": 19.814
+    }
+  ],
+  "transaction_scope": "Each loader commits separately; no whole-pipeline rollback",
+  "ended_at_utc": "2026-10-31T06:02:03.236182+00:00",
+  "duration_seconds": 163.175
+}

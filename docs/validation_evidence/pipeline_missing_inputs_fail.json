@@ -1,0 +1,127 @@
+{
+  "run_id": "806d838e682f495c86d6d0ce9a259653",
+  "started_at_utc": "2026-10-31T05:58:57.102200+00:00",
+  "status": "FAIL",
+  "stages": [
+    {
+      "name": "Input baseline",
+      "command": [
+        "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\.venv\\Scripts\\python.exe",
+        "-u",
+        "-m",
+        "scripts.check_inputs",
+        "--data-dir",
+        "C:\\Users\\zamba\\AppData\\Local\\Temp\\instacart-empty-6fbdd91eda9247ecbf4715c4f7171aa4",
+        "--baseline",
+        "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\config\\input_baseline.json"
+      ],
+      "status": "FAIL",
+      "exit_code": 1,
+      "started_at_utc": "2026-10-31T05:58:57.103672+00:00",
+      "output": "Checking and fingerprinting departments.csv...\nFAIL | departments.csv | [WinError 2] The system cannot find the file specified: 'C:\\\\Users\\\\zamba\\\\AppData\\\\Local\\\\Temp\\\\instacart-empty-6fbdd91eda9247ecbf4715c4f7171aa4\\\\departments.csv'\nChecking and fingerprinting aisles.csv...\nFAIL | aisles.csv | [WinError 2] The system cannot find the file specified: 'C:\\\\Users\\\\zamba\\\\AppData\\\\Local\\\\Temp\\\\instacart-empty-6fbdd91eda9247ecbf4715c4f7171aa4\\\\aisles.csv'\nChecking and fingerprinting products.csv...\nFAIL | products.csv | [WinError 2] The system cannot find the file specified: 'C:\\\\Users\\\\zamba\\\\AppData\\\\Local\\\\Temp\\\\instacart-empty-6fbdd91eda9247ecbf4715c4f7171aa4\\\\products.csv'\nChecking and fingerprinting orders.csv...\nFAIL | orders.csv | [WinError 2] The system cannot find the file specified: 'C:\\\\Users\\\\zamba\\\\AppData\\\\Local\\\\Temp\\\\instacart-empty-6fbdd91eda9247ecbf4715c4f7171aa4\\\\orders.csv'\nChecking and fingerprinting order_products__prior.csv...\nFAIL | order_products__prior.csv | [WinError 2] The system cannot find the file specified: 'C:\\\\Users\\\\zamba\\\\AppData\\\\Local\\\\Temp\\\\instacart-empty-6fbdd91eda9247ecbf4715c4f7171aa4\\\\order_products__prior.csv'\n\nOverall input result: FAIL\nReport saved: D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\logs\\inputs\\8987109172e44711acd2f0116c2e4c01.json\n",
+      "child_report_paths": [
+        "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\logs\\inputs\\8987109172e44711acd2f0116c2e4c01.json"
+      ],
+      "ended_at_utc": "2026-10-31T05:58:57.332206+00:00",
+      "duration_seconds": 0.229
+    },
+    {
+      "name": "Load departments",
+      "command": [
+        "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\.venv\\Scripts\\python.exe",
+        "-u",
+        "-m",
+        "scripts.load_departments",
+        "--data-dir",
+        "C:\\Users\\zamba\\AppData\\Local\\Temp\\instacart-empty-6fbdd91eda9247ecbf4715c4f7171aa4",
+        "--baseline",
+        "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\config\\input_baseline.json"
+      ],
+      "status": "NOT_RUN",
+      "exit_code": null
+    },
+    {
+      "name": "Load aisles",
+      "command": [
+        "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\.venv\\Scripts\\python.exe",
+        "-u",
+        "-m",
+        "scripts.load_table",
+        "--table",
+        "aisles",
+        "--data-dir",
+        "C:\\Users\\zamba\\AppData\\Local\\Temp\\instacart-empty-6fbdd91eda9247ecbf4715c4f7171aa4",
+        "--baseline",
+        "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\config\\input_baseline.json"
+      ],
+      "status": "NOT_RUN",
+      "exit_code": null
+    },
+    {
+      "name": "Load products",
+      "command": [
+        "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\.venv\\Scripts\\python.exe",
+        "-u",
+        "-m",
+        "scripts.load_table",
+        "--table",
+        "products",
+        "--data-dir",
+        "C:\\Users\\zamba\\AppData\\Local\\Temp\\instacart-empty-6fbdd91eda9247ecbf4715c4f7171aa4",
+        "--baseline",
+        "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\config\\input_baseline.json"
+      ],
+      "status": "NOT_RUN",
+      "exit_code": null
+    },
+    {
+      "name": "Load orders",
+      "command": [
+        "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\.venv\\Scripts\\python.exe",
+        "-u",
+        "-m",
+        "scripts.load_table",
+        "--table",
+        "orders",
+        "--data-dir",
+        "C:\\Users\\zamba\\AppData\\Local\\Temp\\instacart-empty-6fbdd91eda9247ecbf4715c4f7171aa4",
+        "--baseline",
+        "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\config\\input_baseline.json"
+      ],
+      "status": "NOT_RUN",
+      "exit_code": null
+    },
+    {
+      "name": "Load order_products_prior",
+      "command": [
+        "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\.venv\\Scripts\\python.exe",
+        "-u",
+        "-m",
+        "scripts.load_table",
+        "--table",
+        "order_products_prior",
+        "--data-dir",
+        "C:\\Users\\zamba\\AppData\\Local\\Temp\\instacart-empty-6fbdd91eda9247ecbf4715c4f7171aa4",
+        "--baseline",
+        "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\config\\input_baseline.json"
+      ],
+      "status": "NOT_RUN",
+      "exit_code": null
+    },
+    {
+      "name": "Validate automation tables",
+      "command": [
+        "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\.venv\\Scripts\\python.exe",
+        "-u",
+        "-m",
+        "scripts.validate_pipeline"
+      ],
+      "status": "NOT_RUN",
+      "exit_code": null
+    }
+  ],
+  "transaction_scope": "Each loader commits separately; no whole-pipeline rollback",
+  "stopped_at_stage": "Input baseline",
+  "ended_at_utc": "2026-10-31T05:58:57.332353+00:00",
+  "duration_seconds": 0.23
+}

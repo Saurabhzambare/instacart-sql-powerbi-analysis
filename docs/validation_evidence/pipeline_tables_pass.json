@@ -1,0 +1,75 @@
+{
+  "run_id": "812f01c977ae47289ceab233bb8931b6",
+  "started_at_utc": "2026-10-31T06:01:43.646803+00:00",
+  "scope": "Committed pipeline_staging tables; fixed Instacart baseline",
+  "consistency": "Separate read-only queries; run without concurrent loaders or edits",
+  "tables": [
+    {
+      "target": "pipeline_staging.departments",
+      "checks": {
+        "rows": 21,
+        "unique_ids": 21,
+        "missing_ids": 0,
+        "blank_names": 0,
+        "invalid_ids": 0
+      },
+      "status": "PASS",
+      "duration_seconds": 0.009
+    },
+    {
+      "target": "pipeline_staging.aisles",
+      "checks": {
+        "rows": 134,
+        "invalid_rows": 0,
+        "duplicate_key_groups": 0
+      },
+      "status": "PASS",
+      "duration_seconds": 0.011
+    },
+    {
+      "target": "pipeline_staging.products",
+      "checks": {
+        "rows": 49688,
+        "invalid_rows": 0,
+        "duplicate_key_groups": 0,
+        "missing_aisles": 0,
+        "missing_departments": 0
+      },
+      "status": "PASS",
+      "duration_seconds": 0.09
+    },
+    {
+      "target": "pipeline_staging.orders",
+      "checks": {
+        "rows": 3421083,
+        "invalid_rows": 0,
+        "prior_orders": 3214874,
+        "train_orders": 131209,
+        "test_orders": 75000,
+        "customers": 206209,
+        "duplicate_key_groups": 0
+      },
+      "status": "PASS",
+      "duration_seconds": 1.358
+    },
+    {
+      "target": "pipeline_staging.order_products_prior",
+      "checks": {
+        "rows": 32434489,
+        "invalid_rows": 0,
+        "distinct_orders": 3214874,
+        "reordered_entries": 19126536,
+        "duplicate_key_groups": 0,
+        "missing_products": 0,
+        "missing_prior_orders": 0
+      },
+      "status": "PASS",
+      "duration_seconds": 18.008
+    }
+  ],
+  "database": "InstacartAnalytics",
+  "server": "Saurabh",
+  "status": "PASS",
+  "ended_at_utc": "2026-10-31T06:02:03.212347+00:00",
+  "duration_seconds": 19.566
+}

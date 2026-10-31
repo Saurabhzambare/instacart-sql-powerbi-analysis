@@ -1,0 +1,55 @@
+{
+  "run_id": "cbb4ccb986c64131b82ebf198b5765cd",
+  "started_at_utc": "2026-10-31T05:44:20.985733+00:00",
+  "target": "pipeline_staging.order_products_prior",
+  "simulate_failure": false,
+  "transaction_outcome": "COMMITTED",
+  "dataset_label": "instacart_prior_baseline_v1",
+  "source_file": "D:\\DataProjects\\data-download\\order_products__prior.csv",
+  "input_before_bulk": {
+    "file": "order_products__prior.csv",
+    "status": "PASS",
+    "size_bytes": 577550706,
+    "header": [
+      "order_id",
+      "product_id",
+      "add_to_cart_order",
+      "reordered"
+    ],
+    "sha256": "27b59dc9cf0d485f55e64e0bc9c5d6fb077ae167f8dfeab9246a03b5b0186359",
+    "expected_size_bytes": 577550706,
+    "expected_sha256": "27b59dc9cf0d485f55e64e0bc9c5d6fb077ae167f8dfeab9246a03b5b0186359"
+  },
+  "database": "InstacartAnalytics",
+  "server": "Saurabh",
+  "source_checks": {
+    "rows": 32434489,
+    "invalid_rows": 0,
+    "distinct_orders": 3214874,
+    "reordered_entries": 19126536,
+    "duplicate_key_groups": 0,
+    "missing_products": 0,
+    "missing_prior_orders": 0
+  },
+  "input_after_bulk": {
+    "file": "order_products__prior.csv",
+    "status": "PASS",
+    "size_bytes": 577550706,
+    "header": [
+      "order_id",
+      "product_id",
+      "add_to_cart_order",
+      "reordered"
+    ],
+    "sha256": "27b59dc9cf0d485f55e64e0bc9c5d6fb077ae167f8dfeab9246a03b5b0186359",
+    "expected_size_bytes": 577550706,
+    "expected_sha256": "27b59dc9cf0d485f55e64e0bc9c5d6fb077ae167f8dfeab9246a03b5b0186359"
+  },
+  "target_rows_before": 0,
+  "action": "LOADED",
+  "rows_written": 32434489,
+  "target_rows_after": 32434489,
+  "status": "PASS",
+  "ended_at_utc": "2026-10-31T05:48:01.401894+00:00",
+  "duration_seconds": 220.416
+}

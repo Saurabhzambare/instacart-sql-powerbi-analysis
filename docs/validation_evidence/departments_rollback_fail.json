@@ -1,0 +1,49 @@
+{
+  "run_id": "94febabfcff04bb1af65d5f6a80bdfb4",
+  "started_at_utc": "2026-10-31T05:12:55.366538+00:00",
+  "target": "pipeline_staging.departments",
+  "simulate_failure": true,
+  "transaction_outcome": "ROLLED_BACK",
+  "dataset_label": "instacart_prior_baseline_v1",
+  "source_file": "D:\\DataProjects\\data-download\\departments.csv",
+  "input_before_bulk": {
+    "file": "departments.csv",
+    "status": "PASS",
+    "size_bytes": 270,
+    "header": [
+      "department_id",
+      "department"
+    ],
+    "sha256": "e6829cea3da95ec22eeb4e0294094a68b929f3bcfda48fdd7d1e33403110fc43",
+    "expected_size_bytes": 270,
+    "expected_sha256": "e6829cea3da95ec22eeb4e0294094a68b929f3bcfda48fdd7d1e33403110fc43"
+  },
+  "database": "InstacartAnalytics",
+  "server": "Saurabh",
+  "input_row_checks": {
+    "rows": 21,
+    "unique_ids": 21,
+    "missing_ids": 0,
+    "blank_names": 0,
+    "invalid_ids": 0
+  },
+  "input_after_bulk": {
+    "file": "departments.csv",
+    "status": "PASS",
+    "size_bytes": 270,
+    "header": [
+      "department_id",
+      "department"
+    ],
+    "sha256": "e6829cea3da95ec22eeb4e0294094a68b929f3bcfda48fdd7d1e33403110fc43",
+    "expected_size_bytes": 270,
+    "expected_sha256": "e6829cea3da95ec22eeb4e0294094a68b929f3bcfda48fdd7d1e33403110fc43"
+  },
+  "target_rows_before": 21,
+  "target_rows_during_failure": 0,
+  "status": "FAIL",
+  "error": "Deliberate failure after clearing the automation target, before insert/commit.",
+  "error_type": "SimulatedLoadFailure",
+  "ended_at_utc": "2026-10-31T05:12:55.565796+00:00",
+  "duration_seconds": 0.199
+}
