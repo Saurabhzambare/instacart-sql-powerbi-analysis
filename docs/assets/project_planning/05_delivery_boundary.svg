@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<svg width="500" height="445" preserveAspectRatio="xMinYMin meet" viewBox="0 0 500 445" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>Release and deployment boundaries</title>
+	<desc>Instacart Python automation workflow: Release and deployment boundaries</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="500" height="445"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-445)" style="clip-path: url(#clip)">
+		<g transform="">
+			<path d="M 250,395 L 250,376.5 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,376.5 L 250,376.5 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,376.5 L 250,358 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="250 358, 247 364, 253 364" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<path d="M 250,302 L 250,280 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,280 L 250,280 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,280 L 250,258 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="250 258, 247 264, 253 264" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<path d="M 250,214 L 250,192.5 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,192.5 L 250,192.5 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,192.5 L 250,171 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="250 171, 247 177, 253 177" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<path d="M 250,127 L 250,101.5 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,101.5 L 125,101.5 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 125,101.5 L 125,76 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="125 76, 122 82, 128 82" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<path d="M 242.5,48 L 257.5,48 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="257.5 48, 251.5 45, 251.5 51" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<rect x="110.0" y="395.0" width="280.0" height="44.0" rx="7" ry="7" style="stroke: rgb(8%,19%,29%); stroke-linecap: butt; stroke-width: 1; fill: rgb(95%,96%,97%); fill-rule: evenodd;"/>
+			<text x="180.46796875" y="413.5" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,827) scale(1,-1)">Passing CI / exact commit</text>
+			<rect x="100.0" y="302.0" width="300.0" height="56.0" rx="7" ry="7" style="stroke: rgb(3%,49%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(91%,96%,96%); fill-rule: evenodd;"/>
+			<text x="182.830078125" y="333.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 8.5px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,666) scale(1,-1)">Prove runtime compatibility</text>
+			<text x="176.1375732421875" y="320.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 8.5px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,640) scale(1,-1)">Connection / paths / dependencies</text>
+			<rect x="110.0" y="214.0" width="280.0" height="44.0" rx="7" ry="7" style="stroke: rgb(3%,49%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(91%,96%,96%); fill-rule: evenodd;"/>
+			<text x="175.60000000000002" y="232.5" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,465) scale(1,-1)">Versioned archive or image</text>
+			<rect x="110.0" y="127.0" width="280.0" height="44.0" rx="7" ry="7" style="stroke: rgb(3%,49%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(91%,96%,96%); fill-rule: evenodd;"/>
+			<text x="184.04453125" y="145.5" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,291) scale(1,-1)">Manual clean smoke run</text>
+			<rect x="7.5" y="20.0" width="235.0" height="56.0" rx="7" ry="7" style="stroke: rgb(3%,49%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(90%,95%,91%); fill-rule: evenodd;"/>
+			<text x="70.8828125" y="51.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,102) scale(1,-1)">Continuous delivery</text>
+			<text x="59.25078125" y="38.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,76) scale(1,-1)">Traceable runnable release</text>
+			<rect x="257.5" y="20.0" width="235.0" height="56.0" rx="7" ry="7" style="stroke: rgb(8%,19%,29%); stroke-linecap: butt; stroke-width: 1; fill: rgb(95%,96%,97%); fill-rule: evenodd;"/>
+			<text x="312.5262451171875" y="51.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 8.5px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,102) scale(1,-1)">Optional automatic target</text>
+			<text x="306.8028564453125" y="38.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 8.5px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,76) scale(1,-1)">Separate decision + verification</text>
+		</g>
+	</g>
+</svg>

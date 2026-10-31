@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<svg width="500" height="420" preserveAspectRatio="xMinYMin meet" viewBox="0 0 500 420" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>Proposed ML design</title>
+	<desc>Instacart Python automation workflow: Proposed ML design</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="500" height="420"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-420)" style="clip-path: url(#clip)">
+		<g transform="">
+			<path d="M 125,357 L 125,331 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 125,331 L 125,331 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 125,331 L 125,305 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="125 305, 122 311, 128 311" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<path d="M 375,357 L 375,331 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 375,331 L 375,331 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 375,331 L 375,305 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="375 305, 372 311, 378 311" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<path d="M 125,249 L 125,221.5 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 125,221.5 L 250,221.5 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,221.5 L 250,194 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="250 194, 247 200, 253 200" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<path d="M 375,249 L 375,221.5 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 375,221.5 L 250,221.5 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,221.5 L 250,194 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="250 194, 247 200, 253 200" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<path d="M 250,138 L 250,108 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,108 L 80,108 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 80,108 L 80,78 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="80 78, 77 84, 83 84" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<path d="M 250,138 L 250,108 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,108 L 250,108 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,108 L 250,78 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="250 78, 247 84, 253 84" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<path d="M 250,138 L 250,108 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,108 L 420,108 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 420,108 L 420,78 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="420 78, 417 84, 423 84" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<rect x="7.5" y="357.0" width="235.0" height="56.0" rx="7" ry="7" style="stroke: rgb(8%,19%,29%); stroke-linecap: butt; stroke-width: 1; fill: rgb(95%,96%,97%); fill-rule: evenodd;"/>
+			<text x="91.12578125" y="388.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,776) scale(1,-1)">Prior history</text>
+			<text x="70.4046875" y="375.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,750) scale(1,-1)">Before target outcome</text>
+			<rect x="257.5" y="357.0" width="235.0" height="56.0" rx="7" ry="7" style="stroke: rgb(8%,19%,29%); stroke-linecap: butt; stroke-width: 1; fill: rgb(95%,96%,97%); fill-rule: evenodd;"/>
+			<text x="318.07265625" y="388.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,776) scale(1,-1)">Separate train labels</text>
+			<text x="320.10703125" y="375.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,750) scale(1,-1)">Known target products</text>
+			<rect x="7.5" y="249.0" width="235.0" height="56.0" rx="7" ry="7" style="stroke: rgb(3%,49%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(91%,96%,96%); fill-rule: evenodd;"/>
+			<text x="71.89296875" y="280.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,560) scale(1,-1)">Candidate products</text>
+			<text x="74.5765625" y="267.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,534) scale(1,-1)">History-only features</text>
+			<rect x="257.5" y="249.0" width="235.0" height="56.0" rx="7" ry="7" style="stroke: rgb(3%,49%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(91%,96%,96%); fill-rule: evenodd;"/>
+			<text x="329.765625" y="280.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,560) scale(1,-1)">Candidate labels</text>
+			<text x="317.48203125" y="267.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,534) scale(1,-1)">Present in target: 1 or 0</text>
+			<rect x="107.5" y="138.0" width="285.0" height="56.0" rx="7" ry="7" style="stroke: rgb(3%,49%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(91%,96%,96%); fill-rule: evenodd;"/>
+			<text x="201.037841796875" y="169.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 8.5px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,338) scale(1,-1)">User-separated split</text>
+			<text x="190.17626953125" y="156.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 8.5px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,312) scale(1,-1)">Recorded rule and eligibility</text>
+			<rect x="5.0" y="22.0" width="150.0" height="56.0" rx="7" ry="7" style="stroke: rgb(8%,19%,29%); stroke-linecap: butt; stroke-width: 1; fill: rgb(95%,96%,97%); fill-rule: evenodd;"/>
+			<text x="66.05703125" y="53.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,106) scale(1,-1)">Train</text>
+			<text x="32.778125" y="40.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,80) scale(1,-1)">Fit baseline / model</text>
+			<rect x="175.0" y="22.0" width="150.0" height="56.0" rx="7" ry="7" style="stroke: rgb(8%,19%,29%); stroke-linecap: butt; stroke-width: 1; fill: rgb(95%,96%,97%); fill-rule: evenodd;"/>
+			<text x="227.53046875" y="53.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,106) scale(1,-1)">Validate</text>
+			<text x="214.525" y="40.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,80) scale(1,-1)">Select settings</text>
+			<rect x="345.0" y="22.0" width="150.0" height="56.0" rx="7" ry="7" style="stroke: rgb(3%,49%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(90%,95%,91%); fill-rule: evenodd;"/>
+			<text x="398.59453125" y="53.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,106) scale(1,-1)">Holdout</text>
+			<text x="377.47734375" y="40.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,80) scale(1,-1)">Report final score</text>
+		</g>
+	</g>
+</svg>

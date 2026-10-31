@@ -1,0 +1,7 @@
+flowchart TD
+    CHANGE["Push or pull request"] --> ENV["Hosted runner: uv and Python"]
+    ENV --> TEST["Run deterministic unittest suite"]
+    TEST -->|pass| GREEN["Passing check and saved evidence"]
+    TEST -->|fail| RED["Fail check; correct code"]
+    GREEN --> POLICY["Optional required-check policy"]
+    RED --> CHANGE

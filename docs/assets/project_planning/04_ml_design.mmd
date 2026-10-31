@@ -1,0 +1,8 @@
+flowchart TD
+    HISTORY["Prior history before target"] --> FEATURES["Candidate products and features"]
+    LABEL["Separate train-order product outcomes"] --> TRUTH["Target labels"]
+    FEATURES --> SPLIT["Customer-separated partitions"]
+    TRUTH --> SPLIT
+    SPLIT --> FIT["Training: fit baseline and model"]
+    SPLIT --> VALID["Validation: choose settings"]
+    SPLIT --> HOLD["Holdout: final reported score"]

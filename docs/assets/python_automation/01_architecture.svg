@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<svg width="500" height="365" preserveAspectRatio="xMinYMin meet" viewBox="0 0 500 365" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>Architecture</title>
+	<desc>Instacart Python automation workflow: Architecture</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="500" height="365"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-365)" style="clip-path: url(#clip)">
+		<g transform="">
+			<path d="M 250,310 L 250,288.5 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,288.5 L 120,288.5 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 120,288.5 L 120,267 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="120 267, 117 273, 123 273" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<path d="M 250,310 L 250,288.5 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,288.5 L 380,288.5 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 380,288.5 L 380,267 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="380 267, 377 273, 383 273" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<path d="M 120,219 L 120,194.5 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 120,194.5 L 120,194.5 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 120,194.5 L 120,170 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="120 170, 117 176, 123 176" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<path d="M 120,116 L 120,90.5 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 120,90.5 L 120,90.5 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 120,90.5 L 120,65 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="120 65, 117 71, 123 71" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<path d="M 380,219 L 380,194.5 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 380,194.5 L 380,194.5 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 380,194.5 L 380,170 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="380 170, 377 176, 383 176" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<path d="M 380,116 L 380,93 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 380,93 L 380,93 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 380,93 L 380,70 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="380 70, 377 76, 383 76" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<rect x="140.0" y="310.0" width="220.0" height="44.0" rx="7" ry="7" style="stroke: rgb(8%,19%,29%); stroke-linecap: butt; stroke-width: 1; fill: rgb(95%,96%,97%); fill-rule: evenodd;"/>
+			<text x="196.30234375" y="328.5" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,657) scale(1,-1)">External CSV inputs</text>
+			<rect x="20.0" y="219.0" width="200.0" height="48.0" rx="7" ry="7" style="stroke: rgb(8%,19%,29%); stroke-linecap: butt; stroke-width: 1; fill: rgb(95%,96%,97%); fill-rule: evenodd;"/>
+			<text x="76.528125" y="239.5" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,479) scale(1,-1)">Original staging</text>
+			<rect x="275.0" y="219.0" width="210.0" height="48.0" rx="7" ry="7" style="stroke: rgb(3%,49%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(91%,96%,96%); fill-rule: evenodd;"/>
+			<text x="335.5390625" y="246.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,492) scale(1,-1)">pipeline_staging</text>
+			<text x="329.1875" y="233.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,466) scale(1,-1)">Python-loaded tables</text>
+			<rect x="20.0" y="116.0" width="200.0" height="54.0" rx="7" ry="7" style="stroke: rgb(8%,19%,29%); stroke-linecap: butt; stroke-width: 1; fill: rgb(95%,96%,97%); fill-rule: evenodd;"/>
+			<text x="77.49140625000001" y="146.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,292) scale(1,-1)">reporting views</text>
+			<text x="58.635937500000004" y="133.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,266) scale(1,-1)">Established prior analysis</text>
+			<rect x="275.0" y="116.0" width="210.0" height="54.0" rx="7" ry="7" style="stroke: rgb(3%,49%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(91%,96%,96%); fill-rule: evenodd;"/>
+			<text x="338.11484375" y="146.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,292) scale(1,-1)">Final validation</text>
+			<text x="325.79609375" y="133.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,266) scale(1,-1)">New committed tables</text>
+			<rect x="20.0" y="21.0" width="200.0" height="44.0" rx="7" ry="7" style="stroke: rgb(8%,19%,29%); stroke-linecap: butt; stroke-width: 1; fill: rgb(8%,19%,29%); fill-rule: evenodd;"/>
+			<text x="65.615625" y="39.5" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 9.6px;fill: rgb(100%,100%,100%); stroke:none;" transform="translate(0,79) scale(1,-1)">Power BI dashboard</text>
+			<rect x="275.0" y="16.0" width="210.0" height="54.0" rx="7" ry="7" style="stroke: rgb(3%,49%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(90%,95%,91%); fill-rule: evenodd;"/>
+			<text x="340.74921875" y="46.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,92) scale(1,-1)">JSON evidence</text>
+			<text x="315.0078125" y="33.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,66) scale(1,-1)">Local logs + chosen copies</text>
+		</g>
+	</g>
+</svg>

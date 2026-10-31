@@ -1,0 +1,7 @@
+flowchart TD
+    CI["Passing CI at exact commit"] --> GATE["Prove runnable environment"]
+    GATE --> ART["Versioned code archive or image"]
+    ART --> MANUAL["Manual clean smoke run"]
+    MANUAL --> DELIVERY["Delivery milestone accepted"]
+    DELIVERY -. "separate decision" .-> TARGET["Optional automatic target update"]
+    TARGET --> VERIFY["Verify target and recovery"]

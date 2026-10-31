@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<svg width="500" height="445" preserveAspectRatio="xMinYMin meet" viewBox="0 0 500 445" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>Input inspection</title>
+	<desc>Instacart Python automation workflow: Input inspection</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="500" height="445"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-445)" style="clip-path: url(#clip)">
+		<g transform="">
+			<path d="M 250,388 L 250,369 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,369 L 250,369 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,369 L 250,350 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="250 350, 247 356, 253 356" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<path d="M 250,302 L 250,284.5 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,284.5 L 250,284.5 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,284.5 L 250,267 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="250 267, 247 273, 253 273" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<path d="M 250,213 L 250,194 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,194 L 250,194 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,194 L 250,175 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="250 175, 247 181, 253 181" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<path d="M 250,121 L 250,98 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,98 L 125,98 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 125,98 L 125,75 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="125 75, 122 81, 128 81" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<rect x="165.5" y="101.0" width="44.0" height="13.0" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="174.849609375" y="104.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 8px;fill: rgb(32%,40%,47%); stroke:none;" transform="translate(0,208) scale(1,-1)">match</text>
+			<path d="M 250,121 L 250,98 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,98 L 375,98 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 375,98 L 375,75 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="375 75, 372 81, 378 81" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<rect x="290.5" y="101.0" width="44.0" height="13.0" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="299.84375" y="104.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 8px;fill: rgb(32%,40%,47%); stroke:none;" transform="translate(0,208) scale(1,-1)">differs</text>
+			<rect x="140.0" y="388.0" width="220.0" height="48.0" rx="7" ry="7" style="stroke: rgb(8%,19%,29%); stroke-linecap: butt; stroke-width: 1; fill: rgb(95%,96%,97%); fill-rule: evenodd;"/>
+			<text x="214.796875" y="415.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,830) scale(1,-1)">Expected file</text>
+			<text x="204.41640625" y="402.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,804) scale(1,-1)">Exists + nonempty</text>
+			<rect x="140.0" y="302.0" width="220.0" height="48.0" rx="7" ry="7" style="stroke: rgb(3%,49%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(91%,96%,96%); fill-rule: evenodd;"/>
+			<text x="207.1609375" y="329.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,658) scale(1,-1)">Ordered header</text>
+			<text x="207.35546875" y="316.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,632) scale(1,-1)">Matches manifest</text>
+			<rect x="127.5" y="213.0" width="245.0" height="54.0" rx="7" ry="7" style="stroke: rgb(3%,49%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(91%,96%,96%); fill-rule: evenodd;"/>
+			<text x="199.05390625" y="243.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,486) scale(1,-1)">Hash full file bytes</text>
+			<text x="192.578125" y="230.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,460) scale(1,-1)">1 MiB chunks / SHA-256</text>
+			<rect x="127.5" y="121.0" width="245.0" height="54.0" rx="7" ry="7" style="stroke: rgb(3%,49%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(91%,96%,96%); fill-rule: evenodd;"/>
+			<text x="199.44296875" y="151.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,302) scale(1,-1)">Baseline supplied?</text>
+			<text x="177.80078125" y="138.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,276) scale(1,-1)">Require matching size + hash</text>
+			<rect x="12.5" y="21.0" width="225.0" height="54.0" rx="7" ry="7" style="stroke: rgb(3%,49%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(90%,95%,91%); fill-rule: evenodd;"/>
+			<text x="112.47412109375" y="51.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 8.5px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,102) scale(1,-1)">PASS</text>
+			<text x="61.73767089843749" y="38.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 8.5px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,76) scale(1,-1)">Structure + identity accepted</text>
+			<rect x="262.5" y="21.0" width="225.0" height="54.0" rx="7" ry="7" style="stroke: rgb(67%,28%,23%); stroke-linecap: butt; stroke-width: 1; fill: rgb(98%,92%,90%); fill-rule: evenodd;"/>
+			<text x="363.16171875" y="51.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,102) scale(1,-1)">FAIL</text>
+			<text x="307.978125" y="38.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,76) scale(1,-1)">Missing, changed, or invalid</text>
+		</g>
+	</g>
+</svg>

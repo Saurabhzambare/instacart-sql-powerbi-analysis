@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<svg width="500" height="465" preserveAspectRatio="xMinYMin meet" viewBox="0 0 500 465" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>Loading transaction</title>
+	<desc>Instacart Python automation workflow: Loading transaction</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="500" height="465"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-465)" style="clip-path: url(#clip)">
+		<g transform="">
+			<path d="M 250,413 L 250,394 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,394 L 250,394 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,394 L 250,375 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="250 375, 247 381, 253 381" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<path d="M 250,321 L 250,300.5 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,300.5 L 250,300.5 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,300.5 L 250,280 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="250 280, 247 286, 253 286" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<path d="M 250,226 L 250,201.5 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,201.5 L 120,201.5 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 120,201.5 L 120,177 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="120 177, 117 183, 123 183" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<path d="M 250,226 L 250,201.5 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,201.5 L 380,201.5 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 380,201.5 L 380,177 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="380 177, 377 183, 383 183" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<path d="M 120,123 L 120,98 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 120,98 L 120,98 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 120,98 L 120,73 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="120 73, 117 79, 123 79" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<path d="M 380,123 L 380,98 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 380,98 L 120,98 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 120,98 L 120,73 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="120 73, 117 79, 123 79" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<path d="M 380,123 L 380,98 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 380,98 L 380,98 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 380,98 L 380,73 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="380 73, 377 79, 383 79" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<rect x="125.0" y="413.0" width="250.0" height="44.0" rx="7" ry="7" style="stroke: rgb(8%,19%,29%); stroke-linecap: butt; stroke-width: 1; fill: rgb(95%,96%,97%); fill-rule: evenodd;"/>
+			<text x="184.8671875" y="431.5" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,863) scale(1,-1)">Baseline input accepted</text>
+			<rect x="110.0" y="321.0" width="280.0" height="54.0" rx="7" ry="7" style="stroke: rgb(3%,49%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(91%,96%,96%); fill-rule: evenodd;"/>
+			<text x="187.026123046875" y="351.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 8.5px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,702) scale(1,-1)">Bulk-load temporary table</text>
+			<text x="188.4642333984375" y="338.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 8.5px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,676) scale(1,-1)">Validate counts / keys / rules</text>
+			<rect x="110.0" y="226.0" width="280.0" height="54.0" rx="7" ry="7" style="stroke: rgb(3%,49%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(91%,96%,96%); fill-rule: evenodd;"/>
+			<text x="177.239501953125" y="256.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 8.5px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,512) scale(1,-1)">Recheck file + compare target</text>
+			<text x="198.90869140625" y="243.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 8.5px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,486) scale(1,-1)">Within table transaction</text>
+			<rect x="10.0" y="123.0" width="220.0" height="54.0" rx="7" ry="7" style="stroke: rgb(3%,49%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(90%,95%,91%); fill-rule: evenodd;"/>
+			<text x="104.98359375" y="153.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,306) scale(1,-1)">Equal</text>
+			<text x="46.04531250000001" y="140.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,280) scale(1,-1)">UNCHANGED / no replacement</text>
+			<rect x="270.0" y="123.0" width="220.0" height="54.0" rx="7" ry="7" style="stroke: rgb(3%,49%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(91%,96%,96%); fill-rule: evenodd;"/>
+			<text x="355.60390625" y="153.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,306) scale(1,-1)">Different</text>
+			<text x="311.11953125" y="140.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,280) scale(1,-1)">DELETE + INSERT + recheck</text>
+			<rect x="10.0" y="19.0" width="220.0" height="54.0" rx="7" ry="7" style="stroke: rgb(3%,49%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(90%,95%,91%); fill-rule: evenodd;"/>
+			<text x="86.85" y="49.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,98) scale(1,-1)">Checks pass</text>
+			<text x="100.23984375" y="36.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,72) scale(1,-1)">COMMIT</text>
+			<rect x="270.0" y="19.0" width="220.0" height="54.0" rx="7" ry="7" style="stroke: rgb(67%,28%,23%); stroke-linecap: butt; stroke-width: 1; fill: rgb(98%,92%,90%); fill-rule: evenodd;"/>
+			<text x="329.45234375" y="49.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,98) scale(1,-1)">Pre-commit failure</text>
+			<text x="333.33125" y="36.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,72) scale(1,-1)">Attempt ROLLBACK</text>
+		</g>
+	</g>
+</svg>

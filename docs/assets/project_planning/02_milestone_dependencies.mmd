@@ -1,0 +1,9 @@
+flowchart TD
+    BASE["Complete: SQL, BI, local Python"] --> DOC["Review and publish documentation"]
+    DOC --> CI["Next: continuous integration"]
+    CI --> CLOUD["Planned: BigQuery and dbt subset"]
+    CI --> ML["Planned: local ML extension"]
+    CLOUD --> GATE["Runtime and task compatibility gate"]
+    ML --> GATE
+    GATE --> ORCH["Planned: orchestration and delivery"]
+    ORCH -. "optional target decision" .-> DEP["Automatic deployment"]

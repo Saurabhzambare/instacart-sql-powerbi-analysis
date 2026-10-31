@@ -1,0 +1,6 @@
+flowchart TD
+    CSV["External CSV inputs"] --> OLD["Existing staging and reporting"]
+    CSV --> NEW["Python loaders: pipeline_staging"]
+    OLD --> BI["Existing Power BI report"]
+    NEW --> CHECK["Committed-table checks and evidence"]
+    NEW -. "planned branch" .-> FUTURE["Cloud subset or ML features"]

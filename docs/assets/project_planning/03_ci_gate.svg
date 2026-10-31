@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<svg width="500" height="490" preserveAspectRatio="xMinYMin meet" viewBox="0 0 500 490" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>Proposed CI checks</title>
+	<desc>Instacart Python automation workflow: Proposed CI checks</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="500" height="490"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-490)" style="clip-path: url(#clip)">
+		<g transform="">
+			<path d="M 250,438 L 250,417 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,417 L 250,417 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,417 L 250,396 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="250 396, 247 402, 253 402" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<path d="M 250,340 L 250,317 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,317 L 250,317 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,317 L 250,294 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="250 294, 247 300, 253 300" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<path d="M 250,238 L 250,209.5 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,209.5 L 125,209.5 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 125,209.5 L 125,181 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="125 181, 122 187, 128 187" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<rect x="165.5" y="212.5" width="44.0" height="13.0" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="178.341796875" y="215.5" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 8px;fill: rgb(32%,40%,47%); stroke:none;" transform="translate(0,431) scale(1,-1)">pass</text>
+			<path d="M 250,238 L 250,209.5 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 250,209.5 L 375,209.5 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 375,209.5 L 375,181 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="375 181, 372 187, 378 187" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<rect x="290.5" y="212.5" width="44.0" height="13.0" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="306.41796875" y="215.5" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 8px;fill: rgb(32%,40%,47%); stroke:none;" transform="translate(0,431) scale(1,-1)">fail</text>
+			<path d="M 125,125 L 125,98 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 125,98 L 125,98 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<path d="M 125,98 L 125,71 Z" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="125 71, 122 77, 128 77" style="stroke: rgb(32%,40%,47%); stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,40%,47%); fill-rule: evenodd;"/>
+			<rect x="112.5" y="438.0" width="275.0" height="44.0" rx="7" ry="7" style="stroke: rgb(8%,19%,29%); stroke-linecap: butt; stroke-width: 1; fill: rgb(95%,96%,97%); fill-rule: evenodd;"/>
+			<text x="198.99765625" y="456.5" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,913) scale(1,-1)">Push / pull request</text>
+			<rect x="112.5" y="340.0" width="275.0" height="56.0" rx="7" ry="7" style="stroke: rgb(3%,49%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(91%,96%,96%); fill-rule: evenodd;"/>
+			<text x="174.7609375" y="371.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,742) scale(1,-1)">Hosted runner environment</text>
+			<text x="192.090625" y="358.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,716) scale(1,-1)">uv + compatible Python</text>
+			<rect x="112.5" y="238.0" width="275.0" height="56.0" rx="7" ry="7" style="stroke: rgb(3%,49%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(91%,96%,96%); fill-rule: evenodd;"/>
+			<text x="186.60859375" y="269.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,538) scale(1,-1)">Run deterministic tests</text>
+			<text x="197.70625" y="256.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,512) scale(1,-1)">Existing unittest suite</text>
+			<rect x="7.5" y="125.0" width="235.0" height="56.0" rx="7" ry="7" style="stroke: rgb(3%,49%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(90%,95%,91%); fill-rule: evenodd;"/>
+			<text x="110.853125" y="156.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,312) scale(1,-1)">PASS</text>
+			<text x="51.42500000000001" y="143.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,286) scale(1,-1)">Retain run + commit evidence</text>
+			<rect x="257.5" y="125.0" width="235.0" height="56.0" rx="7" ry="7" style="stroke: rgb(67%,28%,23%); stroke-linecap: butt; stroke-width: 1; fill: rgb(98%,92%,90%); fill-rule: evenodd;"/>
+			<text x="363.16171875" y="156.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,312) scale(1,-1)">FAIL</text>
+			<text x="319.12265625" y="143.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,286) scale(1,-1)">Correct code and rerun</text>
+			<rect x="7.5" y="15.0" width="235.0" height="56.0" rx="7" ry="7" style="stroke: rgb(8%,19%,29%); stroke-linecap: butt; stroke-width: 1; fill: rgb(95%,96%,97%); fill-rule: evenodd;"/>
+			<text x="65.28828125000001" y="46.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-weight: bold; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,92) scale(1,-1)">Optional merge policy</text>
+			<text x="58.00625000000001" y="33.0" style="font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 9.6px;fill: rgb(8%,19%,29%); stroke:none;" transform="translate(0,66) scale(1,-1)">Required checks configured</text>
+		</g>
+	</g>
+</svg>
