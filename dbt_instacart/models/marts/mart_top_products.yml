@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: mart_top_products
+    description: "Top ten prior products in instacart_cloud_5000_users_v1, ranked by order count descending and product ID ascending."
+
+    columns:
+      - name: product_rank
+        description: "Deterministic position from 1 to 10; lower product ID breaks a tied order count."
+        data_tests:
+          - not_null
+          - unique
+
+      - name: product_id
+        description: "Product identifier; one row per selected product."
+        data_tests:
+          - not_null
+          - unique
+          - relationships:
+              arguments:
+                to: ref('stg_products')
+                field: product_id
+
+      - name: product_name
+        description: "Product name from the staging product lookup."
+        data_tests:
+          - not_null
+
+      - name: prior_orders_with_product
+        description: "Number of selected prior orders containing the product; counts rows after tested order-product pair uniqueness."
+        data_tests:
+          - not_null
+
+      - name: reordered_entries
+        description: "Product entries marked reordered equal to 1."
+        data_tests:
+          - not_null
+
+      - name: reorder_rate_pct
+        description: "100 times reordered entries divided by prior orders with the product, rounded to two decimal places."
+        data_tests:
+          - not_null
+

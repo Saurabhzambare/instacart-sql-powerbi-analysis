@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: mart_department_analysis
+    description: "Prior product-entry metrics by department for instacart_cloud_5000_users_v1."
+
+    columns:
+      - name: department_id
+        description: "Department identifier; one row per department."
+        data_tests:
+          - not_null
+          - unique
+          - relationships:
+              arguments:
+                to: ref('stg_departments')
+                field: department_id
+
+      - name: department
+        description: "Source department name, including the literal category missing."
+        data_tests:
+          - not_null
+
+      - name: product_entries
+        description: "Number of prior order-product rows assigned to the department."
+        data_tests:
+          - not_null
+
+      - name: distinct_orders
+        description: "Number of prior orders containing at least one product from the department; overlaps across departments."
+        data_tests:
+          - not_null
+
+      - name: reordered_entries
+        description: "Number of department product entries with reordered equal to 1."
+        data_tests:
+          - not_null
+
+      - name: reorder_rate_pct
+        description: "100 times reordered entries divided by product entries, rounded to two decimal places."
+        data_tests:
+          - not_null
+

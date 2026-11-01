@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: mart_orders_by_hour
+    description: "Prior order counts by hour for the verified 5,000-user subset."
+
+    columns:
+      - name: order_hour_of_day
+        description: "Hour from 0 to 23; one row per hour."
+        data_tests:
+          - not_null
+          - unique
+
+      - name: prior_orders
+        description: "Number of prior orders placed during the hour."
+        data_tests:
+          - not_null

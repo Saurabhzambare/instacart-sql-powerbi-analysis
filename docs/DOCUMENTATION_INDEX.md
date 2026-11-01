@@ -6,32 +6,56 @@
 ## Read in this order
 
 | Document | Purpose | Status |
-| --- | --- | --- |
-| [Project scope](PROJECT_SCOPE.md) / [PDF](PROJECT_SCOPE.pdf) | Dataset boundaries, accepted deliverables, exclusions and evidence policy | v1.2; current cloud update ready for commit |
-| [Project roadmap](PROJECT_ROADMAP.md) / [PDF](PROJECT_ROADMAP.pdf) | Sequence, dependencies, technologies and completion checks | v2.2; CI and cloud checks verified; dbt compatibility next |
+|---|---|---|
+| [Project scope](PROJECT_SCOPE.md) / [PDF](PROJECT_SCOPE.pdf) | Dataset boundaries, accepted deliverables, exclusions and evidence policy | v1.2 cloud-baseline planning snapshot; current dbt implementation is documented in the dbt runbook |
+| [Project roadmap](PROJECT_ROADMAP.md) / [PDF](PROJECT_ROADMAP.pdf) | Sequence, dependencies, technologies and completion checks | v2.2 planning snapshot; BigQuery and dbt live build now verified; see current dbt runbook |
 | [SQL technical report](SQL_PROJECT_REPORT.md) | Original full-data SQL, model and DAX findings | Historical analytical checkpoint |
-| [Python automation report](PYTHON_AUTOMATION_REPORT.md) / [PDF](PYTHON_AUTOMATION_REPORT.pdf) | Complete original setup-to-pipeline learning record | Published at dcb145d; retains its original 53-test checkpoint |
+| [Python automation report](PYTHON_AUTOMATION_REPORT.md) / [PDF](PYTHON_AUTOMATION_REPORT.pdf) | Original setup-to-pipeline learning record | Published at dcb145d; retains its original 53-test checkpoint |
 | [Reporting validation runbook](VALIDATION_RUNBOOK.md) | Separate reporting-view quality runner | Established 18-check workflow |
-| [Input runbook](INPUT_RUNBOOK.md) | Source manifest and fingerprint baseline | Existing runbook; earlier next-step wording predates loader completion |
-| [CI runbook](CI_RUNBOOK.md) | Hosted code checks and controlled regression/recovery | Core CI verified; expanded 71-test pass at c90c4f0 |
+| [Input runbook](INPUT_RUNBOOK.md) | Source manifest and fingerprint baseline | Earlier next-step wording predates loader completion |
+| [CI runbook](CI_RUNBOOK.md) | Hosted Python checks and controlled regression/recovery | Core CI verified; 71 Python tests also passed for f800de2 |
 | [Cloud subset runbook](CLOUD_SUBSET_RUNBOOK.md) | Deterministic export, safe publication and file fingerprints | Exporter/evidence published at c90c4f0 |
-| [BigQuery runbook](BIGQUERY_RUNBOOK.md) | Schemas, manual loading, quality checks and analytical reconciliation | Five tables and 55 comparison rows verified; current publication pending |
-| [DBT staging runbook](DBT_RUNBOOK.md) | Setup, staging views, data tests and troubleshooting | Five views and 33 tests passed; PASS=38 |
-| [Selected validation evidence](validation_evidence/) | Retained local pass/failure/recovery reports and subset manifest | Original and later accepted checkpoints |
-| [Cloud screenshot review](cloud_evidence/reconciliation_review.json) / [screenshots](cloud_evidence/screenshots/) | Normalized observed results and original screenshot provenance | Manual review, not a database API export or automated parity job |
+| [BigQuery runbook](BIGQUERY_RUNBOOK.md) | Schemas, manual loading, quality checks and analytical reconciliation | Five tables and 55 comparison rows verified; published at 2ee57cc |
+| [dbt staging and marts runbook](DBT_RUNBOOK.md) | Setup, every dbt file and test, analytical models, evidence, operation and troubleshooting | Live complete build: eight views and 56 tests passed; PASS=64; final analytical-extension publication is the next checkpoint |
+| [Selected validation evidence](validation_evidence/) | Retained pass/failure/recovery reports, manifest and dbt catalogs | Earlier snapshots remain historical; archive the complete dbt report/catalog using the runbook |
+| [Cloud screenshot review](cloud_evidence/reconciliation_review.json) / [screenshots](cloud_evidence/screenshots/) | Recorded aggregate results and original screenshot provenance | Historical manual review; fixed values now also support three passing dbt regression tests |
 
-## Query sources
+## Query and model sources
 
-BigQuery SQL is under `cloud/bigquery/01_...08_*.sql`. SQL Server references are `sql/cloud_subset_orders_by_hour.sql`, `sql/cloud_subset_department_analysis.sql`, and `sql/cloud_subset_top_products.sql`. Keep the eight cloud files and three reference files already created locally; this documentation package does not replace them.
+| Location | Contents |
+|---|---|
+| `cloud/bigquery/01_...05_*.sql` | Raw BigQuery table validations |
+| `cloud/bigquery/06_...08_*.sql` | Original hourly, department and top-product analysis queries |
+| `cloud/bigquery/09_...12_*.sql` | dbt staging verification queries |
+| `cloud/bigquery/13_...15_*.sql` | dbt mart verification queries |
+| `sql/cloud_subset_orders_by_hour.sql` | SQL Server hourly reference |
+| `sql/cloud_subset_department_analysis.sql` | SQL Server department reference |
+| `sql/cloud_subset_top_products.sql` | SQL Server top-product reference |
+| `dbt_instacart/models/staging/` | Five staging view definitions and model properties |
+| `dbt_instacart/models/marts/` | Three analytical view definitions and model properties |
+| `dbt_instacart/tests/` | Nine singular SQL tests, including three fixed aggregate-reference comparisons |
+| `tests/` | Separate Python unit-test suite |
+
+The 56 dbt tests comprise 47 generic tests declared in model YAML and nine singular SQL tests. The three mart reference tests cover 24 hourly, 21 department and ten ranked-product rows. These compare BigQuery results against the previously recorded reference; they do not execute a new live cross-warehouse comparison.
 
 ## Diagram files
 
-Scope/roadmap use SVGs under `assets/project_planning/` with matching editable Mermaid `.mmd` sources. The earlier Python report retains its own `assets/python_automation/` folder. Keep relative assets beside the documents.
+Scope/roadmap SVGs and editable Mermaid sources are under `assets/project_planning/`. The earlier Python report retains `assets/python_automation/`. The dbt runbook contains editable Mermaid diagrams for staging relationships and analytical SQL dependencies. Keep existing assets beside their documents.
 
-## Saving the current update
+## Current checkpoints and publication
 
-Extract the package into the repository root, preserving the `docs` hierarchy and replacing matching documentation/diagram files. It contains the updated scope/roadmap Markdown and PDFs, documentation index, subset runbook update, new BigQuery runbook, review JSON, twelve original screenshots and planning assets. Review in GitHub Desktop, then commit/push with the eleven SQL files already staged for the cloud milestone.
+| Checkpoint | Verified outcome |
+|---|---|
+| c90c4f0 | Cloud subset exporter and recovery evidence published |
+| 2ee57cc | BigQuery loading and SQL reconciliation published |
+| b6d7a5e | Initial dbt departments model, tests and connection proof published |
+| f800de2 | Five staging views and 33 tests published; hosted Python CI run #9 passed all 71 tests |
+| Current local analytical extension | Eight views and 56 tests passed in one complete build, exit code 0; all three supplied mart query results match the reference |
 
-## Maintenance and next step
+Preserve `dbt_project_build_pass.json`, refresh the catalog expecting eight model views and five source tables, and save `dbt_project_catalog.json` before the next Git review. The runbook provides the commands. Verify the final commit, push and hosted Python CI after publication.
 
-Maintain Markdown as the editable source and regenerate reading copies when their content changes. Historical reports retain their named commit and test counts. The current exporter baseline is c90c4f0; the source/docs/evidence from the guided BigQuery phase need the next commit/push verification. After that checkpoint and a passing hosted test run, begin DBT-01 compatibility proof. Older README/input-runbook wording and the independent PBIX delivery smoke check remain narrow follow-ups. LinkedIn remains a separate discussion.
+## Maintenance and next work
+
+Markdown remains the editable source. Scope/roadmap PDFs retain their versioned planning context; this update does not regenerate those PDFs or relabel their historical plans as current execution evidence. The dbt runbook is the current implementation record for this milestone.
+
+The current BigQuery/dbt implementation is complete at the live-build level. Evidence/catalog capture and publication close the checkpoint. Scheduling, hosted dbt execution, ML and deployment remain later roadmap choices. Older README/input-runbook wording and the independent PBIX delivery smoke check remain separate follow-ups. LinkedIn remains a separate discussion.

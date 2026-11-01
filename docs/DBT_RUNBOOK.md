@@ -1,11 +1,11 @@
-# Instacart dbt Staging Runbook
+# Instacart dbt Staging and Analytical Marts Runbook
 
 **Project owner:** Saurabh Lalit Zambare  
 **Prepared:** 1 November 2026  
-**Scope:** Local dbt Core connected to the verified BigQuery cloud subset  
-**Last confirmed Git checkpoint before the staging extension:** `b6d7a5e` — Add verified dbt BigQuery departments model and tests
+**Scope:** Five staging views and three analytical marts on the verified BigQuery cloud subset  
+**Last confirmed Git checkpoint:** `f800de2` — Complete verified dbt staging views and data tests
 
-The complete staging build has been verified from the supplied terminal output: **5 view models, 33 data tests, PASS=38, WARN=0, ERROR=0, exit code 0**. The final BigQuery query confirmed all four prior-entry totals. The complete build report was checked and archived as `dbt_staging_build_pass.json`. Documentation generation completed with exit code 0, and the refreshed catalog contained five model views and five source tables with no reported catalog errors. That catalog was archived as `dbt_staging_catalog.json`. The extension is ready for Git review; its final commit and push were not yet confirmed when this revision was prepared.
+The complete project build has been verified from the supplied terminal output: **8 view models, 56 data tests, PASS=64, WARN=0, ERROR=0, SKIP=0, exit code 0**. This includes all three mart reference tests covering 55 aggregate result rows. The supplied BigQuery results match the recorded hourly, department, and top-product references. The earlier staging-only report and catalog remain historical evidence. Use sections 11–12 to archive this complete build and refresh its eight-model catalog before committing the analytical extension.
 
 ## 1. Purpose and boundaries
 
@@ -13,7 +13,7 @@ This milestone introduces dbt to the existing Instacart project. Python previous
 
 The staging models select explicitly named columns from existing source tables. Their SQL does not join, aggregate, filter, or deduplicate the source data. The tests detect violations rather than silently remove problematic rows.
 
-The next transformation layer can use these staging models to build analytical models. Analytical marts, dbt execution in hosted CI, scheduling, and deployment are separate future milestones.
+Three analytical marts now use the staging views: prior orders by hour, department analysis, and top products. Their calculations and reference tests passed in the complete project build. dbt execution in hosted CI, scheduling, and deployment remain separate future milestones.
 
 ## 2. Verified environment
 
@@ -60,6 +60,16 @@ The exporter selected the 5,000 lowest user IDs, retained all their orders, and 
 
 The CSV filename is `order_products__prior.csv` with two underscores before `prior`. Its BigQuery table is `order_products_prior` with one underscore. The dbt source declaration uses the BigQuery table name.
 
+### Analytical output contract
+
+| Mart | Rows | Grain | Main verification |
+|---|---:|---|---|
+| `mart_orders_by_hour` | 24 | One hour of day | All hourly counts match the recorded reference; total prior orders 76,832 |
+| `mart_department_analysis` | 21 | One department | Names, entry counts, distinct-order counts, reordered counts, and percentages match |
+| `mart_top_products` | 10 | One ranked product | Ranks, product IDs/names, order counts, reordered counts, and percentages match |
+
+The top-products mart includes an explicit `product_rank` column, in addition to the five measures/attributes in the earlier comparison query. Its values are derived from the previously reviewed product order, using count descending and product ID ascending.
+
 ## 4. Relationships and keys
 
 This diagram shows data relationships. It is not a diagram of SQL joins inside the staging models: those models each read one source table.
@@ -82,6 +92,22 @@ erDiagram
 
 An order can contain many products, and a product can appear in many orders. Each ID can repeat in the entry model, so uniqueness is checked on the pair. The tests validate data properties; they do not create enforced database key constraints.
 
+### Analytical SQL dependencies
+
+This diagram shows the staging models actually referenced by mart SQL. `stg_aisles` participates in the staging relationship checks but is not directly joined by these marts.
+
+```mermaid
+flowchart TD
+    O["stg_orders"] --> H["mart_orders_by_hour"]
+    O --> D["mart_department_analysis"]
+    E["stg_order_products_prior"] --> D
+    P["stg_products"] --> D
+    L["stg_departments"] --> D
+    O --> T["mart_top_products"]
+    E --> T
+    P --> T
+```
+
 ## 5. Folders and files
 
 Paths below are relative to the repository root, `D:\DataProjects\Instacart\instacart-sql-powerbi-analysis`.
@@ -95,8 +121,9 @@ Paths below are relative to the repository root, `D:\DataProjects\Instacart\inst
 | `dbt_instacart/.gitignore` | Excludes generated output and local dbt user settings |
 | `dbt_instacart/requirements-dbt-py312-windows.txt` | Installed dependency-version snapshot for Windows and Python 3.12 |
 | `dbt_instacart/models/sources.yml` | Declares the five existing BigQuery source tables |
-| `dbt_instacart/models/staging/` | Staging model SQL and associated model properties |
-| `dbt_instacart/tests/` | Six custom SQL data tests |
+| `dbt_instacart/models/staging/` | Five staging model SQL files and their properties |
+| `dbt_instacart/models/marts/` | Three analytical model SQL files and their properties |
+| `dbt_instacart/tests/` | Nine custom SQL tests: six staging assertions and three mart reference comparisons |
 | `dbt_instacart/target/` | Generated manifest, catalog, compiled SQL, and run results; ignored |
 | `dbt_instacart/logs/` | dbt execution logs; ignored |
 | `dbt_instacart/dbt_packages/` | Installed dbt packages if used later; ignored |
@@ -118,6 +145,14 @@ Each SQL file defines the SELECT query for a view. Its matching YAML file suppli
 | `stg_orders.sql` | `stg_orders.yml` |
 | `stg_order_products_prior.sql` | `stg_order_products_prior.yml` |
 
+The analytical model files are under `models/marts/`:
+
+| SQL file | Matching properties file |
+|---|---|
+| `mart_orders_by_hour.sql` | `mart_orders_by_hour.yml` |
+| `mart_department_analysis.sql` | `mart_department_analysis.yml` |
+| `mart_top_products.sql` | `mart_top_products.yml` |
+
 ### Saved BigQuery verification queries
 
 Save both the BigQuery code asset and the local SQL file. A query file preserves the method; a result screenshot or execution report preserves evidence of a particular run.
@@ -128,6 +163,9 @@ Save both the BigQuery code asset and the local SQL file. A query file preserves
 | `10_validate_dbt_lookup_counts.sql` | Counts of three lookup views | Aisles 134; departments 21; products 28,854 |
 | `11_validate_dbt_orders_counts.sql` | Order and user totals by evaluation set | 81,832 / 5,000 / 76,832 / 3,200 / 1,800 |
 | `12_validate_dbt_prior_counts.sql` | Prior-entry, distinct-order, distinct-product, and reordered totals | 761,750 / 76,832 / 28,854 / 448,380 |
+| `13_validate_dbt_orders_by_hour.sql` | Inspect the hourly mart ordered by hour | 24 reference rows; peak hour 10 has 6,559 orders |
+| `14_validate_dbt_department_analysis.sql` | Inspect department metrics ordered by department ID | 21 reference rows |
+| `15_validate_dbt_top_products.sql` | Inspect the top products ordered by product_rank | 10 reference rows; Banana is rank 1 |
 
 ## 6. Concepts used by dbt
 
@@ -146,7 +184,7 @@ Save both the BigQuery code asset and the local SQL file. A query file preserves
 | Run results | Execution statuses, timing, and adapter responses for a particular command |
 | ADC | Credentials Google client libraries discover for local authentication |
 
-For a data test, zero failing rows means PASS. For `dbt build`, the final PASS total includes successful models as well as tests. Therefore PASS=38 here means 5 model successes plus 33 test passes.
+For a data test, zero failing rows means PASS. For `dbt build`, the final PASS total includes successful models as well as tests. The staging checkpoint PASS=38 meant 5 model successes plus 33 test passes. The current complete checkpoint PASS=64 means 8 model successes plus 56 test passes.
 
 ## 7. Historical setup sequence
 
@@ -177,9 +215,16 @@ These steps describe setup already completed. Routine operation is in section 10
 23. Prepared this runbook and the closing evidence/catalog instructions.
 24. Validated and archived the full report containing five successful models and 33 passing tests.
 25. Regenerated documentation with --no-compile. The table_owner warnings recurred, but catalog generation exited 0; inspection confirmed five view models and five source tables with no reported catalog errors. Saved the catalog evidence.
-26. Reviewed the supplied Git status: 26 changed or new files, including the documentation index, staging code, six custom tests, BigQuery queries 10–12, the runbook, and five selected evidence files. Final commit and push remain the next checkpoint.
+26. Reviewed the staging Git status and then confirmed the staging extension was committed and pushed as `f800de2`.
+27. Checked hosted Python CI run #9 for `f800de2`: 71 tests passed in 0.267 seconds. This workflow covers the Python suite.
+28. Added `mart_orders_by_hour` with three generic tests and one fixed 24-row reference test. The supplied BigQuery result matched all 24 previously reconciled hourly rows.
+29. Added `mart_department_analysis` with eight generic tests and one fixed 21-row reference test. The supplied BigQuery result matched all departments and their metrics.
+30. Added `mart_top_products` with an explicit deterministic product rank, nine generic tests, and one fixed ten-row reference test.
+31. Ran the complete project without a selection filter. All eight views and 56 tests passed: PASS=64, WARN=0, ERROR=0, SKIP=0, exit code 0.
+32. Checked the supplied ten-row BigQuery top-products result, including every product ID/name, order count, reordered count, rank, and percentage against the recorded reference. Query 15 was saved in BigQuery.
+33. Prepared the complete-project evidence capture and eight-model catalog refresh instructions below. The final analytical-extension commit and push are the next publication checkpoint.
 
-The final supplied build reported 84.98 seconds. This is a single observed execution, not a performance benchmark.
+The staging-only build reported 84.98 seconds. The complete eight-model build reported **190.85 seconds** with one thread. These are observed executions of different workloads, not performance benchmarks.
 
 ## 8. Configuration used
 
@@ -240,7 +285,7 @@ dbt_packages/
 
 ## 9. Complete test inventory
 
-### Generic tests: 27
+### Staging generic tests: 27
 
 | Model | Column | Tests | Count |
 |---|---|---|---:|
@@ -265,7 +310,7 @@ dbt_packages/
 
 Relationship tests exclude nulls, so required foreign-key columns also receive separate not_null tests. A not_null name test does not check whitespace or empty strings.
 
-### Singular tests: 6
+### Staging singular tests: 6
 
 All files below belong in `dbt_instacart/tests/`. Each contains a SELECT query returning failing rows, with no trailing semicolon.
 
@@ -280,6 +325,40 @@ All files below belong in `dbt_instacart/tests/`. Each contains a SELECT query r
 
 The gap rules allow a zero-day interval after the first order. `days_since_prior_order` intentionally has no blanket not_null test because first-order nulls are valid.
 
+### Mart generic tests: 20
+
+| Model | Column | Tests | Count |
+|---|---|---|---:|
+| Orders by hour | `order_hour_of_day` | not_null, unique | 2 |
+| Orders by hour | `prior_orders` | not_null | 1 |
+| Department analysis | `department_id` | not_null, unique, relationships to stg_departments | 3 |
+| Department analysis | `department` | not_null | 1 |
+| Department analysis | `product_entries` | not_null | 1 |
+| Department analysis | `distinct_orders` | not_null | 1 |
+| Department analysis | `reordered_entries` | not_null | 1 |
+| Department analysis | `reorder_rate_pct` | not_null | 1 |
+| Top products | `product_rank` | not_null, unique | 2 |
+| Top products | `product_id` | not_null, unique, relationships to stg_products | 3 |
+| Top products | `product_name` | not_null | 1 |
+| Top products | `prior_orders_with_product` | not_null | 1 |
+| Top products | `reordered_entries` | not_null | 1 |
+| Top products | `reorder_rate_pct` | not_null | 1 |
+| **Total** | | | **20** |
+
+### Mart singular reference tests: 3
+
+| File under `dbt_instacart/tests/` | Rows compared | What it checks |
+|---|---:|---|
+| `assert_mart_orders_by_hour_reference.sql` | 24 | Hour coverage and every prior-order count |
+| `assert_mart_department_analysis_reference.sql` | 21 | Department coverage, names, all counts, and two-decimal rates |
+| `assert_mart_top_products_reference.sql` | 10 | Rank coverage, product identity, counts, and two-decimal rates |
+
+The tests use fixed expected rows from `docs/cloud_evidence/reconciliation_review.json`, reviewed at checkpoint `f800de2`. Those values originated in manual SQL Server/BigQuery screenshot reconciliation. The current tests execute against BigQuery mart views and automate regression checking against that recorded reference; they do not run a fresh SQL Server comparison.
+
+Full outer joins detect missing and unexpected rows. The department and product tests use `IS DISTINCT FROM` to compare fields safely when one side is null. Separate uniqueness tests detect repeated output keys.
+
+**Current inventory: 47 generic tests + 9 singular tests = 56 data tests.**
+
 ### Build milestones
 
 | Stage | Views | Generic tests | Singular tests | Total successful resources |
@@ -289,6 +368,7 @@ The gap rules allow a zero-day interval after the first order. `days_since_prior
 | Orders before discovery fix | 4 | 20 | 0 discovered | 24 |
 | Orders after discovery fix | 4 | 20 | 2 | 26 |
 | Complete staging | 5 | 27 | 6 | 38 |
+| Complete staging and marts | 8 | 47 | 9 | 64 |
 
 ## 10. Routine operation
 
@@ -302,18 +382,17 @@ $dbtProjectDirectory = Join-Path (Get-Location).Path "dbt_instacart"
     --profiles-dir "$dbtProjectDirectory"
 ```
 
-Build the complete current staging layer:
+Build the complete current project (all eight views and their tests):
 
 ```powershell
 & ".\.venv-dbt\Scripts\dbt.exe" build `
     --project-dir "$dbtProjectDirectory" `
-    --profiles-dir "$dbtProjectDirectory" `
-    --select stg_departments stg_aisles stg_products stg_orders stg_order_products_prior
+    --profiles-dir "$dbtProjectDirectory"
 
 $LASTEXITCODE
 ```
 
-For this milestone, expect 5 views, 33 tests, PASS=38, ERROR=0, SKIP=0, and exit code 0. Reassess the expected count when intentionally adding or removing resources.
+For the current complete milestone, expect 8 views, 56 tests, PASS=64, WARN=0, ERROR=0, SKIP=0, and exit code 0. Reassess the expected count when intentionally adding or removing resources. Selecting a single mart executes only that selected model and its associated tests; the project-wide discovery totals are different from the selected execution totals.
 
 List custom tests if discovery is in doubt:
 
@@ -322,7 +401,7 @@ List custom tests if discovery is in doubt:
     --project-dir "$dbtProjectDirectory" `
     --profiles-dir "$dbtProjectDirectory" `
     --resource-type test `
-    --select assert_stg_orders_valid_values assert_stg_orders_subset_counts assert_stg_prior_unique_pairs assert_stg_prior_valid_values assert_stg_prior_orders_only assert_stg_prior_subset_counts `
+    --select assert_stg_orders_valid_values assert_stg_orders_subset_counts assert_stg_prior_unique_pairs assert_stg_prior_valid_values assert_stg_prior_orders_only assert_stg_prior_subset_counts assert_mart_orders_by_hour_reference assert_mart_department_analysis_reference assert_mart_top_products_reference `
     --output name
 ```
 
@@ -333,32 +412,32 @@ An exit code of 0 alone is insufficient: a command that selects no nodes can fin
 `target/run_results.json` is generated output and can be overwritten by later commands. Preserve a selected copy before generating documentation or running further builds.
 
 ```powershell
-$dbtStagingReport = Get-Content `
+$dbtProjectReport = Get-Content `
     ".\dbt_instacart\target\run_results.json" `
     -Raw | ConvertFrom-Json
 
 $badResults = @(
-    $dbtStagingReport.results |
+    $dbtProjectReport.results |
         Where-Object { $_.status -notin @("success", "pass") }
 )
 
 $modelResults = @(
-    $dbtStagingReport.results |
+    $dbtProjectReport.results |
         Where-Object { $_.unique_id -like "model.*" }
 )
 
 $testResults = @(
-    $dbtStagingReport.results |
+    $dbtProjectReport.results |
         Where-Object { $_.unique_id -like "test.*" }
 )
 
 if (
-    $dbtStagingReport.results.Count -ne 38 -or
-    $modelResults.Count -ne 5 -or
-    $testResults.Count -ne 33 -or
+    $dbtProjectReport.results.Count -ne 64 -or
+    $modelResults.Count -ne 8 -or
+    $testResults.Count -ne 56 -or
     $badResults.Count -gt 0
 ) {
-    throw "Expected five successful models and 33 passing tests."
+    throw "Expected eight successful models and 56 passing tests."
 }
 
 New-Item -ItemType Directory -Force `
@@ -366,14 +445,16 @@ New-Item -ItemType Directory -Force `
 
 Copy-Item `
     ".\dbt_instacart\target\run_results.json" `
-    ".\docs\validation_evidence\dbt_staging_build_pass.json"
+    ".\docs\validation_evidence\dbt_project_build_pass.json"
 
-Write-Host "Verified and saved five models and 33 tests."
+Write-Host "Verified and saved eight models and 56 tests."
 ```
 
 This guard verifies result categories, total count, and successful statuses. The selected report records actual execution outcomes; it does not replace the model or test source files.
 
-The previously confirmed selected reports are `dbt_departments_build_pass.json` and `dbt_orders_build_pass.json`. The final Git status also shows `dbt_lookup_views_build_pass.json`, `dbt_orders_generic_build_pass.json`, `dbt_staging_build_pass.json`, and `dbt_staging_catalog.json`. The generic-only orders report is intermediate evidence: inspect its result count and statuses before committing it as a successful run. The intended intermediate run had four successful models and 20 passing generic tests, for 24 results. It must not be described as proof that the two custom orders tests ran.
+The previously confirmed selected reports are `dbt_departments_build_pass.json` and `dbt_orders_build_pass.json`. The final Git status also shows `dbt_lookup_views_build_pass.json`, `dbt_orders_generic_build_pass.json`, `dbt_staging_build_pass.json`, and `dbt_staging_catalog.json`. The generic-only orders report was inspected before the staging commit: it contained four model successes and 20 test passes, matching the intended 24-result intermediate run. It must not be described as proof that the two custom orders tests ran.
+
+Preserve the earlier staging-only report and catalog under their existing filenames. The current complete-project report uses a new filename so that historical evidence is retained. A separately archived hourly report may also exist locally; verify its presence before listing it as retained evidence.
 
 ## 12. Generate and inspect documentation
 
@@ -405,8 +486,8 @@ if ($dbtCatalog.errors) {
 $catalogModels = @($dbtCatalog.nodes.PSObject.Properties)
 $catalogSources = @($dbtCatalog.sources.PSObject.Properties)
 
-if ($catalogModels.Count -ne 5 -or $catalogSources.Count -ne 5) {
-    throw "Expected five catalog models and five sources."
+if ($catalogModels.Count -ne 8 -or $catalogSources.Count -ne 5) {
+    throw "Expected eight catalog models and five sources."
 }
 
 $catalogResources = @($catalogModels) + @($catalogSources)
@@ -420,7 +501,7 @@ $catalogResources | ForEach-Object {
 } | Format-Table -AutoSize
 ```
 
-Expect five model entries of type view and five source entries of type table, with the corresponding columns below. Column display order can differ from SELECT order in a catalog inspection.
+Expect eight model entries of type view and five source entries of type table, with the corresponding columns below. Column display order can differ from SELECT order in a catalog inspection.
 
 | Relation | Columns |
 |---|---|
@@ -429,6 +510,17 @@ Expect five model entries of type view and five source entries of type table, wi
 | Products | product_id, product_name, aisle_id, department_id |
 | Orders | order_id, user_id, eval_set, order_number, order_dow, order_hour_of_day, days_since_prior_order |
 | Prior entries | order_id, product_id, add_to_cart_order, reordered |
+| Orders-by-hour mart | order_hour_of_day, prior_orders |
+| Department mart | department_id, department, product_entries, distinct_orders, reordered_entries, reorder_rate_pct |
+| Top-products mart | product_rank, product_id, product_name, prior_orders_with_product, reordered_entries, reorder_rate_pct |
+
+After inspecting the full catalog, preserve it:
+
+```powershell
+Copy-Item `
+    ".\dbt_instacart\target\catalog.json" `
+    ".\docs\validation_evidence\dbt_project_catalog.json"
+```
 
 To preview the generated documentation locally:
 
@@ -509,7 +601,7 @@ git status --short --untracked-files=all
 Review the actual changed-file list before choosing a commit summary. A suitable complete-staging summary is:
 
 ```text
-Complete verified dbt staging views and data tests
+Add verified dbt analytical marts and complete build evidence
 ```
 
 After committing and pushing with GitHub Desktop:
@@ -519,15 +611,15 @@ git status --short --branch
 git log -1 --oneline
 ```
 
-The existing GitHub Actions workflow runs the separate Python unit-test suite. A green Python workflow alone does not establish that dbt connected to BigQuery or that these 33 cloud data tests ran. That proof comes from the local live build and its selected run-results report. dbt CI execution remains future work.
+The existing GitHub Actions workflow runs the separate Python unit-test suite. A green Python workflow alone does not establish that dbt connected to BigQuery or that these 56 cloud data tests ran. That proof comes from the local live build and its selected run-results report. dbt CI execution remains future work.
 
 ## 16. Limits and next work
 
-- The current staging views expose source columns directly; analytical joins, metrics, and marts are next.
+- The five staging views expose source columns directly; three analytical marts now provide verified joins, metrics, and product ranking.
 - Exact subset counts are tied to instacart_cloud_5000_users_v1. Changing the dataset requires deliberate contract review.
-- The 33 tests cover the listed assertions. They do not establish full row-by-row equality with SQL Server, all source business rules, or an exact comparison of the selected user-ID set.
+- The 56 tests cover the listed assertions. They do not establish full row-by-row equality with SQL Server, all source business rules, or an exact comparison of the selected user-ID set.
 - Some lookup row counts and the department blank-name check were manually verified with saved BigQuery queries. They are not all separate automated dbt tests in this milestone.
-- Both initial and complete-staging catalogs were generated and inspected. The latest verified catalog contains five view models and five source tables; repeat section 12 after later model changes.
+- Initial and staging-only catalogs were generated and inspected. Refresh the complete-project catalog using section 12; the current expected inventory is eight model views and five source tables.
 - There is no source-freshness check because this static subset has no configured load timestamp.
 - The existing Python test suite and the dbt data tests have different scopes and runtimes.
 - No scheduled cloud loader, hosted dbt job, paid service, or continuous deployment was established by these steps.
@@ -544,3 +636,66 @@ The existing GitHub Actions workflow runs the separate Python unit-test suite. A
 - [uv command reference](https://docs.astral.sh/uv/reference/cli/)
 
 Execution findings in this document come from the supplied project terminal output and BigQuery screenshots. They are distinguished from steps still awaiting user execution and verification.
+
+
+## 18. Analytical mart implementation details
+
+### Orders by hour
+
+`mart_orders_by_hour.sql` reads `stg_orders`, filters eval_set to prior, groups by order_hour_of_day, and counts orders. No order-product join is needed for an order count. The reference has 24 hourly rows summing to 76,832. Hour 10 is the peak, with 6,559 prior orders. Consumer queries explicitly order by hour; the view itself does not promise display ordering.
+
+### Department analysis
+
+`mart_department_analysis.sql` joins prior entries to orders, products, and departments through their tested IDs. It explicitly filters orders to eval_set prior and groups by department ID and name.
+
+| Output | Calculation and interpretation |
+|---|---|
+| product_entries | COUNT(*) of prior order-product rows in the department |
+| distinct_orders | COUNT(DISTINCT order_id); an order may count in multiple departments |
+| reordered_entries | COUNTIF(reordered = 1) |
+| reorder_rate_pct | ROUND(SAFE_DIVIDE(CAST(reordered count AS NUMERIC) * 100, entry count), 2) |
+
+The NUMERIC cast gives decimal percentage arithmetic. SAFE_DIVIDE returns null for a division error; the separate not_null test checks the final rate is present. Grouped rows in the current model have positive denominators. Displaying 64.8 and 64.80 represents the same numeric value.
+
+All 21 current departments have entries and appear in the result. The literal department name `missing` is a source category, not an unmatched join. Department entry counts sum to 761,750 and reordered entries sum to 448,380. Distinct-order counts overlap across departments and are not additive.
+
+Produce has 219,676 entries, 56,880 distinct orders, 142,306 reordered entries, and a 64.78% rate. Dairy eggs has 128,801 entries, 52,142 distinct orders, 86,641 reordered entries, and a 67.27% rate. These findings describe this engineering subset.
+
+### Top products
+
+`mart_top_products.sql` first aggregates prior entries by product ID and name, joining orders and products. COUNT(*) equals orders containing the product because the staging composite-key test establishes one row per order/product pair. It counts reordered entries and calculates the decimal reorder percentage using the same formula as the department mart.
+
+A second CTE assigns product_rank with:
+
+```sql
+row_number() over (
+    order by prior_orders_with_product desc, product_id asc
+)
+```
+
+The final SELECT retains ranks 1–10. Product ID resolves tied counts consistently. A consumer query orders by product_rank to display the ranking.
+
+| Rank | Product | Prior orders | Reordered entries | Rate |
+|---:|---|---:|---:|---:|
+| 1 | Banana | 10,625 | 8,879 | 83.57% |
+| 2 | Bag of Organic Bananas | 8,921 | 7,406 | 83.02% |
+| 3 | Organic Strawberries | 6,384 | 4,964 | 77.76% |
+| 4 | Organic Baby Spinach | 5,570 | 4,246 | 76.23% |
+| 5 | Organic Hass Avocado | 5,253 | 4,197 | 79.90% |
+| 6 | Organic Avocado | 3,939 | 2,927 | 74.31% |
+| 7 | Large Lemon | 3,797 | 2,686 | 70.74% |
+| 8 | Organic Raspberries | 3,560 | 2,763 | 77.61% |
+| 9 | Strawberries | 3,414 | 2,376 | 69.60% |
+| 10 | Limes | 3,348 | 2,291 | 68.43% |
+
+The ten-product output is a ranked subset, not the complete product catalog. Its counts are not expected to sum to all prior product entries.
+
+### Current validation and publication boundary
+
+The supplied complete build proves all eight views and 56 data tests passed in one run. The three supplied mart query results also match the recorded aggregate references. Archive the complete run-results file, regenerate and inspect the eight-model catalog, review Git changes, and commit/push the analytical extension. Confirm the resulting hosted Python CI separately. This closes the current BigQuery/dbt milestone; scheduling, hosted dbt execution, ML, and deployment belong to later decisions.
+
+Additional SQL references:
+
+- [GoogleSQL mathematical functions](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions)
+- [GoogleSQL comparison operators](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/operators)
+- [GoogleSQL numbering functions](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/numbering_functions)
