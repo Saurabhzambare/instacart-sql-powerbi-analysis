@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <svg width="500" height="490" preserveAspectRatio="xMinYMin meet" viewBox="0 0 500 490" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
-	<title>Proposed CI checks</title>
-	<desc>Instacart Python automation workflow: Proposed CI checks</desc>
+	<title>Implemented CI checks</title>
+	<desc>Instacart Python automation workflow: Implemented CI checks</desc>
 	<clipPath id="clip">
 		<rect x="0" y="0" width="500" height="490"/>
 	</clipPath>

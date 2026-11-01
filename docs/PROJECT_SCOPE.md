@@ -1,16 +1,19 @@
 # Instacart Project Scope
 
 **Owner:** Saurabh Lalit Zambare  
-**Version:** 1.0  
-**Status date:** 31 October 2026  
-**Verified implementation:** `bfc176320df799733f9ef448017c181b6cb842fc`  
-**Companion documents:** [Project roadmap](PROJECT_ROADMAP.md), [Python automation report](PYTHON_AUTOMATION_REPORT.md), [SQL technical report](SQL_PROJECT_REPORT.md)
+**Version:** 1.2 - verified CI and BigQuery reconciliation  
+**Status date:** 1 November 2026  
+**Committed code baseline:** `c90c4f0666da7d672bff148b031e483b12a9dbb7`  
+**Cloud SQL and evidence:** verified in the owner session; current publication pending  
+**Loading baseline:** `bfc1763`  
+**CI evidence:** corrected branch commit `647d9c2`  
+**Companion documents:** [Project roadmap](PROJECT_ROADMAP.md), [Python automation report](PYTHON_AUTOMATION_REPORT.md), [CI runbook](CI_RUNBOOK.md), [BigQuery runbook](BIGQUERY_RUNBOOK.md), [SQL technical report](SQL_PROJECT_REPORT.md)
 
 ## Purpose of this document
 
 This document defines what the project is intended to demonstrate, what has been completed, what remains planned, and what evidence is required before a capability is described as finished. The roadmap explains the implementation order. The detailed reports explain the completed work.
 
-The project began as SQL Server and Power BI analysis of Instacart shopping behavior. It now also includes a verified local Python loading and validation workflow. Later extensions add code checks, cloud SQL, documented transformations, and a carefully evaluated prediction task. Each extension has a separate acceptance decision; a plan does not establish an implemented skill.
+The project began as SQL Server and Power BI analysis of Instacart shopping behavior. It now also includes a verified local Python loading and validation workflow, hosted continuous integration, and a five-table BigQuery subset with selected SQL Server result reconciliation. Later extensions add dbt transformations and a carefully evaluated prediction task. Each extension has a separate acceptance decision; a plan does not establish an implemented skill.
 
 ## Contents
 
@@ -107,7 +110,8 @@ The prior/train/test labels describe dataset roles. They are not an automaticall
 | `pipeline_staging` | Five permanent tables populated by Python loaders | Implemented and verified |
 | Temporary SQL tables | Validate input before target replacement | Implemented |
 | Local JSON reports | File, loader, check, and coordinator execution history | Implemented |
-| Future cloud/dbt/ML outputs | Separately named demonstration outputs | Planned |
+| BigQuery `instacart_raw` | Five loaded subset tables; manual quality checks and three analytical comparisons | Verified in the owner session; SQL/evidence commit pending |
+| Future dbt/ML outputs | Separately named transformation and prediction outputs | Planned or gated |
 
 The new Python workflow does not rebuild reporting views from `pipeline_staging` or refresh the Power BI report. Connecting those paths is a future integration decision with its own reconciliation checks. Current analysis remains reproducible through the established SQL/reporting path.
 
@@ -132,7 +136,7 @@ The PBIX is LFS-tracked. An earlier pointer recorded 208,487,698 bytes. A fresh 
 | Transaction recovery | Department failure after clearing the target rolled back; SSMS verified 21 unique IDs afterward |
 | Final accepted-table checks | Five tables passed 27 named metric checks |
 | Coordinator behavior | Missing inputs stopped execution before any loader; corrected input run passed all seven stages |
-| Automated code checks | 53 local tests passed, exit code 0 |
+| Automated code checks | Original 53-test pipeline suite; expanded exporter suite now 71 tests, local and hosted PASS at c90c4f0 |
 | Preserved evidence | Nine selected JSON reports committed |
 
 The successful combined replay took 163.175 seconds in its saved local run. That is one observed replay duration, not an initial-load benchmark or runtime guarantee. Mocks cover controlled code behavior; live SQL execution supplies the separate loading/rollback evidence.
@@ -145,17 +149,29 @@ The successful combined replay took 163.175 seconds in its saved local run. That
 | `4e6536a` | Reporting validators, combined reports, and saved evidence |
 | `743c62a` | Input manifest, fingerprint baseline, and 15 input tests |
 | `bfc1763` | Completed local loading/validation workflow and 53-test suite |
+| `dcb145d` | Published Python report, project scope, roadmap, and documentation guide |
+| `c863046` | First hosted CI workflow; 53 tests passed on main |
+| `a411277` / `647d9c2` | Deliberate regression detected, then corrected pass on the demonstration branch |
+| `aa46eeb` | Published CI failure/recovery documentation |
+| `c90c4f0` | Committed verified subset exporter and selected evidence; hosted CI passed 71 tests |
+| Owner session, through 1 November | Five BigQuery loads/quality checks and 55 matching analytical result rows; current source/evidence publication pending |
 
-The connected repository confirmed the final three commits during this documentation pass. The detailed Python report was created for local review in the previous step; its addition to GitHub has not been verified. The earlier roadmap was also a prepared document rather than a verified file at `docs/PROJECT_ROADMAP.md` on the current remote. This package supplies the current scope and roadmap files for review and saving.
+The original Python report and planning documents were published at dcb145d. CI operation and its failure/recovery exercise are separately verified; c90c4f0 passed all 71 expanded tests on hosted Windows. The owner supplied successful BigQuery validation and paired analytical screenshots. The [BigQuery runbook](BIGQUERY_RUNBOOK.md) and [review record](cloud_evidence/reconciliation_review.json) preserve the reviewed cloud evidence. Current cloud SQL/docs/evidence await the next GitHub Desktop commit. Earlier reports retain their historical checkpoints and test counts.
+
+## 4.4 BigQuery subset and reconciliation
+
+The deterministic 5,000-user subset contains 81,832 order metadata rows (76,832 prior, 3,200 train, 1,800 test), 761,750 prior entries, 28,854 referenced products, and full small lookups. The exported files matched their size/hash manifest. Five manual console loads and the configured quality checks passed in BigQuery. All 24 hourly, 21 department, and 10 top-product result rows matched SQL Server, including the displayed two-decimal rates.
+
+The review is based on the owner's paired screenshots and observed terminal output, not a database API export or automated full-row parity checker. The subset is not a random sample. BigQuery uses project `instacart-analytics-practice`, dataset `instacart_raw`, US data location, and us-central1 saved-code location as configured in the guided setup. Schema/load job metadata was not independently exported. dbt, programmatic cloud loading, scheduling, and deployment remain unimplemented.
 
 # 5. Approved learning direction and future deliverables
 
-These are the agreed directions to plan toward, not completed implementations or permission to create paid resources. The companion roadmap defines dependencies and checks.
+This table distinguishes accepted extensions from the remaining learning direction. It does not authorize paid resources. The companion roadmap defines dependencies and checks.
 
 | Extension | Intended outcome | Evidence required |
 | --- | --- | --- |
-| Continuous integration | Existing tests run automatically for code changes | Workflow, passing run, deliberate failed run, corrected pass |
-| Cloud SQL | Small related subset analyzed in BigQuery | Selection manifest, load results, reconciled local/cloud outputs |
+| Continuous integration | Core milestone complete: hosted push checks, deliberate failure, corrected pass | [CI runbook](CI_RUNBOOK.md) and [selected evidence](validation_evidence/ci_pass_fail_recovery.json); PR/manual triggers configured but not separately exercised |
+| Cloud SQL | Scoped batch demonstration verified; publication pending | Five table checks and 24/21/10 matching analytical rows; [runbook](BIGQUERY_RUNBOOK.md) and [screenshot review](cloud_evidence/reconciliation_review.json) |
 | dbt | Reusable documented SQL models and quality tests | Model dependency graph, test results, generated documentation |
 | Machine learning | Predict previously purchased products in a next order | Leakage-controlled splits, baseline/model metrics, error analysis, reproducible batch predictions |
 | Operational tracking | Record tasks, defects, and resolution evidence | Small board or backlog with acceptance/evidence links |
@@ -172,9 +188,9 @@ The first ML task is a reordered-product recommendation/classification task over
 | --- | --- | --- |
 | SQL Server, SSMS, Power BI | Retain established analytics | Preserve validated logic, grains, and report behavior |
 | Python 3.14 + uv + pyodbc | Retain local workflow | Existing reproducible environment and successful loading evidence |
-| `unittest` | Retain for initial CI | Reuse all 53 existing tests; no test-framework migration needed |
-| GitHub Actions | Next planned addition | Run deterministic code checks away from the laptop |
-| BigQuery sandbox | Small cloud branch | Demonstrate analytical SQL with a reproducible related subset |
+| `unittest` | Retained for hosted CI | Expanded 71-test suite passed at c90c4f0; framework migration unnecessary |
+| GitHub Actions | Implemented core CI | Hosted Windows tests detected the regression and verified the correction |
+| BigQuery sandbox | Verified small cloud branch | Five loaded/checked tables and selected aggregate reconciliation with SQL Server |
 | dbt + compatible adapter | After cloud/subset proof | Model dependencies, SQL tests, and documentation |
 | SQL aggregates + scikit-learn | First ML path | Reduce large history to manageable features; begin with interpretable baselines |
 | DuckDB | Conditional fallback | Local dbt practice if cloud constraints block the intended branch; label the outcome accurately |
@@ -226,7 +242,7 @@ Before adding a substantial extension, record its question, proposed output, aff
 | Decision | Current resolution |
 | --- | --- |
 | Move established Power BI source to new automation tables? | Open; preserve current views until a separately reconciled integration is chosen |
-| Replace unittest with pytest? | No current need; reuse existing suite for first CI |
+| Replace unittest with pytest? | No current need; existing suite is already used by CI |
 | Use a different Python version for a new tool? | Allowed in an isolated environment after compatibility review |
 | Run full database imports on each hosted CI push? | Outside the first CI scope; use deterministic offline tests |
 | Choose a paid cloud deployment now? | Deferred; no target selected |
@@ -234,11 +250,11 @@ Before adding a substantial extension, record its question, proposed output, aff
 
 # 10. Immediate handoff and maintenance
 
-1. Review the Python automation report and these scope/roadmap documents.
-2. Save the agreed files under `docs`, including diagram assets.
-3. Commit/push the documentation through the established GitHub Desktop workflow.
-4. Resolve the small outstanding PBIX delivery smoke check when the asset is available.
-5. Begin the CI milestone using the current tests and uv configuration.
+1. Review the BigQuery runbook, screenshot evidence and updated scope/roadmap.
+2. Save these files under `docs`, preserving diagrams and screenshots beside their relative links.
+3. Commit/push the eight cloud SQL files, three local reference queries and current documentation/evidence through GitHub Desktop; verify the resulting hosted CI run.
+4. Resolve the outstanding PBIX delivery smoke check when convenient; it is separate from the cloud result comparisons.
+5. Begin DBT-01 with a small adapter/runtime/warehouse compatibility proof before expanding transformations.
 
 Update this scope when accepted deliverables or exclusions change. Update the roadmap after every accepted milestone. Link new evidence to an exact commit or saved report. These documents record planning and current status; they do not start new jobs or schedule future actions.
 

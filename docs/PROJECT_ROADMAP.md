@@ -1,22 +1,25 @@
 # Instacart Project Roadmap
 
 **Owner:** Saurabh Lalit Zambare  
-**Version:** 2.0 - updated after Python automation completion  
-**Status date:** 31 October 2026  
-**Verified implementation:** `bfc1763`  
+**Version:** 2.2 - BigQuery loading and reconciliation verified  
+**Status date:** 1 November 2026  
+**Committed code baseline:** `c90c4f0`  
+**Cloud SQL/docs/evidence:** verified in the owner session; current commit pending  
+**Loading baseline:** `bfc1763`  
+**CI recovery proof:** `647d9c2` on the demonstration branch  
 **Companion:** [Project scope](PROJECT_SCOPE.md) and [documentation guide](DOCUMENTATION_INDEX.md)
 
 ## What changed from the first roadmap
 
 The earlier draft dated 29 October treated Python automation as future work. The local five-file pipeline is now implemented and verified. This revision records that result, retains the original stage numbers for continuity, and gives the remaining stages practical completion checks.
 
-The first CI phase now reuses the existing `unittest` suite and uv environment. Cloud/dbt, ML, orchestration, and delivery remain future work. Windows-to-Linux database connectivity is an explicit feasibility gate before a containerized deployment is promised.
+Core CI runs the unittest suite in uv on hosted Windows; 71 tests passed at c90c4f0. The five-file cloud subset and five BigQuery loads/checks are verified, and selected results match SQL Server. dbt, ML, orchestration, and delivery remain future work. Windows-to-Linux database connectivity is an explicit feasibility gate before a containerized deployment is promised.
 
 ## Contents
 
 - [1. Current position and remaining work](#1-current-position-and-remaining-work)
 - [2. Starting baseline and completion rules](#2-starting-baseline-and-completion-rules)
-- [3. Immediate documentation and delivery checkpoint](#3-immediate-documentation-and-delivery-checkpoint)
+- [3. Documentation and delivery checkpoint](#3-documentation-and-delivery-checkpoint)
 - [4. Stage 4 - Continuous integration](#4-stage-4---continuous-integration)
 - [5. Stage 5 - Small BigQuery and dbt demonstration](#5-stage-5---small-bigquery-and-dbt-demonstration)
 - [6. Stage 6 - Machine-learning task and data preparation](#6-stage-6---machine-learning-task-and-data-preparation)
@@ -29,14 +32,14 @@ The first CI phase now reuses the existing `unittest` suite and uv environment. 
 
 # 1. Current position and remaining work
 
-| Original stage | Milestone | State on 31 October | Evidence or next action |
+| Original stage | Milestone | State on 1 November | Evidence or next action |
 | --- | --- | --- | --- |
 | 1 | SQL and local Power BI analysis | Complete | Scripts 00-21, three views, seven measures, three pages |
 | 2 | GitHub project delivery | Core files pushed; smoke check open | Verify a clean download/open of the LFS-tracked PBIX |
 | 3 | Python loading, checks, and run reporting | Core local milestone complete | `bfc1763`, 53 tests, safe replay and recovery evidence |
-| Documentation | Python report, scope, roadmap | Created for review/local saving | Remote publication not yet verified |
-| 4 | Continuous integration | Planned - next implementation | Automate the existing deterministic test suite |
-| 5 | BigQuery and dbt | Planned | Small related subset, cloud queries, models/tests |
+| Documentation | Python report, scope, roadmap, milestone runbooks | Earlier documents published; current cloud update ready | Preserve current evidence and commit the update |
+| 4 | Continuous integration | Core complete | Original red/green exercise plus 71-test hosted PASS at c90c4f0 |
+| 5 | BigQuery and dbt | Subset and BigQuery verified; dbt pending | CLD-01/02 verified in session; close Git checkpoint, then DBT-01 |
 | 6 | Reorder prediction | Planned | Labels, history-only features, baseline/model evaluation |
 | 7 | Airflow orchestration | Planned with environment gate | Compatible tasks, dependency graph, recovery proof |
 | 8 | Continuous delivery | Planned with runtime gate | Traceable runnable release artifact and smoke test |
@@ -47,7 +50,7 @@ No calendar deadline is attached. Effort depends on tool compatibility and acces
 
 ![Milestone dependencies and conditional branches](assets/project_planning/02_milestone_dependencies.svg)
 
-The cloud/dbt branch and local ML branch share the validated data foundation but do not require each other to run. We will normally complete CI first, then a small cloud/dbt demonstration, then ML. Airflow coordinates suitable tasks after they work individually; release packaging follows runtime feasibility.
+The cloud/dbt branch and local ML branch share the validated data foundation but do not require each other to run. Core CI and the scoped BigQuery demonstration are verified. After the current cloud Git checkpoint, the intended order is dbt compatibility/models, then ML. Airflow coordinates suitable tasks after they work individually; release packaging follows runtime feasibility.
 
 # 2. Starting baseline and completion rules
 
@@ -79,9 +82,9 @@ uv run python -m scripts.run_validations
 
 For every future phase: implement, run relevant checks, deliberately exercise a meaningful failure where appropriate, preserve evidence, document limits, then update the status. Do not keep adding tools to avoid closing a milestone.
 
-# 3. Immediate documentation and delivery checkpoint
+# 3. Documentation and delivery checkpoint
 
-Before starting new implementation, save the completed Python report, this roadmap, and the scope document under `docs`. Preserve their relative asset folders so diagrams render in GitHub. Review historical statements and proposed outcomes, then commit the accepted documents.
+The original Python report and planning files were published at dcb145d; CI documentation followed at aa46eeb and the exporter checkpoint at c90c4f0. This revision brings the published planning statuses forward through verified CI and the owner-session BigQuery results. Preserve relative diagram/evidence folders and commit the current SQL/docs/evidence checkpoint before the dbt compatibility phase.
 
 The older input runbook still describes the loader as its next step, and the README primarily introduces the SQL/Power BI stage. A small documentation follow-up should add navigation and current status without rewriting the already validated analytical definitions.
 
@@ -89,20 +92,22 @@ The older input runbook still describes the loader as its next step, and the REA
 | --- | --- |
 | Python report saved | Markdown/PDF and eight diagram assets available in local `docs` |
 | Scope and roadmap accepted | Current statuses, exclusions, and phase gates reviewed |
-| Documentation publication | Commit and remote branch state verified |
+| Documentation publication | Current cloud SQL, runbook, review evidence and planning update need the next commit/push check |
 | PBIX delivery | Fresh LFS-enabled clone/download obtains the actual binary, opens in Desktop, and can reconnect to the local SQL source |
 
 Downloading an LFS pointer alone is insufficient for the PBIX check. The smoke test is a delivery verification, not a reason to rebuild every chart or repeat the full analytical study.
 
 # 4. Stage 4 - Continuous integration
 
+**Core status: complete.** The exporter checkpoint [run #6](https://github.com/Saurabhzambare/instacart-sql-powerbi-analysis/actions/runs/41203173411) passed all 71 tests on Windows/Python 3.14.3. The original 53-test exercise remains valid historical evidence. [Baseline run](https://github.com/Saurabhzambare/instacart-sql-powerbi-analysis/actions/runs/41181217619): 53 tests passed. [Regression run](https://github.com/Saurabhzambare/instacart-sql-powerbi-analysis/actions/runs/41181802743): exactly one expected failure. [Corrected run](https://github.com/Saurabhzambare/instacart-sql-powerbi-analysis/actions/runs/41181974673): 53 passed. See the [CI runbook](CI_RUNBOOK.md) and [evidence summary](validation_evidence/ci_pass_fail_recovery.json). The following design is now implemented for push-triggered tests. Required merge policy and separate PR/manual-trigger proof remain optional checks.
+
 ## 4.1 Explain it simply
 
 Continuous integration means code changes trigger automatic checks in a clean runner environment. The code has already been tested manually on the laptop. CI repeats the relevant code checks on pushes/pull requests so later changes are less likely to break accepted behavior [R1].
 
-Continuous delivery means a tested release artifact can be prepared and used. Continuous deployment goes further and updates a running target automatically. The first next milestone is CI; it does not require either deployment form.
+Continuous delivery means a tested release artifact can be prepared and used. Continuous deployment goes further and updates a running target automatically. Core CI is now verified; delivery and deployment remain separate later milestones.
 
-![Proposed CI check and release gate](assets/project_planning/03_ci_gate.svg)
+![Implemented CI check and optional merge-policy gate](assets/project_planning/03_ci_gate.svg)
 
 ## 4.2 Technology and scope
 
@@ -110,7 +115,7 @@ Use GitHub Actions, uv, Python 3.14, and `unittest`. Begin with a hosted Windows
 
 The first job uses deterministic small fixtures, mocks, and the small subprocess test. It does not connect to Saurabh's laptop SQL Server or load the original 32-million-row table. Hosted runners are their own environments [R2]. A database integration job can later create its own isolated test database and fixtures.
 
-## 4.3 Proposed workflow behavior
+## 4.3 Implemented workflow behavior
 
 | Workflow step | Purpose |
 | --- | --- |
@@ -121,7 +126,7 @@ The first job uses deterministic small fixtures, mocks, and the small subprocess
 | Retain useful test output | Link future failures to a run/commit |
 | Finish nonzero on test failure | Make the workflow status meaningful |
 
-Proposed file: `.github/workflows/python-tests.yml`. This is a planned path, not an existing workflow claim. Use the permission needed to read/test code; credentials, real raw files, and the PBIX binary are unnecessary inputs to this first job.
+Implemented file: `.github/workflows/python-tests.yml`, added at c863046. It configures push, pull-request, and manual triggers; the collected exercise verifies push-triggered execution. Use the permission needed to read/test code; credentials, real raw files, and the PBIX binary are unnecessary inputs to this first job.
 
 ## 4.4 Acceptance and failure exercise
 
@@ -139,9 +144,13 @@ Proposed file: `.github/workflows/python-tests.yml`. This is a planned path, not
 
 The local project demonstrates SQL Server work. A cloud branch can show that the same data questions and quality rules can be expressed in another analytical warehouse. dbt adds named SQL models, dependencies, tests, and documentation rather than a collection of disconnected query tabs.
 
-## 5.2 Subset before platform setup
+## 5.2 Accepted subset and cloud result proof
 
-Choose a reproducible customer subset, initially around 5,000 users if its measured size is comfortable. Preserve complete relevant prior histories, related orders, and required product/aisle/department records. The exact customer rule, counts, and fingerprints become a subset manifest.
+**CLD-01 and CLD-02 implementation checks passed.** Select the 5,000 lowest user IDs; keep complete prior histories and all order metadata for those users. The accepted export has 81,832 orders, 761,750 prior entries, 28,854 referenced products, 134 aisles, and 21 departments. All five file sizes/hashes matched the manifest. The subset exporter and selected evidence were committed at c90c4f0.
+
+All five tables loaded into `instacart-analytics-practice.instacart_raw` and passed the configured quality queries. SQL Server and BigQuery matched on 24 hourly rows, 21 department rows, and 10 top-product rows, including displayed two-decimal reorder rates. See the [BigQuery runbook](BIGQUERY_RUNBOOK.md) and [manual screenshot review](cloud_evidence/reconciliation_review.json). This proof concerns selected aggregates, not full-row byte identity or an automated parity job. The current SQL/evidence documentation still needs its Git checkpoint.
+
+**DBT-01 is next after that checkpoint.** Prove a tiny adapter/model build and tests in a compatible separate environment before expanding dbt. The remainder of Stage 5 below describes the still-planned dbt outcome.
 
 Do not use the first N rows of each CSV independently: that can discard related records and make local/cloud comparisons meaningless. Reconcile exactly the same selected subset in both systems. Reuse SQL Server aggregation to keep Python memory use small.
 
@@ -286,9 +295,9 @@ Use a small board with To do, In progress, Review, and Done, or keep the table b
 
 | ID | Task | Status | Completion evidence |
 | --- | --- | --- | --- |
-| DOC-01 | Review/save Python automation report | Ready for review | Report + diagram assets in docs |
-| DOC-02 | Review/save scope and roadmap | Ready for review | Accepted document versions |
-| DOC-03 | Add navigation and reconcile older README/runbook status wording | Planned | Working relative links and accurate current status |
+| DOC-01 | Review/save Python automation report | Published | Documentation checkpoint dcb145d |
+| DOC-02 | Review/save scope and roadmap | Current cloud revision ready | Version 1.2 scope / 2.2 roadmap; publication pending |
+| DOC-03 | Add navigation and reconcile older README/runbook status wording | Documentation index updated; older README/input runbook follow-up remains | Current index/runbooks plus a later narrow README wording check |
 | DEL-01 | Verify clean PBIX LFS download/open | Open check | Binary obtained, opens, reconnect behavior documented |
 | OPS-01 | Environment and driver setup | Complete | uv/Python/pyodbc and successful connection |
 | OPS-02 | Original reporting validators | Complete | 18 checks and saved mismatch/recovery |
@@ -296,11 +305,11 @@ Use a small board with To do, In progress, Review, and Done, or keep the table b
 | OPS-04 | Five transactional loaders | Complete | Individual live first-load results |
 | OPS-05 | Safe replay and rollback | Complete | Five UNCHANGED actions, department rollback/recovery |
 | OPS-06 | Full coordinator and final validation | Complete | `bfc1763`, seven-stage PASS |
-| CI-01 | Add hosted test workflow | Planned - next | Passing automatic run |
-| CI-02 | Prove failed/corrected CI and optional required-check policy | Planned | Red/green run links and policy record |
-| CLD-01 | Define/export reproducible related subset | Planned | Manifest, counts, and local reference outputs |
-| CLD-02 | BigQuery batch demo and reconciliation | Planned | Matching subset results |
-| DBT-01 | Prove adapter/model compatibility | Conditional | Tiny model build/test succeeds |
+| CI-01 | Add hosted test workflow | Complete | Main run #1 initially passed 53; run #6 at c90c4f0 passed 71 |
+| CI-02 | Prove failed/corrected CI; record optional policy separately | Core complete; merge policy unverified | Run #3 failed one test; run #4 passed all 53 |
+| CLD-01 | Define/export reproducible related subset | Complete; exporter published | c90c4f0, accepted manifest and five matching file fingerprints |
+| CLD-02 | BigQuery batch demo and reconciliation | Checks passed; SQL/docs/evidence publication pending | Five loaded/checked tables; 24/21/10 matching result rows |
+| DBT-01 | Prove adapter/model compatibility | Next gated implementation | Tiny model build/test succeeds within warehouse limits |
 | DBT-02 | Build tested documented models | Planned | Model graph, tests, docs, reconciliation |
 | ML-01 | Add train-label contract/load | Planned | Counts/references/label eligibility verified |
 | ML-02 | Define candidates, cutoffs, and user partitions | Planned | Split/candidate manifest and leakage checks |
@@ -322,7 +331,7 @@ An issue should state the problem, concrete output, acceptance check, dependency
 | Retain validated analytics source | Keep original staging/reporting path | Explicit new-source BI integration is chosen |
 | First CI test framework | Reuse unittest | A concrete testing need justifies another framework |
 | CI host access | Offline checks first; no assumption of laptop access | Isolated SQL integration job is designed |
-| BigQuery vs local fallback | Cloud subset preferred; DuckDB fallback labeled local | Access/adapter proof fails |
+| BigQuery vs local fallback | BigQuery batch demonstration verified; dbt adapter proof next | Use clearly labeled local DuckDB/dbt only if adapter/warehouse constraints block cloud dbt |
 | ML size | Start with measured related customer subset | Memory/runtime supports scaling |
 | ML target | Previously purchased next-order products | Scope expands with new candidate/evaluation design |
 | Scheduling runtime | Separate compatible Linux/WSL2 environment | Stage 7 begins |
@@ -345,7 +354,7 @@ Version pinning is stage-specific. Preserve the accepted ingestion lockfile whil
 | Published image cannot reach SQL Server | Require a real runtime connection smoke proof before release claims |
 | Documentation becomes stale | Update statuses, evidence, links, and PDF after accepted milestones |
 
-**Immediate next implementation after document review/publication:** CI-01, followed by CI-02. This documentation task does not create the workflow, provision cloud resources, schedule jobs, or draft a LinkedIn post.
+**Immediate handoff:** commit/push the current cloud SQL, local reference queries, runbook, screenshot review and planning update; verify the resulting hosted tests. **Next implementation: DBT-01**, a tiny compatible model build/test. CI-01/02 and CLD-01/02 checks are verified. dbt, ML, orchestration, delivery and deployment remain separate milestones; LinkedIn work remains a separate discussion.
 
 Maintain the Markdown files as editable sources. Regenerate the PDFs after content changes. Keep diagrams and their `.mmd` source files beside the documents. The scope states the boundaries; this roadmap states order and acceptance; detailed reports explain completed execution.
 
@@ -360,4 +369,4 @@ Maintain the Markdown files as editable sources. Regenerate the PDFs after conte
 - [R7: Apache Airflow - Docker learning setup](https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html)
 - [R8: GitHub - Continuous deployment](https://docs.github.com/en/actions/get-started/continuous-deployment)
 - [Current implementation checkpoint](https://github.com/Saurabhzambare/instacart-sql-powerbi-analysis/commit/bfc176320df799733f9ef448017c181b6cb842fc)
-- Version history: this version supersedes the roadmap draft prepared on 29 October; earlier remote publication was not established.
+- Version history: the original planning documents were published at dcb145d. This revision records verified CI and BigQuery work through 1 November 2026; its own publication is pending.

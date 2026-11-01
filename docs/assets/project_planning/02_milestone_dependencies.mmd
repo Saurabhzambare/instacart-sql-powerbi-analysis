@@ -1,7 +1,7 @@
 flowchart TD
     BASE["Complete: SQL, BI, local Python"] --> DOC["Review and publish documentation"]
-    DOC --> CI["Next: continuous integration"]
-    CI --> CLOUD["Planned: BigQuery and dbt subset"]
+    DOC --> CI["Complete: continuous integration"]
+    CI --> CLOUD["BigQuery verified; dbt next"]
     CI --> ML["Planned: local ML extension"]
     CLOUD --> GATE["Runtime and task compatibility gate"]
     ML --> GATE

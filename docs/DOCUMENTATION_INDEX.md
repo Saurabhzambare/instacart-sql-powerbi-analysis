@@ -1,28 +1,36 @@
 # Project Documentation Guide
 
 **Owner:** Saurabh Lalit Zambare  
-**Updated:** 31 October 2026
+**Updated:** 1 November 2026
 
 ## Read in this order
 
 | Document | Purpose | Status |
 | --- | --- | --- |
-| [Project scope](PROJECT_SCOPE.md) / [PDF](PROJECT_SCOPE.pdf) | Objectives, dataset boundaries, completed work, exclusions, acceptance policy | Created for review |
-| [Project roadmap v2](PROJECT_ROADMAP.md) / [PDF](PROJECT_ROADMAP.pdf) | Milestone order, technologies, dependencies, backlog and completion checks | Created for review |
-| [SQL technical report](SQL_PROJECT_REPORT.md) | Per-script analytical findings, model and DAX | Existing project document |
-| [Python automation report](PYTHON_AUTOMATION_REPORT.md) / [PDF](PYTHON_AUTOMATION_REPORT.pdf) | Full setup-to-pipeline learning and implementation record | Created in the preceding documentation step; remote addition unverified |
-| [Reporting validation runbook](VALIDATION_RUNBOOK.md) | Operate the separate 18-check reporting workflow | Existing milestone runbook |
-| [Input runbook](INPUT_RUNBOOK.md) | Inspect inputs and enforce recorded fingerprints | Existing milestone runbook; its next-step wording predates loading completion |
-| [Selected validation evidence](validation_evidence/) | Nine retained pass/failure/recovery reports | Committed at bfc1763 |
+| [Project scope](PROJECT_SCOPE.md) / [PDF](PROJECT_SCOPE.pdf) | Dataset boundaries, accepted deliverables, exclusions and evidence policy | v1.2; current cloud update ready for commit |
+| [Project roadmap](PROJECT_ROADMAP.md) / [PDF](PROJECT_ROADMAP.pdf) | Sequence, dependencies, technologies and completion checks | v2.2; CI and cloud checks verified; dbt compatibility next |
+| [SQL technical report](SQL_PROJECT_REPORT.md) | Original full-data SQL, model and DAX findings | Historical analytical checkpoint |
+| [Python automation report](PYTHON_AUTOMATION_REPORT.md) / [PDF](PYTHON_AUTOMATION_REPORT.pdf) | Complete original setup-to-pipeline learning record | Published at dcb145d; retains its original 53-test checkpoint |
+| [Reporting validation runbook](VALIDATION_RUNBOOK.md) | Separate reporting-view quality runner | Established 18-check workflow |
+| [Input runbook](INPUT_RUNBOOK.md) | Source manifest and fingerprint baseline | Existing runbook; earlier next-step wording predates loader completion |
+| [CI runbook](CI_RUNBOOK.md) | Hosted code checks and controlled regression/recovery | Core CI verified; expanded 71-test pass at c90c4f0 |
+| [Cloud subset runbook](CLOUD_SUBSET_RUNBOOK.md) | Deterministic export, safe publication and file fingerprints | Exporter/evidence published at c90c4f0 |
+| [BigQuery runbook](BIGQUERY_RUNBOOK.md) | Schemas, manual loading, quality checks and analytical reconciliation | Five tables and 55 comparison rows verified; current publication pending |
+| [Selected validation evidence](validation_evidence/) | Retained local pass/failure/recovery reports and subset manifest | Original and later accepted checkpoints |
+| [Cloud screenshot review](cloud_evidence/reconciliation_review.json) / [screenshots](cloud_evidence/screenshots/) | Normalized observed results and original screenshot provenance | Manual review, not a database API export or automated parity job |
+
+## Query sources
+
+BigQuery SQL is under `cloud/bigquery/01_...08_*.sql`. SQL Server references are `sql/cloud_subset_orders_by_hour.sql`, `sql/cloud_subset_department_analysis.sql`, and `sql/cloud_subset_top_products.sql`. Keep the eight cloud files and three reference files already created locally; this documentation package does not replace them.
 
 ## Diagram files
 
-Planning documents reference SVGs under `assets/project_planning/`. Matching `.mmd` files are editable Mermaid sources describing the same relationships. Keep these assets beside the Markdown files. The earlier Python report uses its own `assets/python_automation/` folder.
+Scope/roadmap use SVGs under `assets/project_planning/` with matching editable Mermaid `.mmd` sources. The earlier Python report retains its own `assets/python_automation/` folder. Keep relative assets beside the documents.
 
-## Saving this package
+## Saving the current update
 
-Extract the documentation ZIP into the existing repository root. It supplies the scope, updated roadmap, this guide, and planning diagram files under `docs`. Keep the separately delivered Python report and existing SQL/runbook/evidence files in place. Review changes in GitHub Desktop before committing and pushing. This package contains documentation only.
+Extract the package into the repository root, preserving the `docs` hierarchy and replacing matching documentation/diagram files. It contains the updated scope/roadmap Markdown and PDFs, documentation index, subset runbook update, new BigQuery runbook, review JSON, twelve original screenshots and planning assets. Review in GitHub Desktop, then commit/push with the eleven SQL files already staged for the cloud milestone.
 
-## Maintenance
+## Maintenance and next step
 
-After an accepted milestone, update status and evidence links in the scope/roadmap, then regenerate reading copies. Historical evidence stays tied to its original run/commit. Creating documentation does not mean its future implementation is complete. The next implementation milestone after review/publication is CI-01 and CI-02 in the roadmap. LinkedIn work remains a separate discussion.
+Maintain Markdown as the editable source and regenerate reading copies when their content changes. Historical reports retain their named commit and test counts. The current exporter baseline is c90c4f0; the source/docs/evidence from the guided BigQuery phase need the next commit/push verification. After that checkpoint and a passing hosted test run, begin DBT-01 compatibility proof. Older README/input-runbook wording and the independent PBIX delivery smoke check remain narrow follow-ups. LinkedIn remains a separate discussion.

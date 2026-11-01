@@ -1,0 +1,509 @@
+{
+  "record_type": "manual_screenshot_reconciliation_review",
+  "review_date": "2026-11-01",
+  "owner": "Saurabh Lalit Zambare",
+  "status": "PASS_FOR_REVIEWED_CHECKS",
+  "dataset_label": "instacart_cloud_5000_users_v1",
+  "source_export_run_id": "ea95847fec9d4b6b864f0903f7a30a63",
+  "committed_exporter_checkpoint": "c90c4f0666da7d672bff148b031e483b12a9dbb7",
+  "cloud_sql_commit": null,
+  "publication_status": "Cloud SQL files and this evidence package await the next user GitHub Desktop commit.",
+  "project_id": "instacart-analytics-practice",
+  "dataset_id": "instacart_raw",
+  "dataset_location": "US, as configured in guided setup; no separate metadata extract collected",
+  "code_asset_location": "us-central1, as selected in guided setup",
+  "method": "Manually compare paired owner-provided screenshots, transcribe the reviewed results, and normalize displayed percentages to two decimal places. Recompute totals and displayed percentages from the transcribed integers.",
+  "limitations": [
+    "This is a review record, not a database API export or an automated cross-warehouse comparison job.",
+    "No cloud load job IDs, query job IDs or complete cloud schema metadata were collected.",
+    "Reviewed aggregate agreement does not prove identity of every row or every string byte.",
+    "The 5,000 lowest user IDs are a deterministic engineering subset, not a random sample.",
+    "No dbt build, ML model, scheduler or deployment is established by these results."
+  ],
+  "table_validation": {
+    "departments": {
+      "total_rows": 21,
+      "unique_department_ids": 21,
+      "missing_ids": 0,
+      "missing_or_blank_names": 0,
+      "out_of_range_ids": 0
+    },
+    "aisles": {
+      "total_rows": 134,
+      "unique_aisle_ids": 134,
+      "missing_ids": 0,
+      "missing_or_blank_names": 0,
+      "nonpositive_ids": 0
+    },
+    "products": {
+      "total_rows": 28854,
+      "unique_product_ids": 28854,
+      "rows_with_missing_ids": 0,
+      "missing_or_blank_names": 0,
+      "nonpositive_ids": 0,
+      "unmatched_aisles": 0,
+      "unmatched_departments": 0
+    },
+    "orders": {
+      "total_rows": 81832,
+      "unique_order_ids": 81832,
+      "selected_users": 5000,
+      "prior_orders": 76832,
+      "train_orders": 3200,
+      "test_orders": 1800,
+      "rows_with_missing_ids": 0,
+      "nonpositive_ids": 0,
+      "invalid_eval_sets": 0,
+      "invalid_order_numbers": 0,
+      "invalid_day_codes": 0,
+      "invalid_hours": 0,
+      "invalid_gap_logic": 0
+    },
+    "order_products_prior": {
+      "total_rows": 761750,
+      "distinct_orders": 76832,
+      "distinct_products": 28854,
+      "reordered_entries": 448380,
+      "duplicate_pair_groups": 0,
+      "rows_with_missing_ids": 0,
+      "nonpositive_ids": 0,
+      "invalid_cart_positions": 0,
+      "invalid_reordered_flags": 0,
+      "unmatched_orders": 0,
+      "unmatched_products": 0,
+      "entries_linked_to_nonprior_orders": 0
+    }
+  },
+  "comparisons": {
+    "orders_by_hour": {
+      "status": "MATCH",
+      "rows_compared": 24,
+      "canonical_reviewed_rows": [
+        {
+          "order_hour_of_day": 0,
+          "prior_orders": 440
+        },
+        {
+          "order_hour_of_day": 1,
+          "prior_orders": 235
+        },
+        {
+          "order_hour_of_day": 2,
+          "prior_orders": 152
+        },
+        {
+          "order_hour_of_day": 3,
+          "prior_orders": 119
+        },
+        {
+          "order_hour_of_day": 4,
+          "prior_orders": 156
+        },
+        {
+          "order_hour_of_day": 5,
+          "prior_orders": 215
+        },
+        {
+          "order_hour_of_day": 6,
+          "prior_orders": 737
+        },
+        {
+          "order_hour_of_day": 7,
+          "prior_orders": 2078
+        },
+        {
+          "order_hour_of_day": 8,
+          "prior_orders": 4073
+        },
+        {
+          "order_hour_of_day": 9,
+          "prior_orders": 5900
+        },
+        {
+          "order_hour_of_day": 10,
+          "prior_orders": 6559
+        },
+        {
+          "order_hour_of_day": 11,
+          "prior_orders": 6484
+        },
+        {
+          "order_hour_of_day": 12,
+          "prior_orders": 6139
+        },
+        {
+          "order_hour_of_day": 13,
+          "prior_orders": 6263
+        },
+        {
+          "order_hour_of_day": 14,
+          "prior_orders": 6246
+        },
+        {
+          "order_hour_of_day": 15,
+          "prior_orders": 6293
+        },
+        {
+          "order_hour_of_day": 16,
+          "prior_orders": 6073
+        },
+        {
+          "order_hour_of_day": 17,
+          "prior_orders": 5225
+        },
+        {
+          "order_hour_of_day": 18,
+          "prior_orders": 4218
+        },
+        {
+          "order_hour_of_day": 19,
+          "prior_orders": 3166
+        },
+        {
+          "order_hour_of_day": 20,
+          "prior_orders": 2251
+        },
+        {
+          "order_hour_of_day": 21,
+          "prior_orders": 1676
+        },
+        {
+          "order_hour_of_day": 22,
+          "prior_orders": 1293
+        },
+        {
+          "order_hour_of_day": 23,
+          "prior_orders": 841
+        }
+      ],
+      "total_prior_orders": 76832
+    },
+    "department_analysis": {
+      "status": "MATCH",
+      "rows_compared": 21,
+      "canonical_reviewed_rows": [
+        {
+          "department_id": 1,
+          "department": "frozen",
+          "product_entries": 51523,
+          "distinct_orders": 27311,
+          "reordered_entries": 27621,
+          "reorder_rate_pct": "53.61"
+        },
+        {
+          "department_id": 2,
+          "department": "other",
+          "product_entries": 826,
+          "distinct_orders": 776,
+          "reordered_entries": 358,
+          "reorder_rate_pct": "43.34"
+        },
+        {
+          "department_id": 3,
+          "department": "bakery",
+          "product_entries": 28291,
+          "distinct_orders": 21159,
+          "reordered_entries": 17969,
+          "reorder_rate_pct": "63.51"
+        },
+        {
+          "department_id": 4,
+          "department": "produce",
+          "product_entries": 219676,
+          "distinct_orders": 56880,
+          "reordered_entries": 142306,
+          "reorder_rate_pct": "64.78"
+        },
+        {
+          "department_id": 5,
+          "department": "alcohol",
+          "product_entries": 3631,
+          "distinct_orders": 2011,
+          "reordered_entries": 2043,
+          "reorder_rate_pct": "56.27"
+        },
+        {
+          "department_id": 6,
+          "department": "international",
+          "product_entries": 6448,
+          "distinct_orders": 5302,
+          "reordered_entries": 2473,
+          "reorder_rate_pct": "38.35"
+        },
+        {
+          "department_id": 7,
+          "department": "beverages",
+          "product_entries": 63757,
+          "distinct_orders": 34834,
+          "reordered_entries": 41317,
+          "reorder_rate_pct": "64.80"
+        },
+        {
+          "department_id": 8,
+          "department": "pets",
+          "product_entries": 2426,
+          "distinct_orders": 1371,
+          "reordered_entries": 1477,
+          "reorder_rate_pct": "60.88"
+        },
+        {
+          "department_id": 9,
+          "department": "dry goods pasta",
+          "product_entries": 19627,
+          "distinct_orders": 13670,
+          "reordered_entries": 8922,
+          "reorder_rate_pct": "45.46"
+        },
+        {
+          "department_id": 10,
+          "department": "bulk",
+          "product_entries": 845,
+          "distinct_orders": 816,
+          "reordered_entries": 490,
+          "reorder_rate_pct": "57.99"
+        },
+        {
+          "department_id": 11,
+          "department": "personal care",
+          "product_entries": 10930,
+          "distinct_orders": 7792,
+          "reordered_entries": 3684,
+          "reorder_rate_pct": "33.71"
+        },
+        {
+          "department_id": 12,
+          "department": "meat seafood",
+          "product_entries": 16434,
+          "distinct_orders": 13473,
+          "reordered_entries": 9121,
+          "reorder_rate_pct": "55.50"
+        },
+        {
+          "department_id": 13,
+          "department": "pantry",
+          "product_entries": 44107,
+          "distinct_orders": 26262,
+          "reordered_entries": 15432,
+          "reorder_rate_pct": "34.99"
+        },
+        {
+          "department_id": 14,
+          "department": "breakfast",
+          "product_entries": 16600,
+          "distinct_orders": 12185,
+          "reordered_entries": 9118,
+          "reorder_rate_pct": "54.93"
+        },
+        {
+          "department_id": 15,
+          "department": "canned goods",
+          "product_entries": 23918,
+          "distinct_orders": 15441,
+          "reordered_entries": 10741,
+          "reorder_rate_pct": "44.91"
+        },
+        {
+          "department_id": 16,
+          "department": "dairy eggs",
+          "product_entries": 128801,
+          "distinct_orders": 52142,
+          "reordered_entries": 86641,
+          "reorder_rate_pct": "67.27"
+        },
+        {
+          "department_id": 17,
+          "department": "household",
+          "product_entries": 17780,
+          "distinct_orders": 11211,
+          "reordered_entries": 7233,
+          "reorder_rate_pct": "40.68"
+        },
+        {
+          "department_id": 18,
+          "department": "babies",
+          "product_entries": 9365,
+          "distinct_orders": 4094,
+          "reordered_entries": 5363,
+          "reorder_rate_pct": "57.27"
+        },
+        {
+          "department_id": 19,
+          "department": "snacks",
+          "product_entries": 70538,
+          "distinct_orders": 33478,
+          "reordered_entries": 40608,
+          "reorder_rate_pct": "57.57"
+        },
+        {
+          "department_id": 20,
+          "department": "deli",
+          "product_entries": 24514,
+          "distinct_orders": 18137,
+          "reordered_entries": 14766,
+          "reorder_rate_pct": "60.23"
+        },
+        {
+          "department_id": 21,
+          "department": "missing",
+          "product_entries": 1713,
+          "distinct_orders": 1404,
+          "reordered_entries": 697,
+          "reorder_rate_pct": "40.69"
+        }
+      ],
+      "total_product_entries": 761750,
+      "total_reordered_entries": 448380
+    },
+    "top_products": {
+      "status": "MATCH",
+      "rows_compared": 10,
+      "ordering": "prior_orders_with_product DESC, product_id ASC",
+      "canonical_reviewed_rows": [
+        {
+          "product_id": 24852,
+          "product_name": "Banana",
+          "prior_orders_with_product": 10625,
+          "reordered_entries": 8879,
+          "reorder_rate_pct": "83.57"
+        },
+        {
+          "product_id": 13176,
+          "product_name": "Bag of Organic Bananas",
+          "prior_orders_with_product": 8921,
+          "reordered_entries": 7406,
+          "reorder_rate_pct": "83.02"
+        },
+        {
+          "product_id": 21137,
+          "product_name": "Organic Strawberries",
+          "prior_orders_with_product": 6384,
+          "reordered_entries": 4964,
+          "reorder_rate_pct": "77.76"
+        },
+        {
+          "product_id": 21903,
+          "product_name": "Organic Baby Spinach",
+          "prior_orders_with_product": 5570,
+          "reordered_entries": 4246,
+          "reorder_rate_pct": "76.23"
+        },
+        {
+          "product_id": 47209,
+          "product_name": "Organic Hass Avocado",
+          "prior_orders_with_product": 5253,
+          "reordered_entries": 4197,
+          "reorder_rate_pct": "79.90"
+        },
+        {
+          "product_id": 47766,
+          "product_name": "Organic Avocado",
+          "prior_orders_with_product": 3939,
+          "reordered_entries": 2927,
+          "reorder_rate_pct": "74.31"
+        },
+        {
+          "product_id": 47626,
+          "product_name": "Large Lemon",
+          "prior_orders_with_product": 3797,
+          "reordered_entries": 2686,
+          "reorder_rate_pct": "70.74"
+        },
+        {
+          "product_id": 27966,
+          "product_name": "Organic Raspberries",
+          "prior_orders_with_product": 3560,
+          "reordered_entries": 2763,
+          "reorder_rate_pct": "77.61"
+        },
+        {
+          "product_id": 16797,
+          "product_name": "Strawberries",
+          "prior_orders_with_product": 3414,
+          "reordered_entries": 2376,
+          "reorder_rate_pct": "69.60"
+        },
+        {
+          "product_id": 26209,
+          "product_name": "Limes",
+          "prior_orders_with_product": 3348,
+          "reordered_entries": 2291,
+          "reorder_rate_pct": "68.43"
+        }
+      ]
+    }
+  },
+  "screenshots": [
+    {
+      "file": "screenshots/departments_validation.png",
+      "original_attachment": "image(20261031-131514).png",
+      "size_bytes": 271702,
+      "sha256": "7313693136e8c0e85509deba2344e013705b16f7e34d64c90922d8b00111e5c9"
+    },
+    {
+      "file": "screenshots/aisles_validation.png",
+      "original_attachment": "image(20261031-132007).png",
+      "size_bytes": 269458,
+      "sha256": "6e951809d80bc13e8703c068bf0a9bd67d4a7755c747296fcfb58ecfe34168ea"
+    },
+    {
+      "file": "screenshots/products_validation.png",
+      "original_attachment": "image(20261031-133754).png",
+      "size_bytes": 289512,
+      "sha256": "bafc14a6692ceda1ee55ab698c0168bc88a0f8ee5e317f148a4ec7cff796d521"
+    },
+    {
+      "file": "screenshots/orders_counts.png",
+      "original_attachment": "image(20261031-134344).png",
+      "size_bytes": 308097,
+      "sha256": "3904577b10f88a2232ab825759a1acceb1c73e7c1708752438d4a660cdb42b33"
+    },
+    {
+      "file": "screenshots/orders_rules.png",
+      "original_attachment": "image(20261031-134532).png",
+      "size_bytes": 221659,
+      "sha256": "00be732c8ed34e8d4b43de93492270174482aa85914672039c24e379ec2d3ca4"
+    },
+    {
+      "file": "screenshots/prior_entries_validation.png",
+      "original_attachment": "image(20261031-134923).png",
+      "size_bytes": 201875,
+      "sha256": "4648a48d9c89afc1fea4908fd83913b787476ead111a92c9d65c8267ba2a5cd8"
+    },
+    {
+      "file": "screenshots/sqlserver_orders_by_hour.png",
+      "original_attachment": "image(20261031-141439).png",
+      "size_bytes": 84596,
+      "sha256": "b7dbe77669dbeac40811bf86c7a8a6601cd474aea179b455dd2de8ebb428ae58"
+    },
+    {
+      "file": "screenshots/bigquery_orders_by_hour.png",
+      "original_attachment": "image(20261031-141513).png",
+      "size_bytes": 147585,
+      "sha256": "33930292beb6886cae81a93712d95efaa02c45f528789c29be35a15fdd95ebb3"
+    },
+    {
+      "file": "screenshots/sqlserver_department_analysis.png",
+      "original_attachment": "image(20261101-035442).png",
+      "size_bytes": 117736,
+      "sha256": "92bc8b3cc6329fc2f7703b4b8fe55704209d4c331cc5837228c7905ea44bc92f"
+    },
+    {
+      "file": "screenshots/bigquery_department_analysis.png",
+      "original_attachment": "image(20261101-035429).png",
+      "size_bytes": 291052,
+      "sha256": "ccd52860d910b4c8ca4390103d31e60fd4e4daab853095bf63c5f8040b8de12f"
+    },
+    {
+      "file": "screenshots/sqlserver_top_products.png",
+      "original_attachment": "image(20261101-040318).png",
+      "size_bytes": 169986,
+      "sha256": "a8dd3b07d89da1d272b203f62cf3eeb4c5ea85382f889675fa454e92bae8159b"
+    },
+    {
+      "file": "screenshots/bigquery_top_products.png",
+      "original_attachment": "image(20261101-040309).png",
+      "size_bytes": 311624,
+      "sha256": "e13223446cec629cd8cfe969808eebb01f13a9eb422acd1b7e31fd73effb1f59"
+    }
+  ]
+}

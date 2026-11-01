@@ -3,4 +3,4 @@ flowchart TD
     CSV --> NEW["Python loaders: pipeline_staging"]
     OLD --> BI["Existing Power BI report"]
     NEW --> CHECK["Committed-table checks and evidence"]
-    NEW -. "planned branch" .-> FUTURE["Cloud subset or ML features"]
+    CHECK --> CLOUD["Verified: BigQuery raw subset"]

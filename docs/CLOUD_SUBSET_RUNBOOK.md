@@ -2,9 +2,9 @@
 
 **Owner:** Saurabh Lalit Zambare  
 **Prepared:** 31 October 2026  
-**Status:** CLD-01 subset definition/export milestone verified locally. All 71 Windows tests passed; the real SQL Server export passed; all five exported files matched their manifest byte sizes and SHA-256 fingerprints. BigQuery loading and cross-platform reconciliation have not started.  
+**Status:** CLD-01 subset definition/export milestone verified locally. All 71 Windows tests passed; the real SQL Server export passed; all five exported files matched their manifest byte sizes and SHA-256 fingerprints. BigQuery loading and selected analytical reconciliation subsequently passed; see the [BigQuery runbook](BIGQUERY_RUNBOOK.md).  
 **Verified export run:** `ea95847fec9d4b6b864f0903f7a30a63`  
-**Git checkpoint:** Source files and selected evidence are ready for commit; the new hosted CI run is pending push.
+**Git checkpoint:** Exporter and selected evidence were committed/pushed at `c90c4f0`; [hosted run #6](https://github.com/Saurabhzambare/instacart-sql-powerbi-analysis/actions/runs/41203173411) passed all 71 tests. Later BigQuery SQL/docs/evidence have their own pending checkpoint.
 
 ## Purpose and selection
 
@@ -135,7 +135,7 @@ Existing output folders are refused instead of overwritten. For a second intenti
 
 A log-write failure can occur after output publication; the command returns 1 and prints the already-published manifest path. Inspect that state before retrying. Closing the database connection removes session-local temporary tables. No permanent source data is deleted, inserted, or updated by this exporter.
 
-The unit tests use fixtures and mock SQL results. The successful Windows export provides the separate SQL Server integration check. BigQuery setup, cloud upload, reconciliation, and dbt are later steps.
+The unit tests use fixtures and mock SQL results. The successful Windows export provides the separate SQL Server integration check. BigQuery loading and selected analytical reconciliation subsequently passed in the owner session; see the [BigQuery runbook](BIGQUERY_RUNBOOK.md). dbt remains a later step.
 
 ## Temporary-table scope correction
 
@@ -156,7 +156,7 @@ The following results were verified through the owner's Windows terminal output 
 | Check | Verified outcome | Preserved evidence |
 | --- | --- | --- |
 | Original capture | ERROR 208, missing `#cloud_users`, exit 1 | [Failed capture report](validation_evidence/cloud_export_temp_scope_fail.json), run `fa8d28eaaef94e56aaf3634de19bc322` |
-| Unit tests after correction | 71 tests, OK, exit 0 | Recorded Windows terminal output; hosted CI for this change pending push |
+| Unit tests after correction | 71 tests, OK, exit 0 | Recorded Windows terminal output; hosted run #6 at c90c4f0 passed all 71 tests |
 | Real SQL Server export | PASS, five expected file counts, exit 0 | [Recovery report](validation_evidence/cloud_export_recovery_pass.json), run `ea95847fec9d4b6b864f0903f7a30a63` |
 | Manifest | Label `instacart_cloud_5000_users_v1`, PASS, matching recovery run ID | [Accepted manifest copy](validation_evidence/cloud_subset_manifest.json) |
 | Saved file integrity | All five byte sizes and SHA-256 fingerprints match | Recorded PowerShell verification table; the manifest contains the expected sizes and hashes |
@@ -165,6 +165,9 @@ The CSVs remain at `D:\DataProjects\Instacart\exports\cloud_5000_users_v1`, outs
 
 ## Roadmap handoff
 
+**Update through 1 November 2026:** CLD-01 is published at c90c4f0 with a 71-test hosted pass. CLD-02 loading, table checks and three analytical comparisons subsequently passed in the owner session; [current BigQuery evidence](cloud_evidence/reconciliation_review.json) and SQL source publication are pending the next commit. DBT-01 compatibility proof follows that checkpoint. The paragraph below records the historical handoff from the export stage.
+
 CLD-01's subset definition and export are complete locally. Existing SQL preview metrics provide the initial local reference counts. After the Git checkpoint, confirm the expanded test suite passes in GitHub Actions. Then proceed to CLD-02: set up the BigQuery practice environment, select explicit load schemas and matching CSV options, load these exact five files, and reconcile table counts, relationships, and selected analytical results with SQL Server on the same subset. Define and preserve any additional analytical reference outputs during that reconciliation work.
 
 BigQuery upload, cloud query results, dbt, model training, scheduling, and deployment are not outcomes of this milestone. The full Python automation report and earlier hosted CI evidence remain historical records of their named checkpoints and test counts.
+
