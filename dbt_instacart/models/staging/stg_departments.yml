@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: stg_departments
+    description: "Department lookup exposed as a dbt staging view."
+
+    columns:
+      - name: department_id
+        description: "Unique identifier for an Instacart department."
+        data_tests:
+          - not_null
+          - unique
+
+      - name: department
+        description: "Department name from the source dataset."

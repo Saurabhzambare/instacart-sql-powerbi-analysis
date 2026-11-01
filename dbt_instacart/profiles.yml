@@ -1,0 +1,14 @@
+instacart_bigquery:
+  target: dev
+
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: instacart-analytics-practice
+      dataset: instacart_dbt
+      location: US
+      threads: 1
+      priority: interactive
+      job_execution_timeout_seconds: 300
+      job_retries: 1

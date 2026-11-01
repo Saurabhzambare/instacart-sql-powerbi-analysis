@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: instacart_raw
+    description: "Verified Instacart cloud subset uploaded to BigQuery."
+    database: instacart-analytics-practice
+    schema: instacart_raw
+
+    tables:
+      - name: departments
+        description: "Complete lookup containing the 21 Instacart departments."

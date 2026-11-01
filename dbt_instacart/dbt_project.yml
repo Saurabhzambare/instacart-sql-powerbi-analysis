@@ -1,0 +1,17 @@
+name: instacart_dbt
+version: "1.0.0"
+config-version: 2
+
+profile: instacart_bigquery
+
+require-dbt-version: [">=1.12.6", "<1.13.0"]
+
+model-paths: ["models"]
+
+clean-targets:
+  - target
+  - dbt_packages
+
+models:
+  instacart_dbt:
+    +materialized: view
