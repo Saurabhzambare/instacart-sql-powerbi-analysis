@@ -8,6 +8,8 @@ require-dbt-version: [">=1.12.6", "<1.13.0"]
 
 model-paths: ["models"]
 
+test-paths: ["tests"]
+
 clean-targets:
   - target
   - dbt_packages

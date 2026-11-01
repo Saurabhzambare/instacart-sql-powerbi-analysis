@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: stg_products
+    description: "Product lookup for the verified 5,000-user cloud subset."
+
+    columns:
+      - name: product_id
+        description: "Unique identifier for an Instacart product."
+        data_tests:
+          - not_null
+          - unique
+
+      - name: product_name
+        description: "Product name from the source dataset."
+        data_tests:
+          - not_null
+
+      - name: aisle_id
+        description: "Identifier of the aisle containing the product."
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_aisles')
+                field: aisle_id
+
+      - name: department_id
+        description: "Identifier of the department containing the product."
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_departments')
+                field: department_id

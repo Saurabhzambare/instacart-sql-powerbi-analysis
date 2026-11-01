@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: stg_aisles
+    description: "Complete aisle lookup exposed as a dbt staging view."
+
+    columns:
+      - name: aisle_id
+        description: "Unique identifier for an Instacart aisle."
+        data_tests:
+          - not_null
+          - unique
+
+      - name: aisle
+        description: "Aisle name from the source dataset."
+        data_tests:
+          - not_null

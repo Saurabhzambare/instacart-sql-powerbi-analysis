@@ -9,3 +9,15 @@ sources:
     tables:
       - name: departments
         description: "Complete lookup containing the 21 Instacart departments."
+
+      - name: aisles
+        description: "Complete lookup containing the 134 Instacart aisles."
+
+      - name: products
+        description: "Products referenced by prior entries in the 5,000-user subset."
+
+      - name: orders
+        description: "All prior, train, and test orders for the selected 5,000 users."
+
+      - name: order_products_prior
+        description: "Prior order-product entries for the selected 5,000 users."

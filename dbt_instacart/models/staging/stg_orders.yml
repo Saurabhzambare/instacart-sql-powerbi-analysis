@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: "All orders for the verified 5,000-user cloud subset."
+
+    columns:
+      - name: order_id
+        description: "Unique identifier for an order."
+        data_tests:
+          - not_null
+          - unique
+
+      - name: user_id
+        description: "Identifier of the user who placed the order."
+        data_tests:
+          - not_null
+
+      - name: eval_set
+        description: "Dataset assignment: prior, train, or test."
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['prior', 'train', 'test']
+
+      - name: order_number
+        description: "Sequence number of the order within the user's history."
+        data_tests:
+          - not_null
+
+      - name: order_dow
+        description: "Source day code from 0 to 6."
+        data_tests:
+          - not_null
+
+      - name: order_hour_of_day
+        description: "Hour of the order from 0 to 23."
+        data_tests:
+          - not_null
+
+      - name: days_since_prior_order
+        description: "Gap since the preceding order; null for the first order."

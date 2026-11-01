@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: stg_order_products_prior
+    description: "One row per product within a selected user's prior order."
+
+    columns:
+      - name: order_id
+        description: "Order containing the product; part of the composite key."
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_orders')
+                field: order_id
+
+      - name: product_id
+        description: "Product in the order; part of the composite key."
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_products')
+                field: product_id
+
+      - name: add_to_cart_order
+        description: "Position at which the product was added to the cart."
+        data_tests:
+          - not_null
+
+      - name: reordered
+        description: "1 if the user previously ordered this product; otherwise 0."
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [0, 1]
+                quote: false

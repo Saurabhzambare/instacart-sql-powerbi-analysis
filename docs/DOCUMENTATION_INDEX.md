@@ -16,6 +16,7 @@
 | [CI runbook](CI_RUNBOOK.md) | Hosted code checks and controlled regression/recovery | Core CI verified; expanded 71-test pass at c90c4f0 |
 | [Cloud subset runbook](CLOUD_SUBSET_RUNBOOK.md) | Deterministic export, safe publication and file fingerprints | Exporter/evidence published at c90c4f0 |
 | [BigQuery runbook](BIGQUERY_RUNBOOK.md) | Schemas, manual loading, quality checks and analytical reconciliation | Five tables and 55 comparison rows verified; current publication pending |
+| [DBT staging runbook](DBT_RUNBOOK.md) | Setup, staging views, data tests and troubleshooting | Five views and 33 tests passed; PASS=38 |
 | [Selected validation evidence](validation_evidence/) | Retained local pass/failure/recovery reports and subset manifest | Original and later accepted checkpoints |
 | [Cloud screenshot review](cloud_evidence/reconciliation_review.json) / [screenshots](cloud_evidence/screenshots/) | Normalized observed results and original screenshot provenance | Manual review, not a database API export or automated parity job |
 
