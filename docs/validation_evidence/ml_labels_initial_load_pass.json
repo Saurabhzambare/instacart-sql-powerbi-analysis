@@ -1,0 +1,89 @@
+{
+  "run_id": "51c2b0ed2dfa4d33966fd1c1a8f048e1",
+  "started_at_utc": "2026-11-02T05:45:57.475094+00:00",
+  "target": "pipeline_ml.train_labels_5000_users_v1",
+  "transaction_outcome": "COMMITTED",
+  "action": "REPLACED",
+  "rows_written": 33782,
+  "target_write_attempted": true,
+  "simulate_failure": false,
+  "dataset_label": "instacart_ml_5000_users_v1",
+  "source_file": "D:\\DataProjects\\data-download\\order_products__train.csv",
+  "input_specification": "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\config\\ml_train_labels_spec.json",
+  "load_specification": "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\config\\ml_train_labels_load_spec.json",
+  "source_sha256": "d27c4034883051c85e37c2cb0379fecbbeccad932970e171461aa99f18f75aea",
+  "expected_selected_label_observations": {
+    "label_entries": 33782,
+    "target_orders": 3200,
+    "distinct_products": 9850,
+    "historically_reordered_entries": 20229
+  },
+  "input_before_bulk": {
+    "file": "order_products__train.csv",
+    "status": "PASS",
+    "size_bytes": 24680147,
+    "header": [
+      "order_id",
+      "product_id",
+      "add_to_cart_order",
+      "reordered"
+    ],
+    "sha256": "d27c4034883051c85e37c2cb0379fecbbeccad932970e171461aa99f18f75aea",
+    "expected_size_bytes": 24680147,
+    "expected_sha256": "d27c4034883051c85e37c2cb0379fecbbeccad932970e171461aa99f18f75aea"
+  },
+  "database": "InstacartAnalytics",
+  "server": "Saurabh",
+  "input_after_bulk": {
+    "file": "order_products__train.csv",
+    "status": "PASS",
+    "size_bytes": 24680147,
+    "header": [
+      "order_id",
+      "product_id",
+      "add_to_cart_order",
+      "reordered"
+    ],
+    "sha256": "d27c4034883051c85e37c2cb0379fecbbeccad932970e171461aa99f18f75aea",
+    "expected_size_bytes": 24680147,
+    "expected_sha256": "d27c4034883051c85e37c2cb0379fecbbeccad932970e171461aa99f18f75aea"
+  },
+  "checks": {
+    "rows": 1384617,
+    "invalid_rows": 0,
+    "distinct_train_orders": 131209,
+    "duplicate_order_product_groups": 0,
+    "duplicate_order_cart_groups": 0,
+    "missing_train_orders": 0,
+    "missing_products": 0,
+    "train_orders_without_labels": 0,
+    "selected_users": 5000,
+    "selected_train_orders": 3200,
+    "selected_train_users": 3200
+  },
+  "selected_label_observations": {
+    "label_entries": 33782,
+    "target_orders": 3200,
+    "distinct_products": 9850,
+    "historically_reordered_entries": 20229
+  },
+  "expected_metrics": {
+    "label_entries": 33782,
+    "selected_train_users": 3200,
+    "target_orders": 3200,
+    "distinct_products": 9850,
+    "historically_reordered_entries": 20229
+  },
+  "target_rows_before": 0,
+  "rows_inserted_in_transaction": 33782,
+  "target_metrics": {
+    "label_entries": 33782,
+    "selected_train_users": 3200,
+    "target_orders": 3200,
+    "distinct_products": 9850,
+    "historically_reordered_entries": 20229
+  },
+  "status": "PASS",
+  "ended_at_utc": "2026-11-02T05:46:03.933534+00:00",
+  "duration_seconds": 6.458
+}

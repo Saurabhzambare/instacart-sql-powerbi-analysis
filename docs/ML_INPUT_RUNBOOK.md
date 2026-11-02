@@ -211,3 +211,33 @@ Evidence: [Successful live validation report](validation_evidence/ml_train_label
 
 Candidate generation, feature creation, train/validation/test
 splitting, and model training are still pending.
+
+## Verified live results — 2 November 2026
+
+All 118 Python tests passed on the local Windows machine.
+
+The permanent table pipeline_ml.train_labels_5000_users_v1
+was loaded and checked successfully.
+
+| Check | Verified result |
+|---|---|
+| Initial load | PASS, REPLACED, 33,782 rows written, COMMITTED |
+| Unchanged rerun | PASS, UNCHANGED, zero rows written, COMMITTED |
+| Deliberate failure | FAIL, SIMULATED_FAILURE, ROLLED_BACK |
+| Recovery rerun | PASS, UNCHANGED, zero rows written, COMMITTED |
+
+After rollback, SSMS confirmed 33,782 entries, 3,200 customers,
+3,200 target orders, 9,850 distinct products, and 20,229 entries
+marked as previously purchased.
+
+All six quality-check counts were zero.
+
+Evidence:
+
+- [Initial load](validation_evidence/ml_labels_initial_load_pass.json)
+- [Unchanged rerun](validation_evidence/ml_labels_unchanged_rerun_pass.json)
+- [Expected rollback failure](validation_evidence/ml_labels_rollback_expected_failure.json)
+- [Recovery](validation_evidence/ml_labels_rollback_recovery_pass.json)
+
+Candidate generation, historical features, customer splits,
+and model training remain pending.

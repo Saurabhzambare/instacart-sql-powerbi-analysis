@@ -1,0 +1,13 @@
+{
+  "dataset_label": "instacart_ml_5000_users_v1",
+  "source_dataset_label": "instacart_ml_train_labels_v1",
+  "source_sha256": "d27c4034883051c85e37c2cb0379fecbbeccad932970e171461aa99f18f75aea",
+  "target": "pipeline_ml.train_labels_5000_users_v1",
+  "selected_users": 5000,
+  "selected_train_users": 3200,
+  "label_entries": 33782,
+  "target_orders": 3200,
+  "distinct_products": 9850,
+  "historically_reordered_entries": 20229,
+  "evidence": "docs/validation_evidence/ml_train_labels_validation_pass.json"
+}

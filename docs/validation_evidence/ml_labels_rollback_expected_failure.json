@@ -1,0 +1,83 @@
+{
+  "run_id": "26ba7971ba0e42c592224b1365255fcd",
+  "started_at_utc": "2026-11-02T06:21:26.750228+00:00",
+  "target": "pipeline_ml.train_labels_5000_users_v1",
+  "transaction_outcome": "ROLLED_BACK",
+  "action": "SIMULATED_FAILURE",
+  "rows_written": 0,
+  "target_write_attempted": true,
+  "simulate_failure": true,
+  "dataset_label": "instacart_ml_5000_users_v1",
+  "source_file": "D:\\DataProjects\\data-download\\order_products__train.csv",
+  "input_specification": "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\config\\ml_train_labels_spec.json",
+  "load_specification": "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\config\\ml_train_labels_load_spec.json",
+  "source_sha256": "d27c4034883051c85e37c2cb0379fecbbeccad932970e171461aa99f18f75aea",
+  "expected_selected_label_observations": {
+    "label_entries": 33782,
+    "target_orders": 3200,
+    "distinct_products": 9850,
+    "historically_reordered_entries": 20229
+  },
+  "input_before_bulk": {
+    "file": "order_products__train.csv",
+    "status": "PASS",
+    "size_bytes": 24680147,
+    "header": [
+      "order_id",
+      "product_id",
+      "add_to_cart_order",
+      "reordered"
+    ],
+    "sha256": "d27c4034883051c85e37c2cb0379fecbbeccad932970e171461aa99f18f75aea",
+    "expected_size_bytes": 24680147,
+    "expected_sha256": "d27c4034883051c85e37c2cb0379fecbbeccad932970e171461aa99f18f75aea"
+  },
+  "database": "InstacartAnalytics",
+  "server": "Saurabh",
+  "input_after_bulk": {
+    "file": "order_products__train.csv",
+    "status": "PASS",
+    "size_bytes": 24680147,
+    "header": [
+      "order_id",
+      "product_id",
+      "add_to_cart_order",
+      "reordered"
+    ],
+    "sha256": "d27c4034883051c85e37c2cb0379fecbbeccad932970e171461aa99f18f75aea",
+    "expected_size_bytes": 24680147,
+    "expected_sha256": "d27c4034883051c85e37c2cb0379fecbbeccad932970e171461aa99f18f75aea"
+  },
+  "checks": {
+    "rows": 1384617,
+    "invalid_rows": 0,
+    "distinct_train_orders": 131209,
+    "duplicate_order_product_groups": 0,
+    "duplicate_order_cart_groups": 0,
+    "missing_train_orders": 0,
+    "missing_products": 0,
+    "train_orders_without_labels": 0,
+    "selected_users": 5000,
+    "selected_train_orders": 3200,
+    "selected_train_users": 3200
+  },
+  "selected_label_observations": {
+    "label_entries": 33782,
+    "target_orders": 3200,
+    "distinct_products": 9850,
+    "historically_reordered_entries": 20229
+  },
+  "expected_metrics": {
+    "label_entries": 33782,
+    "selected_train_users": 3200,
+    "target_orders": 3200,
+    "distinct_products": 9850,
+    "historically_reordered_entries": 20229
+  },
+  "target_rows_before": 33782,
+  "status": "FAIL",
+  "error": "Deliberate failure after clearing the ML target; rollback requested.",
+  "error_type": "SimulatedMLLoadFailure",
+  "ended_at_utc": "2026-11-02T06:21:42.569780+00:00",
+  "duration_seconds": 15.819
+}

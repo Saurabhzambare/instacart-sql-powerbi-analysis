@@ -17,6 +17,7 @@
 | [Cloud subset runbook](CLOUD_SUBSET_RUNBOOK.md) | Deterministic export, safe publication and file fingerprints | Exporter/evidence published at c90c4f0 |
 | [BigQuery runbook](BIGQUERY_RUNBOOK.md) | Schemas, manual loading, quality checks and analytical reconciliation | Five tables and 55 comparison rows verified; published at 2ee57cc |
 | [dbt staging and marts runbook](DBT_RUNBOOK.md) | Setup, every dbt file and test, analytical models, evidence, operation and troubleshooting | Live complete build: eight views and 56 tests passed; PASS=64; final analytical-extension publication is the next checkpoint |
+| [ML label loading runbook](ML_LABEL_LOADING_RUNBOOK.md) | Permanent ML labels, unchanged reruns and rollback recovery | Verified locally; 118 Python tests passed |
 | [Selected validation evidence](validation_evidence/) | Retained pass/failure/recovery reports, manifest and dbt catalogs | Earlier snapshots remain historical; archive the complete dbt report/catalog using the runbook |
 | [Cloud screenshot review](cloud_evidence/reconciliation_review.json) / [screenshots](cloud_evidence/screenshots/) | Recorded aggregate results and original screenshot provenance | Historical manual review; fixed values now also support three passing dbt regression tests |
 
