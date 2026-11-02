@@ -1,0 +1,15 @@
+{
+  "dataset_label": "instacart_ml_train_labels_v1",
+  "file": "order_products__train.csv",
+  "columns": ["order_id", "product_id", "add_to_cart_order", "reordered"],
+  "rows": 1384617,
+  "size_bytes": 24680147,
+  "sha256": "d27c4034883051c85e37c2cb0379fecbbeccad932970e171461aa99f18f75aea",
+  "full_train_orders": 131209,
+  "subset": {
+    "dataset_label": "instacart_ml_5000_users_v1",
+    "selection": "lowest_user_ids",
+    "selected_users": 5000,
+    "selected_train_users": 3200
+  }
+}

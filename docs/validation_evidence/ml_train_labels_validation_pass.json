@@ -1,0 +1,63 @@
+{
+  "run_id": "acc3b57d78b2409f971fb1f0c3f89737",
+  "started_at_utc": "2026-11-02T04:43:37.619802+00:00",
+  "scope": "train_label_input_and_selected_user_eligibility",
+  "permanent_table_writes": false,
+  "transaction_outcome": "COMMITTED",
+  "dataset_label": "instacart_ml_train_labels_v1",
+  "subset_label": "instacart_ml_5000_users_v1",
+  "specification": "D:\\DataProjects\\Instacart\\instacart-sql-powerbi-analysis\\config\\ml_train_labels_spec.json",
+  "source_file": "D:\\DataProjects\\data-download\\order_products__train.csv",
+  "input_before_bulk": {
+    "file": "order_products__train.csv",
+    "status": "PASS",
+    "size_bytes": 24680147,
+    "header": [
+      "order_id",
+      "product_id",
+      "add_to_cart_order",
+      "reordered"
+    ],
+    "sha256": "d27c4034883051c85e37c2cb0379fecbbeccad932970e171461aa99f18f75aea",
+    "expected_size_bytes": 24680147,
+    "expected_sha256": "d27c4034883051c85e37c2cb0379fecbbeccad932970e171461aa99f18f75aea"
+  },
+  "database": "InstacartAnalytics",
+  "server": "Saurabh",
+  "input_after_bulk": {
+    "file": "order_products__train.csv",
+    "status": "PASS",
+    "size_bytes": 24680147,
+    "header": [
+      "order_id",
+      "product_id",
+      "add_to_cart_order",
+      "reordered"
+    ],
+    "sha256": "d27c4034883051c85e37c2cb0379fecbbeccad932970e171461aa99f18f75aea",
+    "expected_size_bytes": 24680147,
+    "expected_sha256": "d27c4034883051c85e37c2cb0379fecbbeccad932970e171461aa99f18f75aea"
+  },
+  "checks": {
+    "rows": 1384617,
+    "invalid_rows": 0,
+    "distinct_train_orders": 131209,
+    "duplicate_order_product_groups": 0,
+    "duplicate_order_cart_groups": 0,
+    "missing_train_orders": 0,
+    "missing_products": 0,
+    "train_orders_without_labels": 0,
+    "selected_users": 5000,
+    "selected_train_orders": 3200,
+    "selected_train_users": 3200
+  },
+  "selected_label_observations": {
+    "label_entries": 33782,
+    "target_orders": 3200,
+    "distinct_products": 9850,
+    "historically_reordered_entries": 20229
+  },
+  "status": "PASS",
+  "ended_at_utc": "2026-11-02T04:43:42.780723+00:00",
+  "duration_seconds": 5.161
+}
