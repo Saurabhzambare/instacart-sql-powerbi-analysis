@@ -4,6 +4,8 @@ I analysed **3.21 million historical orders** and **32.43 million order-product 
 
 **Tools:** SQL Server · SSMS · Power Query · Power BI Desktop · DAX · GitHub
 
+A separate [Python reorder prediction milestone](#reorder-prediction-ml-v1) builds on the historical analysis.
+
 ## Key findings
 
 | Question | Finding |
@@ -38,6 +40,19 @@ Day/hour heatmap, daily ordering totals and the basket-size distribution.
 ![Ordering and basket report](docs/images/ordering_baskets.png)
 
 **Interactions:** Day Code is synced across all three pages. Department applies only on Products & Reordering. Product filters flow to OrderProducts; they do not flow back to Orders. Penetration uses all prior orders in the selected day context as its denominator.
+
+## Reorder Prediction (ML v1)
+
+I trained a Python logistic regression model to rank products a customer had already purchased by how likely they were to reorder them. It uses past purchase counts, the share of prior orders containing each product, and how many orders have passed since the last purchase.
+
+Both approaches made 4,646 predictions across 480 held-out orders, with up to 10 recommendations per order. Customers were separated across training, validation and test sets.
+
+| Test metric | Purchase-frequency baseline | Logistic regression |
+|---|---:|---:|
+| Correct reorders identified (out of 3,012) | 1,352 | **1,390** |
+| Mean per-order F1 | 0.3336 | **0.3424** |
+
+See the [evaluation script](scripts/evaluate_ml_test_v1.py) and [held-out test metrics](validation_evidence/ml_reorder_v1_test_metrics.json). These results are from the project's held-out split.
 
 ## Data and scope
 
@@ -106,6 +121,6 @@ CSV data, database backups and the Desktop binary are not included in the docume
 
 This project demonstrates SQL joins, CTEs, aggregation, safe percentage calculations, data-quality checks, reporting grains, Power Query, Power BI relationships, DAX and filter context. Students can extend the practice by explaining the difference between order penetration and reorder rate, reproducing filtered checks, and explaining why distinct-order totals cannot be added across products.
 
-The local SQL and Power BI work is complete for this milestone. Power BI Service publication, scheduled refresh and predictive modelling are outside its scope.
+The SQL and Power BI milestone covers local reporting. Power BI Service publication and scheduled refresh are outside its scope. Reorder prediction is documented separately above.
 
 **Author:** [Saurabh Zambare](https://github.com/Saurabhzambare)
