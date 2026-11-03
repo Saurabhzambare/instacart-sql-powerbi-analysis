@@ -1,0 +1,35 @@
+{
+  "source": "pipeline_ml.reorder_candidates_v1",
+  "fit_split": "train",
+  "evaluated_split": "test",
+  "top_k": 10,
+  "training_rows": 139878,
+  "test_rows": 29734,
+  "feature_order": [
+    "prior_purchase_count",
+    "prior_purchase_count / (target_order_number - 1)",
+    "target_order_number - last_prior_order_number"
+  ],
+  "versions": {
+    "python": "3.14.3",
+    "scikit-learn": "1.9.1",
+    "joblib": "1.6.0",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1"
+  },
+  "frequency": {
+    "orders": 480,
+    "actual": 3012,
+    "predicted": 4646,
+    "correct": 1352,
+    "mean_order_f1": 0.3336437374375808
+  },
+  "logistic": {
+    "orders": 480,
+    "actual": 3012,
+    "predicted": 4646,
+    "correct": 1390,
+    "mean_order_f1": 0.34239283504381207
+  },
+  "mean_order_f1_gain": 0.00874909760623127
+}
