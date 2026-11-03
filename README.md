@@ -52,7 +52,7 @@ Both approaches made 4,646 predictions across 480 held-out orders, with up to 10
 | Correct reorders identified (out of 3,012) | 1,352 | **1,390** |
 | Mean per-order F1 | 0.3336 | **0.3424** |
 
-See the [evaluation script](scripts/evaluate_ml_test_v1.py) and [held-out test metrics](validation_evidence/ml_reorder_v1_test_metrics.json). These results are from the project's held-out split.
+See the [evaluation script](scripts/evaluate_ml_test_v1.py) and [held-out test metrics](docs/validation_evidence/ml_reorder_v1_test_metrics.json). These results are from the project's held-out split.
 
 ## Data and scope
 
