@@ -4,7 +4,9 @@ I analysed **3.21 million historical orders** and **32.43 million order-product 
 
 **Tools:** SQL Server · SSMS · Power Query · Power BI Desktop · DAX · GitHub
 
-A separate [Python reorder prediction milestone](#reorder-prediction-ml-v1) builds on the historical analysis.
+The report answers two different product questions. **Order penetration** measures how often an item appears across prior orders in the selected day context. **Reorder rate** measures how often that item’s entries are marked as repeats. Together they show purchase reach and repeat purchasing at the product-entry level. I reconciled the Power BI totals with the SQL reporting views before comparing products and departments.
+
+See the [report preview](#report-preview), [data validation](#workflow-and-validation), and [Python reorder prediction evaluation](#reorder-prediction-ml-v1).
 
 ## Key findings
 
