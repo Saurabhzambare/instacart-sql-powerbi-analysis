@@ -27,13 +27,17 @@ The frequency baseline found 1,352. Both made 4,646 predictions.
 Mean order F1 gives each order equal weight and accounts for both missed repeat
 purchases and extra guesses. The observed test improvement was +0.008749.
 
+## Intended use and limitations
+
+This offline prototype ranks previously purchased products for a customer's next order. It cannot recommend products outside that customer's purchase history. The evaluation covers the recorded cohort of labeled customers from the public dataset and reports an absolute mean per-order F1 change of 0.008749. No online experiment, adoption, sales lift, or production performance was measured. A deployment decision would need evaluation on a representative future cohort and a plan for new products and customers.
+
 ## Reproduce the test comparison
 
 Run from the repository root:
 
     uv run --with "scikit-learn==1.9.1" python -m scripts.evaluate_ml_test_v1
 
-    ## Reproduce the model export
+## Reproduce the model export
 
 Run from the repository root.
 

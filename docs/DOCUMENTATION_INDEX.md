@@ -1,9 +1,17 @@
 # Project Documentation Guide
 
 **Owner:** Saurabh Lalit Zambare  
-**Updated:** 1 November 2026
+**Updated:** 11 November 2026
 
-## Read in this order
+## Start with the milestone you need
+
+| Milestone | Entry point | Evidence |
+|---|---|---|
+| Local SQL Server and Power BI | [SQL technical report](SQL_PROJECT_REPORT.md) and [reporting specification](PRODUCTS_REORDERING_SPEC.md) | Full historical prior cohort, KPI definitions, dashboard filters, and reconciliation |
+| BigQuery and dbt | [Cloud subset](CLOUD_SUBSET_RUNBOOK.md), [BigQuery](BIGQUERY_RUNBOOK.md), and [dbt](DBT_RUNBOOK.md) runbooks | Deterministic subset, published models, reference checks, and recorded build |
+| Reorder prediction | [ML results](ML_REORDER_RESULTS.md) | Customer-disjoint evaluation and recorded model export |
+
+## Supporting documents
 
 | Document | Purpose | Status |
 |---|---|---|
@@ -16,7 +24,7 @@
 | [CI runbook](CI_RUNBOOK.md) | Hosted Python checks and controlled regression/recovery | Core CI verified; 71 Python tests also passed for f800de2 |
 | [Cloud subset runbook](CLOUD_SUBSET_RUNBOOK.md) | Deterministic export, safe publication and file fingerprints | Exporter/evidence published at c90c4f0 |
 | [BigQuery runbook](BIGQUERY_RUNBOOK.md) | Schemas, manual loading, quality checks and analytical reconciliation | Five tables and 55 comparison rows verified; published at 2ee57cc |
-| [dbt staging and marts runbook](DBT_RUNBOOK.md) | Setup, every dbt file and test, analytical models, evidence, operation and troubleshooting | Live complete build: eight views and 56 tests passed; PASS=64; final analytical-extension publication is the next checkpoint |
+| [dbt staging and marts runbook](DBT_RUNBOOK.md) | Setup, every dbt file and test, analytical models, evidence, operation and troubleshooting | Live complete build: eight views and 56 tests passed; PASS=64; see the retained build report and catalog |
 | [ML label loading runbook](ML_LABEL_LOADING_RUNBOOK.md) | Permanent ML labels, unchanged reruns and rollback recovery | Verified locally; 118 Python tests passed |
 | [Selected validation evidence](validation_evidence/) | Retained pass/failure/recovery reports, manifest and dbt catalogs | Earlier snapshots remain historical; archive the complete dbt report/catalog using the runbook |
 | [Cloud screenshot review](cloud_evidence/reconciliation_review.json) / [screenshots](cloud_evidence/screenshots/) | Recorded aggregate results and original screenshot provenance | Historical manual review; fixed values now also support three passing dbt regression tests |
@@ -51,9 +59,9 @@ Scope/roadmap SVGs and editable Mermaid sources are under `assets/project_planni
 | 2ee57cc | BigQuery loading and SQL reconciliation published |
 | b6d7a5e | Initial dbt departments model, tests and connection proof published |
 | f800de2 | Five staging views and 33 tests published; hosted Python CI run #9 passed all 71 tests |
-| Current local analytical extension | Eight views and 56 tests passed in one complete build, exit code 0; all three supplied mart query results match the reference |
+| Recorded analytical extension | Eight views and 56 tests passed in one complete build, exit code 0; all three supplied mart query results match the reference |
 
-Preserve `dbt_project_build_pass.json`, refresh the catalog expecting eight model views and five source tables, and save `dbt_project_catalog.json` before the next Git review. The runbook provides the commands. Verify the final commit, push and hosted Python CI after publication.
+The recorded [dbt build](validation_evidence/dbt_project_build_pass.json) and [catalog](validation_evidence/dbt_project_catalog.json) are committed evidence. For a new run, follow the dbt runbook.
 
 ## Maintenance and next work
 
