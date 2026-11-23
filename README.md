@@ -2,13 +2,23 @@
 
 I analysed **3.21 million historical orders** and **32.43 million order-product entries** to investigate product popularity, repeat purchasing, ordering patterns and basket sizes. I built a validated SQL reporting layer and a three-page interactive Power BI report.
 
-**Tools:** SQL Server · SSMS · Power Query · Power BI Desktop · DAX · GitHub
+**Tools:** SQL Server · SSMS · Power Query · Power BI Desktop · DAX · Python · scikit-learn · BigQuery · dbt · GitHub
 
 The report answers two different product questions. **Order penetration** measures how often an item appears across prior orders in the selected day context. **Reorder rate** measures how often that item’s entries are marked as repeats. Together they show purchase reach and repeat purchasing at the product-entry level. I reconciled the Power BI totals with the SQL reporting views before comparing products and departments.
 
 See the [documentation index](docs/DOCUMENTATION_INDEX.md) for the local SQL/Power BI, BigQuery/dbt, and ML milestones. The [reporting specification](docs/PRODUCTS_REORDERING_SPEC.md) maps the dashboard rules to acceptance checks.
 
 See the [report preview](#report-preview), [data validation](#workflow-and-validation), and [Python reorder prediction evaluation](#reorder-prediction-ml-v1).
+
+## Choose the evidence you want to review
+
+| Workstream | What to inspect |
+|---|---|
+| SQL and Power BI | [Three dashboard previews](#report-preview), [business findings](#key-findings) and [SQL technical report](docs/SQL_PROJECT_REPORT.md) |
+| BigQuery and dbt | [Setup and model runbook](docs/DBT_RUNBOOK.md), [eight-model / 56-test recorded build](docs/validation_evidence/dbt_project_build_pass.json) and [documentation guide](docs/DOCUMENTATION_INDEX.md) |
+| Python reorder prediction | [Baseline comparison](#reorder-prediction-ml-v1), [evaluation and limitations](docs/ML_REORDER_RESULTS.md) and [held-out metrics](docs/validation_evidence/ml_reorder_v1_test_metrics.json) |
+
+The cloud build and ML results are recorded project checkpoints. Scheduled production execution and online business impact are not claimed.
 
 ## Key findings
 
